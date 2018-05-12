@@ -5,6 +5,8 @@ public class Vehicle {
     private Colour colour;
     private int frontRow;
     private int frontColumn;
+    private int midRow;
+    private int midColumn;
     private int backRow;
     private int backColumn;
     private Direction direction;
@@ -51,6 +53,14 @@ public class Vehicle {
         return backColumn;
     }
 
+    public int getMidRow() {
+        return midRow;
+    }
+
+    public int getMidColumn() {
+        return midColumn;
+    }
+
     public Direction getDirection() {
         return direction;
     }
@@ -80,6 +90,8 @@ public class Vehicle {
                 this.backRow = this.frontRow + 1;
             }else{
                 this.backRow = this.frontRow + 2;
+                this.midRow = this.frontRow + 1;
+                this.midColumn = this.frontColumn;
             }
         }else if(this.direction == Direction.SOUTH){
             this.backColumn = this.frontColumn;
@@ -87,6 +99,8 @@ public class Vehicle {
                 this.backRow = this.frontRow - 1;
             }else{
                 this.backRow = this.frontRow - 2;
+                this.midRow = this.frontRow - 1;
+                this.midColumn = this.frontColumn;
             }
         }else if(this.direction == Direction.EAST){
             this.backRow = this.frontRow;
@@ -94,6 +108,8 @@ public class Vehicle {
                 this.backColumn = this.frontColumn - 1;
             }else{
                 this.backColumn = this.frontColumn - 2;
+                this.midColumn = this.frontColumn - 1;
+                this.midRow = this.frontRow;
             }
         }else if(this.direction == Direction.WEST){
             this.backRow = this.frontRow;
@@ -101,6 +117,8 @@ public class Vehicle {
                 this.backColumn = this.frontColumn + 1;
             }else{
                 this.backColumn = this.frontColumn + 2;
+                this.midColumn = this.frontColumn + 1;
+                this.midRow = this.frontRow;
             }
         }
     }

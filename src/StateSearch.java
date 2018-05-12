@@ -2,44 +2,12 @@ import java.util.*;
 
 public class StateSearch {
 
+    ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     private Random generator = new Random();
 
 
-    public ArrayList<Vehicle> generateVehicles(){
-
-        Vehicle primaryCar = new Vehicle(VehicleType.CAR,Colour.RED,2,5,Direction.EAST);
-        System.out.println("Type = " + primaryCar.getVehicleType().toString());
-        System.out.println("Direction = " + primaryCar.getDirection().toString());
-        System.out.println("FrontRow = " + primaryCar.getFrontRow());
-        System.out.println("FrontColumn = " + primaryCar.getFrontColumn());
-        System.out.println("BackRow = " + primaryCar.getBackRow());
-        System.out.println("BackColumn = " + primaryCar.getBackColumn());
-
-        vehicles.add(primaryCar);
-
-        for(int i = 0; i < 4; i++){
-            VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length)];
-            Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
-            System.out.println(colour.toString());
-            Direction direction = Direction.values()[generator.nextInt(Direction.values().length)];
-            int row = generator.nextInt(6);
-            int column = generator.nextInt(6);
-            column = checkCoordinates(row, column);
-            Vehicle newVehicle = new Vehicle(type,colour,row,column,direction);
-            vehicles.add(newVehicle);
-        }
-        return vehicles;
-    }
-
-    public StateNode generateRandomEndState(){
-        generateVehicles();
-        return new StateNode(populateBoard());
-    }
-
-    public ArrayList<ArrayList<Vehicle>> populateBoard(){
-
-        ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
+    public StateNode generateVehicles(){
 
         for(int i = 0; i < 6; i++) {
             endState.add(i,new ArrayList<>());
@@ -52,31 +20,114 @@ public class StateSearch {
 
         }
 
-        for(Vehicle item: vehicles){
-            endState.get(item.getFrontRow()).set(item.getFrontColumn(),item);
-            endState.get(item.getBackRow()).set(item.getBackColumn(),item);
+        Vehicle primaryCar = new Vehicle(VehicleType.CAR,Colour.RED,2,5,Direction.EAST);
+        vehicles.add(primaryCar);
+        endState.get(primaryCar.getFrontRow()).set(primaryCar.getFrontColumn(),primaryCar);
+        endState.get(primaryCar.getBackRow()).set(primaryCar.getBackColumn(),primaryCar);
+
+        for(int i = vehicles.size(); i < 4; i++){
+            VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
+            Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
+            Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
+            int row = generator.nextInt(6);
+            int column = generator.nextInt(6);
+            while(!checkCoordinates(row,column,direction,type)){
+                row = generator.nextInt(6);
+                column = generator.nextInt(6);
+            }
+            Vehicle newVehicle = new Vehicle(type,colour,row,column,direction);
+            vehicles.add(newVehicle);
+            endState.get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(),newVehicle);
+            endState.get(newVehicle.getBackRow()).set(newVehicle.getBackColumn(),newVehicle);
+            if(type == VehicleType.TRUCK) {
+                endState.get(newVehicle.getMidRow()).set(newVehicle.getMidColumn(), newVehicle);
+            }
         }
 
-        for(ArrayList<Vehicle> row: endState){
-            for(Vehicle column: row){
-                if(column.getVehicleType() == VehicleType.EMPTY){
-                    column.setName("**");
+        StateNode endStateNode = new StateNode(endState);
+
+
+        return endStateNode;
+    }
+
+    public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
+
+        System.out.println(type + " " + row);
+        System.out.println(type + " " + column);
+
+
+        if(endState.get(row).get(column).getVehicleType() != VehicleType.EMPTY){
+            return false;
+        }
+        if(direction == Direction.NORTH){
+            if(type == VehicleType.CAR) {
+                if(row > 4){
+                    return false;
+                }
+                if (endState.get(row + 1).get(column).getVehicleType() != VehicleType.EMPTY) {
+                    return false;
+                }
+            }else if(type == VehicleType.TRUCK){
+                if(row > 3){
+                    return false;
+                }
+                if((endState.get(row + 1).get(column).getVehicleType() != VehicleType.EMPTY) || (endState.get(row + 2).get(column).getVehicleType() != VehicleType.EMPTY)){
+                    return false;
                 }
             }
         }
-        return endState;
-    }
-
-    public int checkCoordinates(int row, int column){
-        int newColumn;
-        for(Vehicle item: vehicles){
-            if((item.getFrontRow() == row && item.getFrontColumn() == column) || (item.getBackRow() == row && item.getBackColumn() == column) || row > 6 || column > 6){
-                newColumn = generator.nextInt(6);
-                checkCoordinates(row,newColumn);
-                return newColumn;
+        if(direction == Direction.SOUTH){
+            if(type == VehicleType.CAR) {
+                if(row < 1){
+                    return false;
+                }
+                if (endState.get(row - 1).get(column).getVehicleType() != VehicleType.EMPTY) {
+                    return false;
+                }
+            }else if(type == VehicleType.TRUCK){
+                if(row < 2){
+                    return false;
+                }
+                if((endState.get(row - 1).get(column).getVehicleType() != VehicleType.EMPTY) || (endState.get(row - 2).get(column).getVehicleType() != VehicleType.EMPTY)){
+                    return false;
+                }
             }
         }
-        return column;
+        if(direction == Direction.EAST){
+            if(type == VehicleType.CAR) {
+                if(column < 1){
+                    return false;
+                }
+                if (endState.get(row).get(column - 1).getVehicleType() != VehicleType.EMPTY) {
+                    return false;
+                }
+            }else if(type == VehicleType.TRUCK){
+                if(column < 2){
+                    return false;
+                }
+                if((endState.get(row).get(column - 1).getVehicleType() != VehicleType.EMPTY) || (endState.get(row).get(column - 2).getVehicleType() != VehicleType.EMPTY)){
+                    return false;
+                }
+            }
+        }
+        if(direction == Direction.WEST){
+            if(type == VehicleType.CAR) {
+                if(column > 4){
+                    return false;
+                }
+                if (endState.get(row).get(column + 1).getVehicleType() != VehicleType.EMPTY) {
+                    return false;
+                }
+            }else if(type == VehicleType.TRUCK){
+                if(column > 3){
+                    return false;
+                }
+                if((endState.get(row).get(column + 1).getVehicleType() != VehicleType.EMPTY) || (endState.get(row).get(column + 2).getVehicleType() != VehicleType.EMPTY)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 
