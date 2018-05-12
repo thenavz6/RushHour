@@ -83,6 +83,54 @@ public class Vehicle {
         updateCoordinates();
     }
 
+    public void moveUpOne(){
+        if(type == VehicleType.CAR) {
+            this.frontRow += 1;
+            this.backRow += 1;
+        }else{
+            this.frontRow += 1;
+            this.midRow += 1;
+            this.backRow += 1;
+        }
+        updateCoordinates();
+    }
+
+    public void moveDownOne(){
+        if(type == VehicleType.CAR) {
+            this.frontRow -= 1;
+            this.backRow -= 1;
+        }else{
+            this.frontRow -= 1;
+            this.midRow -= 1;
+            this.backRow -= 1;
+        }
+        updateCoordinates();
+    }
+
+    public void moveLeftOne(){
+        if(type == VehicleType.CAR) {
+            this.frontColumn--;
+            this.backColumn--;
+        }else{
+            this.frontColumn--;
+            this.midColumn--;
+            this.backColumn--;
+        }
+        updateCoordinates();
+    }
+
+    public void moveRightOne(){
+        if(type == VehicleType.CAR) {
+            this.frontColumn += 1;
+            this.backColumn += 1;
+        }else{
+            this.frontColumn += 1;
+            this.midColumn += 1;
+            this.backColumn += 1;
+        }
+        updateCoordinates();
+    }
+
     public void updateCoordinates(){
         if(this.direction == Direction.NORTH){
             this.backColumn = this.frontColumn;

@@ -2,12 +2,13 @@ import java.util.ArrayList;
 
 public class StateNode {
 
-    ArrayList<ArrayList<Vehicle>> state = new ArrayList<>();
+    ArrayList<ArrayList<Vehicle>> state;
     StateNode parent;
     ArrayList<StateNode> children;
 
-    public StateNode(ArrayList<ArrayList<Vehicle>> state) {
+    public StateNode(ArrayList<ArrayList<Vehicle>> state, StateNode parent) {
         this.state = state;
+        this.parent = parent;
     }
 
     public ArrayList<ArrayList<Vehicle>> getState() {

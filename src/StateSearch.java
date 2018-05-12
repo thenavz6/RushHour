@@ -7,6 +7,28 @@ public class StateSearch {
     private Random generator = new Random();
 
 
+
+    public void generateStateSpace(StateNode endState){
+
+        Queue<StateNode> nodes = new PriorityQueue<>();
+        int iteration = 0;
+        nodes.add(endState);
+
+        while(!nodes.isEmpty() || iteration < 10){
+            for(Vehicle item: vehicles){
+                if(item.getDirection() == Direction.NORTH || item.getDirection() == Direction.SOUTH){
+                    for
+                }
+            }
+        }
+
+
+
+
+    }
+
+
+
     public StateNode generateEndState(int numberOfCars){
 
         for(int i = 0; i < 6; i++) {
@@ -44,12 +66,12 @@ public class StateSearch {
             }
         }
 
-        StateNode endStateNode = new StateNode(endState);
-        return endStateNode;
+
+        return new StateNode(endState,null);
     }
 
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
-        
+
         if(endState.get(row).get(column).getVehicleType() != VehicleType.EMPTY){
             return false;
         }
@@ -159,7 +181,6 @@ public class StateSearch {
         }
         return true;
     }
-
 
     public void printState(StateNode state){
 
