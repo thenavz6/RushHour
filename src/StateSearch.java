@@ -7,7 +7,7 @@ public class StateSearch {
     private Random generator = new Random();
 
 
-    public StateNode generateVehicles(){
+    public StateNode generateEndState(int numberOfCars){
 
         for(int i = 0; i < 6; i++) {
             endState.add(i,new ArrayList<>());
@@ -25,7 +25,7 @@ public class StateSearch {
         endState.get(primaryCar.getFrontRow()).set(primaryCar.getFrontColumn(),primaryCar);
         endState.get(primaryCar.getBackRow()).set(primaryCar.getBackColumn(),primaryCar);
 
-        for(int i = vehicles.size(); i < 4; i++){
+        for(int i = vehicles.size(); i < numberOfCars ; i++){
             VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
             Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
             Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
@@ -45,21 +45,24 @@ public class StateSearch {
         }
 
         StateNode endStateNode = new StateNode(endState);
-
-
         return endStateNode;
     }
 
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
-
-        System.out.println(type + " " + row);
-        System.out.println(type + " " + column);
-
-
+        
         if(endState.get(row).get(column).getVehicleType() != VehicleType.EMPTY){
             return false;
         }
         if(direction == Direction.NORTH){
+            int vCount = 0;
+            for(int i = 0; i < 6; i++){
+                if(endState.get(i).get(column).getDirection() == Direction.NORTH || endState.get(i).get(column).getDirection() == Direction.SOUTH){
+                    vCount++;
+                }
+            }
+            if(vCount > 3){
+                return false;
+            }
             if(type == VehicleType.CAR) {
                 if(row > 4){
                     return false;
@@ -77,6 +80,15 @@ public class StateSearch {
             }
         }
         if(direction == Direction.SOUTH){
+            int vCount = 0;
+            for(int i = 0; i < 6; i++){
+                if(endState.get(i).get(column).getDirection() == Direction.NORTH || endState.get(i).get(column).getDirection() == Direction.SOUTH){
+                    vCount++;
+                }
+            }
+            if(vCount > 3){
+                return false;
+            }
             if(type == VehicleType.CAR) {
                 if(row < 1){
                     return false;
@@ -94,6 +106,15 @@ public class StateSearch {
             }
         }
         if(direction == Direction.EAST){
+            int vCount = 0;
+            for(int i = 0; i < 6; i++){
+                if(endState.get(row).get(i).getDirection() == Direction.EAST || endState.get(row).get(i).getDirection() == Direction.WEST){
+                    vCount++;
+                }
+            }
+            if(vCount > 3){
+                return false;
+            }
             if(type == VehicleType.CAR) {
                 if(column < 1){
                     return false;
@@ -111,6 +132,15 @@ public class StateSearch {
             }
         }
         if(direction == Direction.WEST){
+            int vCount = 0;
+            for(int i = 0; i < 6; i++){
+                if(endState.get(row).get(i).getDirection() == Direction.EAST || endState.get(row).get(i).getDirection() == Direction.WEST){
+                    vCount++;
+                }
+            }
+            if(vCount > 3){
+                return false;
+            }
             if(type == VehicleType.CAR) {
                 if(column > 4){
                     return false;
