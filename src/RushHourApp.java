@@ -3,6 +3,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.event.EventHandler;
+
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -40,6 +44,25 @@ public class RushHourApp extends Application{
     {
         Scene scene = new Scene(createContent());
         primaryStage.setTitle("RushHour");
+
+
+        // handle movement
+
+        // TODO: something that allows you to select vehicle. this depends on how we're actually displaying them.
+
+        // right now this does nothing
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP: break;
+                    case DOWN: break;
+                    case LEFT: break;
+                    case RIGHT: break;
+                }
+            }
+        });
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
