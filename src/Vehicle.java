@@ -43,8 +43,17 @@ public class Vehicle implements Serializable{
         return frontRow;
     }
 
+    public void setMidRow(int midRow) {
+        this.midRow = midRow;
+    }
+
+    public void setMidColumn(int midColumn) {
+        this.midColumn = midColumn;
+    }
+
     public int getFrontColumn() {
         return frontColumn;
+
     }
 
     public int getBackRow() {

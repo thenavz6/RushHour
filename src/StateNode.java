@@ -5,11 +5,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
+import java.util.Objects;
 
 
 public class StateNode implements Serializable{
 
     ArrayList<ArrayList<Vehicle>> state;
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
     StateNode parent;
     ArrayList<StateNode> children = new ArrayList<>();
 
@@ -22,6 +24,13 @@ public class StateNode implements Serializable{
         this.children.add(childState);
     }
 
+    public void addVehicles(ArrayList<Vehicle> vehicles){
+        this.vehicles.addAll(vehicles);
+    }
+
+    public ArrayList<Vehicle> getVehicles(){
+        return this.vehicles;
+    }
 
     public ArrayList<ArrayList<Vehicle>> getState() {
         return state;
@@ -72,5 +81,47 @@ public class StateNode implements Serializable{
         }
         return copy;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StateNode stateNode = (StateNode) o;
+        return Objects.equals(state, stateNode.state);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(state);
+    }
+
+    public void printNode(){
+        if(this.children == null) {
+            printState(this);
+            System.out.print("\n");
+        }else {
+            printState(this);
+            System.out.print("\n");
+            for (StateNode item : this.children) {
+                System.out.println("    ");
+                item.printNode();
+            }
+        }
+    }
+
+    public void printState(StateNode state){
+
+        ArrayList<Vehicle> printed = new ArrayList<>();
+
+        for(ArrayList<Vehicle> row: state.getState()){
+            for(Vehicle column: row) {
+                    printed.add(column);
+                    System.out.print(column);
+            }
+            System.out.print("\n");
+        }
+        System.out.print("\n");
     }
 }

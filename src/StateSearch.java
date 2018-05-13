@@ -1,14 +1,38 @@
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.lang.Math;
 
 public class StateSearch {
 
     ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
+    private ArrayList<StateNode> seen = new ArrayList<>();
     Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.EMPTY,-1,-1,Direction.EMPTY);
+    Vehicle primaryCar = new Vehicle(VehicleType.CAR,Colour.RED,2,5,Direction.EAST);
+    ArrayList<StateNode> allNodes = new ArrayList<>();
     private Random generator = new Random();
+    int numnodes = 1;
 
 
+
+    public void solve(StateNode goalState, StateNode startState){
+        for(Vehicle item: goalState.getVehicles()){
+            System.out.print(item + " ");
+        }
+
+        for(Vehicle item: startState.getVehicles()){
+            System.out.print(item + " ");
+        }
+    }
+
+    public StateNode generateStartState(StateNode state){
+        for(StateNode item: allNodes){
+            if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY){
+                return item.deepCopy();
+            }
+        }
+        return null;
+    }
 
     public void generateStateSpace(StateNode endState){
 
@@ -16,65 +40,74 @@ public class StateSearch {
         int iteration = 1;
         nodes.add(endState);
 
-        while(!nodes.isEmpty() && iteration < 6){
-            System.out.println("iteration = " + iteration);
+        while(!nodes.isEmpty() && iteration < 20) {
+           // System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
-            for(Vehicle item: vehicles){
-                System.out.println("vehicle = " + item);
-                printState(currentNode);
-                for(int o = 0; o < 2; o++){
-                    System.out.println("orientation = " + o);
-                    StateNode childState = currentNode.deepCopy();
-                    for(ArrayList<Vehicle> row: childState.getState()) {
-                        for (int i = 0; i < 6; i++) {
-                            if (item.getFrontColumn() == row.get(i).getFrontColumn() && item.getFrontRow() == row.get(i).getFrontRow()) {
-                                Vehicle memory = row.get(i).deepCopy();
-                                if(o == 0) {
-                                    if(row.get(i).getDirection() == Direction.NORTH || row.get(i).getDirection() == Direction.SOUTH  ) {
-                                        if (row.get(i).moveUpOne(childState)) {
-                                            updateSate(childState, row.get(i),memory);
-                                            printState(childState);
-                                            currentNode.addChild(childState);
-                                            nodes.add(childState);
-                                        }
-                                    }
-                                    if(row.get(i).getDirection() == Direction.EAST || row.get(i).getDirection() == Direction.WEST) {
-                                        if (row.get(i).moveRightOne(childState)) {
-                                            updateSate(childState, row.get(i),memory);
-                                            printState(childState);
-                                            currentNode.addChild(childState);
-                                            nodes.add(childState);
-                                        }
-                                    }
+                //System.out.println("vehicle = " + item);
+                //printState(currentNode);
+            for (int o = 0; o < 2; o++) {
+                //System.out.println("orientation = " + o);
+                StateNode childState = currentNode.deepCopy();
+                for (Vehicle vehicle : childState.getVehicles()) {
+                   // System.out.println("1 Vehicle");
+                    Vehicle memory = vehicle.deepCopy();
+                    if (o == 0) {
+                        if (vehicle.getDirection() == Direction.NORTH || vehicle.getDirection() == Direction.SOUTH) {
+                            if (vehicle.moveUpOne(childState)) {
+                                updateSate(childState, vehicle, memory);
+                                //printState(childState);
+                                currentNode.addChild(childState);
+                                childState.setParent(currentNode);
+                                nodes.add(childState);
+                                allNodes.add(childState);
+                                numnodes++;
 
-                                }
-                                if(o == 1) {
-                                    if(row.get(i).getDirection() == Direction.NORTH || row.get(i).getDirection() == Direction.SOUTH  ) {
-                                        if (row.get(i).moveDownOne(childState)){
-                                            updateSate(childState, row.get(i),memory);
-                                            printState(childState);
-                                            currentNode.addChild(childState);
-                                            nodes.add(childState);
-                                        }
-                                    }
-                                    if(row.get(i).getDirection() == Direction.EAST || row.get(i).getDirection() == Direction.WEST) {
-                                        if (row.get(i).moveLeftOne(childState)) {
-                                            updateSate(childState, row.get(i),memory);
-                                            printState(childState);
-                                            currentNode.addChild(childState);
-                                            nodes.add(childState);
-                                        }
-                                    }
-                                }
                             }
                         }
-                        System.out.print("\n");
+                        if (vehicle.getDirection() == Direction.EAST || vehicle.getDirection() == Direction.WEST) {
+                            if (vehicle.moveRightOne(childState)) {
+                                updateSate(childState, vehicle, memory);
+                                //printState(childState);
+                                currentNode.addChild(childState);
+                                childState.setParent(currentNode);
+                                nodes.add(childState);
+                                allNodes.add(childState);
+                                numnodes++;
+                            }
+                        }
+                    }
+                    if (o == 1) {
+                        if (vehicle.getDirection() == Direction.NORTH || vehicle.getDirection() == Direction.SOUTH) {
+                            if (vehicle.moveDownOne(childState)) {
+                                updateSate(childState, vehicle, memory);
+                                //printState(childState);
+                                currentNode.addChild(childState);
+                                childState.setParent(currentNode);
+                                nodes.add(childState);
+                                allNodes.add(childState);
+                                numnodes++;
+                            }
+                        }
+                        if (vehicle.getDirection() == Direction.EAST || vehicle.getDirection() == Direction.WEST) {
+                            if (vehicle.moveLeftOne(childState)) {
+                                updateSate(childState, vehicle, memory);
+                                //printState(childState);
+                                currentNode.addChild(childState);
+                                childState.setParent(currentNode);
+                                nodes.add(childState);
+                                allNodes.add(childState);
+                                numnodes++;
+                            }
+                        }
                     }
 
                 }
+                //System.out.print("\n");
             }
             iteration++;
+            seen.add(currentNode);
         }
+
     }
 
     public void updateSate(StateNode state, Vehicle newVehicle, Vehicle oldVehicle){
@@ -83,14 +116,21 @@ public class StateSearch {
         state.getState().get(oldVehicle.getBackRow()).set(oldVehicle.getBackColumn(),emptyVehicle);
         state.getState().get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(),newVehicle);
         state.getState().get(newVehicle.getBackRow()).set(newVehicle.getBackColumn(),newVehicle);
+        state.getVehicles().get(state.getVehicles().indexOf(newVehicle)).setFrontRow(newVehicle.getFrontRow());
+        state.getVehicles().get(state.getVehicles().indexOf(newVehicle)).setFrontColumn(newVehicle.getFrontColumn());
         if(newVehicle.getVehicleType() == VehicleType.TRUCK) {
             state.getState().get(oldVehicle.getMidRow()).set(oldVehicle.getMidColumn(),emptyVehicle);
             state.getState().get(newVehicle.getMidRow()).set(newVehicle.getMidColumn(), newVehicle);
+            state.getVehicles().get(state.getVehicles().indexOf(newVehicle)).setMidRow(newVehicle.getMidRow());
+            state.getVehicles().get(state.getVehicles().indexOf(newVehicle)).setMidColumn(newVehicle.getMidColumn());
         }
 
     }
 
     public StateNode generateEndState(int numberOfCars){
+
+        endState = new ArrayList<>();
+        vehicles = new ArrayList<>();
 
         for(int i = 0; i < 6; i++) {
             endState.add(i,new ArrayList<>());
@@ -98,12 +138,11 @@ public class StateSearch {
 
         for(ArrayList<Vehicle> row: endState){
             for(int i = 0; i < 6; i++){
-                row.add(i,new Vehicle(VehicleType.EMPTY,Colour.EMPTY,-1,-1,Direction.EMPTY));
+                row.add(i,emptyVehicle);
             }
 
         }
 
-        Vehicle primaryCar = new Vehicle(VehicleType.CAR,Colour.RED,2,5,Direction.EAST);
         vehicles.add(primaryCar);
         endState.get(primaryCar.getFrontRow()).set(primaryCar.getFrontColumn(),primaryCar);
         endState.get(primaryCar.getBackRow()).set(primaryCar.getBackColumn(),primaryCar);
@@ -127,8 +166,23 @@ public class StateSearch {
             }
         }
 
+        StateNode goalState = new StateNode(endState,null);
+        goalState.addVehicles(vehicles);
 
-        return new StateNode(endState,null);
+        int vertCount = 0;
+        int horCount = 0;
+        for(Vehicle item: vehicles){
+            if(item.getDirection() == Direction.NORTH || item.getDirection() == Direction.SOUTH){
+                vertCount++;
+            }else{
+                horCount++;
+            }
+        }
+        if(Math.abs(horCount-vertCount) > 1){
+            generateEndState(numberOfCars);
+        }
+
+        return goalState;
     }
 
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
@@ -143,7 +197,7 @@ public class StateSearch {
                     vCount++;
                 }
             }
-            if(vCount > 3){
+            if(vCount > 2){
                 return false;
             }
             if(type == VehicleType.CAR) {
@@ -169,7 +223,7 @@ public class StateSearch {
                     vCount++;
                 }
             }
-            if(vCount > 3){
+            if(vCount > 2){
                 return false;
             }
             if(type == VehicleType.CAR) {
@@ -195,7 +249,7 @@ public class StateSearch {
                     vCount++;
                 }
             }
-            if(vCount > 3){
+            if(vCount > 2){
                 return false;
             }
             if(type == VehicleType.CAR) {
@@ -221,7 +275,7 @@ public class StateSearch {
                     vCount++;
                 }
             }
-            if(vCount > 3){
+            if(vCount > 2){
                 return false;
             }
             if(type == VehicleType.CAR) {
