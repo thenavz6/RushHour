@@ -16,7 +16,7 @@ public class StateSearch {
         int iteration = 1;
         nodes.add(endState);
 
-        while(!nodes.isEmpty() && iteration < 50){
+        while(!nodes.isEmpty() && iteration < 6){
             System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
             for(Vehicle item: vehicles){
