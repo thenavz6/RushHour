@@ -1,0 +1,6 @@
+public enum Colour {
+    AQUA, BLACK, BLUE, CAMO, GREEN,
+    GREY, LIGHTBLUE, LIME, ORANGE, PINK,
+    PURPLE, VIOLET, WHITE, YELLOW,
+    RED, EMPTY
+}
