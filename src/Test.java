@@ -3,7 +3,9 @@ public class Test {
     public static void main(String[] args)
     {
         StateSearch state = new StateSearch();
-        state.printState(state.generateEndState(8));
+        StateNode endState = state.generateEndState(6);
+        state.printState(endState);
+        state.generateStateSpace(endState);
     }
 
 }

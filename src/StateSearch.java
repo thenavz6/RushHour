@@ -1,33 +1,94 @@
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class StateSearch {
 
     ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
+    Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.EMPTY,-1,-1,Direction.EMPTY);
     private Random generator = new Random();
 
 
 
     public void generateStateSpace(StateNode endState){
 
-        Queue<StateNode> nodes = new PriorityQueue<>();
-        int iteration = 0;
+        Queue<StateNode> nodes = new ConcurrentLinkedDeque<>();
+        int iteration = 1;
         nodes.add(endState);
 
-        while(!nodes.isEmpty() || iteration < 10){
+        while(!nodes.isEmpty() && iteration < 50){
+            System.out.println("iteration = " + iteration);
+            StateNode currentNode = nodes.poll();
             for(Vehicle item: vehicles){
-                if(item.getDirection() == Direction.NORTH || item.getDirection() == Direction.SOUTH){
-                    for
+                System.out.println("vehicle = " + item);
+                printState(currentNode);
+                for(int o = 0; o < 2; o++){
+                    System.out.println("orientation = " + o);
+                    StateNode childState = currentNode.deepCopy();
+                    for(ArrayList<Vehicle> row: childState.getState()) {
+                        for (int i = 0; i < 6; i++) {
+                            if (item.getFrontColumn() == row.get(i).getFrontColumn() && item.getFrontRow() == row.get(i).getFrontRow()) {
+                                Vehicle memory = row.get(i).deepCopy();
+                                if(o == 0) {
+                                    if(row.get(i).getDirection() == Direction.NORTH || row.get(i).getDirection() == Direction.SOUTH  ) {
+                                        if (row.get(i).moveUpOne(childState)) {
+                                            updateSate(childState, row.get(i),memory);
+                                            printState(childState);
+                                            currentNode.addChild(childState);
+                                            nodes.add(childState);
+                                        }
+                                    }
+                                    if(row.get(i).getDirection() == Direction.EAST || row.get(i).getDirection() == Direction.WEST) {
+                                        if (row.get(i).moveRightOne(childState)) {
+                                            updateSate(childState, row.get(i),memory);
+                                            printState(childState);
+                                            currentNode.addChild(childState);
+                                            nodes.add(childState);
+                                        }
+                                    }
+
+                                }
+                                if(o == 1) {
+                                    if(row.get(i).getDirection() == Direction.NORTH || row.get(i).getDirection() == Direction.SOUTH  ) {
+                                        if (row.get(i).moveDownOne(childState)){
+                                            updateSate(childState, row.get(i),memory);
+                                            printState(childState);
+                                            currentNode.addChild(childState);
+                                            nodes.add(childState);
+                                        }
+                                    }
+                                    if(row.get(i).getDirection() == Direction.EAST || row.get(i).getDirection() == Direction.WEST) {
+                                        if (row.get(i).moveLeftOne(childState)) {
+                                            updateSate(childState, row.get(i),memory);
+                                            printState(childState);
+                                            currentNode.addChild(childState);
+                                            nodes.add(childState);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        System.out.print("\n");
+                    }
+
                 }
             }
+            iteration++;
         }
-
-
-
-
     }
 
+    public void updateSate(StateNode state, Vehicle newVehicle, Vehicle oldVehicle){
 
+        state.getState().get(oldVehicle.getFrontRow()).set(oldVehicle.getFrontColumn(),emptyVehicle);
+        state.getState().get(oldVehicle.getBackRow()).set(oldVehicle.getBackColumn(),emptyVehicle);
+        state.getState().get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(),newVehicle);
+        state.getState().get(newVehicle.getBackRow()).set(newVehicle.getBackColumn(),newVehicle);
+        if(newVehicle.getVehicleType() == VehicleType.TRUCK) {
+            state.getState().get(oldVehicle.getMidRow()).set(oldVehicle.getMidColumn(),emptyVehicle);
+            state.getState().get(newVehicle.getMidRow()).set(newVehicle.getMidColumn(), newVehicle);
+        }
+
+    }
 
     public StateNode generateEndState(int numberOfCars){
 
@@ -190,6 +251,7 @@ public class StateSearch {
                 System.out.print(column);
             }
         }
+        System.out.print("\n");
     }
 
 

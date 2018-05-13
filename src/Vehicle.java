@@ -1,4 +1,6 @@
-public class Vehicle {
+import java.io.*;
+
+public class Vehicle implements Serializable{
 
     private String name;
     private VehicleType type;
@@ -83,52 +85,84 @@ public class Vehicle {
         updateCoordinates();
     }
 
-    public void moveUpOne(){
-        if(type == VehicleType.CAR) {
-            this.frontRow += 1;
-            this.backRow += 1;
-        }else{
-            this.frontRow += 1;
-            this.midRow += 1;
-            this.backRow += 1;
+    public boolean moveUpOne(StateNode state){
+        if(direction == Direction.NORTH || direction == Direction.SOUTH) {
+            if (this.frontRow - 1 >= 0 && this.backRow - 1 >= 0) {
+                if(state.getState().get(this.frontRow - 1).get(this.frontColumn).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow - 1).get(this.backColumn).getVehicleType() == VehicleType.EMPTY) {
+                    if (type == VehicleType.CAR) {
+                        this.frontRow--;
+                        this.backRow--;
+                    } else if(state.getState().get(this.midRow - 1).get(this.midColumn).getVehicleType() == VehicleType.EMPTY) {
+                        this.frontRow--;
+                        this.midRow--;
+                        this.backRow--;
+                    }
+                    updateCoordinates();
+                    return true;
+                }
+            }
         }
-        updateCoordinates();
+        return false;
     }
 
-    public void moveDownOne(){
-        if(type == VehicleType.CAR) {
-            this.frontRow -= 1;
-            this.backRow -= 1;
-        }else{
-            this.frontRow -= 1;
-            this.midRow -= 1;
-            this.backRow -= 1;
+    public boolean moveDownOne(StateNode state){
+        if(direction == Direction.NORTH || direction == Direction.SOUTH) {
+            if (this.frontRow + 1 <= 5 && this.backRow + 1 <= 5) {
+                if(state.getState().get(this.frontRow + 1).get(this.frontColumn).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow + 1).get(this.backColumn).getVehicleType() == VehicleType.EMPTY) {
+                    if (type == VehicleType.CAR) {
+                        this.frontRow++;
+                        this.backRow++;
+                    } else if(state.getState().get(this.midRow + 1).get(this.midColumn).getVehicleType() == VehicleType.EMPTY){
+                        this.frontRow++;
+                        this.midRow++;
+                        this.backRow++;
+                    }
+                    updateCoordinates();
+                    return true;
+                }
+            }
         }
-        updateCoordinates();
+        return false;
     }
 
-    public void moveLeftOne(){
-        if(type == VehicleType.CAR) {
-            this.frontColumn--;
-            this.backColumn--;
-        }else{
-            this.frontColumn--;
-            this.midColumn--;
-            this.backColumn--;
+    public boolean moveLeftOne(StateNode state){
+        if(direction == Direction.EAST || direction == Direction.WEST) {
+            if (this.frontColumn - 1 >= 0 && this.backColumn - 1 >= 0) {
+                if(state.getState().get(this.frontRow).get(this.frontColumn - 1).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow).get(this.backColumn - 1).getVehicleType() == VehicleType.EMPTY) {
+                    if (type == VehicleType.CAR) {
+                        this.frontColumn--;
+                        this.backColumn--;
+                    } else if(state.getState().get(this.midRow).get(this.midColumn - 1).getVehicleType() == VehicleType.EMPTY){
+                        this.frontColumn--;
+                        this.midColumn--;
+                        this.backColumn--;
+                    }
+                    updateCoordinates();
+                    return true;
+                }
+            }
         }
-        updateCoordinates();
+        return false;
     }
 
-    public void moveRightOne(){
-        if(type == VehicleType.CAR) {
-            this.frontColumn += 1;
-            this.backColumn += 1;
-        }else{
-            this.frontColumn += 1;
-            this.midColumn += 1;
-            this.backColumn += 1;
+    public boolean moveRightOne(StateNode state){
+        if(direction == Direction.EAST || direction == Direction.WEST) {
+            if (this.frontColumn + 1 <= 5 && this.backColumn + 1 <= 5) {
+                if(state.getState().get(this.frontRow).get(this.frontColumn + 1).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow).get(this.backColumn + 1).getVehicleType() == VehicleType.EMPTY) {
+                    if (type == VehicleType.CAR) {
+                        this.frontColumn++;
+                        this.backColumn++;
+                    } else if(state.getState().get(this.midRow).get(this.midColumn + 1).getVehicleType() == VehicleType.EMPTY){
+                        this.frontColumn++;
+                        this.midColumn++;
+                        this.backColumn++;
+                    }
+                    updateCoordinates();
+                    return true;
+                }
+            }
         }
-        updateCoordinates();
+        return false;
     }
 
     public void updateCoordinates(){
@@ -171,9 +205,38 @@ public class Vehicle {
         }
     }
 
+    public Vehicle deepCopy(){
+
+        Vehicle copy = null;
+        try {
+            // Write the object out to a byte array
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(bos);
+            out.writeObject(this);
+            out.flush();
+            out.close();
+
+            // Make an input stream from the byte array and read
+            // a copy of the object back in.
+            ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
+            copy = (Vehicle) in.readObject();
+        }
+        catch(IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if(copy == null){
+            System.out.println("copy is null");
+        }
+        return copy;
+
+    }
+
+
     @Override
     public String toString() {
         return name + " ";
 
     }
 }
+
