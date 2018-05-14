@@ -1,134 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3659bc4-ef32-4be4-8ab8-c86433127237" name="Default" comment="Programme now generates an 8x8 grid and programme files contain images folder with all required images of vehicles.">
+    <list default="true" id="d3659bc4-ef32-4be4-8ab8-c86433127237" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/MainPiece.class" afterPath="$PROJECT_DIR$/out/production/RushHour/MainPiece.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$1.class" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp.class" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_aqua_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_aqua_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_black_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_black_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_blue_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_blue_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_camo_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_camo_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_green_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_green_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_grey_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_grey_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_light_blue_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_light_blue_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_lime_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_lime_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_orange_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_orange_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_pink_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_pink_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_purple_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_purple_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_red_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_violet_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_violet_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_white_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_white_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_yellow_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/car_yellow_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/exit_arrow.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/rushhour.icns" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_aqua_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_aqua_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_black_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_black_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_blue_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_blue_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_camo_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_camo_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_green_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_green_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_grey_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_grey_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_light_blue_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_light_blue_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_lime_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_lime_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_orange_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_orange_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_pink_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_pink_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_purple_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_purple_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_violet_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_violet_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_white_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_white_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_yellow_h.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/truck_yellow_v.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/car_aqua_h.png" afterPath="$PROJECT_DIR$/src/images/car_aqua_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_aqua_v.png" afterPath="$PROJECT_DIR$/src/images/car_aqua_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_black_h.png" afterPath="$PROJECT_DIR$/src/images/car_black_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_black_v.png" afterPath="$PROJECT_DIR$/src/images/car_black_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_blue_h.png" afterPath="$PROJECT_DIR$/src/images/car_blue_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_blue_v.png" afterPath="$PROJECT_DIR$/src/images/car_blue_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_camo_h.png" afterPath="$PROJECT_DIR$/src/images/car_camo_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_camo_v.png" afterPath="$PROJECT_DIR$/src/images/car_camo_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_green_h.png" afterPath="$PROJECT_DIR$/src/images/car_green_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_green_v.png" afterPath="$PROJECT_DIR$/src/images/car_green_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_grey_h.png" afterPath="$PROJECT_DIR$/src/images/car_grey_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_grey_v.png" afterPath="$PROJECT_DIR$/src/images/car_grey_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_light_blue_h.png" afterPath="$PROJECT_DIR$/src/images/car_light_blue_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_light_blue_v.png" afterPath="$PROJECT_DIR$/src/images/car_light_blue_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_lime_h.png" afterPath="$PROJECT_DIR$/src/images/car_lime_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_lime_v.png" afterPath="$PROJECT_DIR$/src/images/car_lime_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_orange_h.png" afterPath="$PROJECT_DIR$/src/images/car_orange_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_orange_v.png" afterPath="$PROJECT_DIR$/src/images/car_orange_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_pink_h.png" afterPath="$PROJECT_DIR$/src/images/car_pink_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_pink_v.png" afterPath="$PROJECT_DIR$/src/images/car_pink_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_purple_h.png" afterPath="$PROJECT_DIR$/src/images/car_purple_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_purple_v.png" afterPath="$PROJECT_DIR$/src/images/car_purple_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_red_h.png" afterPath="$PROJECT_DIR$/src/images/car_red_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_violet_h.png" afterPath="$PROJECT_DIR$/src/images/car_violet_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_violet_v.png" afterPath="$PROJECT_DIR$/src/images/car_violet_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_white_h.png" afterPath="$PROJECT_DIR$/src/images/car_white_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_white_v.png" afterPath="$PROJECT_DIR$/src/images/car_white_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_yellow_h.png" afterPath="$PROJECT_DIR$/src/images/car_yellow_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/car_yellow_v.png" afterPath="$PROJECT_DIR$/src/images/car_yellow_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/exit_arrow.png" afterPath="$PROJECT_DIR$/src/images/exit_arrow.png" />
-      <change beforePath="$PROJECT_DIR$/resources/rushhour.icns" afterPath="$PROJECT_DIR$/src/images/rushhour.icns" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_aqua_h.png" afterPath="$PROJECT_DIR$/src/images/truck_aqua_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_aqua_v.png" afterPath="$PROJECT_DIR$/src/images/truck_aqua_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_black_h.png" afterPath="$PROJECT_DIR$/src/images/truck_black_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_black_v.png" afterPath="$PROJECT_DIR$/src/images/truck_black_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_blue_h.png" afterPath="$PROJECT_DIR$/src/images/truck_blue_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_blue_v.png" afterPath="$PROJECT_DIR$/src/images/truck_blue_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_camo_h.png" afterPath="$PROJECT_DIR$/src/images/truck_camo_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_camo_v.png" afterPath="$PROJECT_DIR$/src/images/truck_camo_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_green_h.png" afterPath="$PROJECT_DIR$/src/images/truck_green_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_green_v.png" afterPath="$PROJECT_DIR$/src/images/truck_green_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_grey_h.png" afterPath="$PROJECT_DIR$/src/images/truck_grey_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_grey_v.png" afterPath="$PROJECT_DIR$/src/images/truck_grey_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_light_blue_h.png" afterPath="$PROJECT_DIR$/src/images/truck_light_blue_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_light_blue_v.png" afterPath="$PROJECT_DIR$/src/images/truck_light_blue_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_lime_h.png" afterPath="$PROJECT_DIR$/src/images/truck_lime_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_lime_v.png" afterPath="$PROJECT_DIR$/src/images/truck_lime_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_orange_h.png" afterPath="$PROJECT_DIR$/src/images/truck_orange_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_orange_v.png" afterPath="$PROJECT_DIR$/src/images/truck_orange_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_pink_h.png" afterPath="$PROJECT_DIR$/src/images/truck_pink_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_pink_v.png" afterPath="$PROJECT_DIR$/src/images/truck_pink_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_purple_h.png" afterPath="$PROJECT_DIR$/src/images/truck_purple_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_purple_v.png" afterPath="$PROJECT_DIR$/src/images/truck_purple_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_violet_h.png" afterPath="$PROJECT_DIR$/src/images/truck_violet_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_violet_v.png" afterPath="$PROJECT_DIR$/src/images/truck_violet_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_white_h.png" afterPath="$PROJECT_DIR$/src/images/truck_white_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_white_v.png" afterPath="$PROJECT_DIR$/src/images/truck_white_v.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_yellow_h.png" afterPath="$PROJECT_DIR$/src/images/truck_yellow_h.png" />
-      <change beforePath="$PROJECT_DIR$/resources/truck_yellow_v.png" afterPath="$PROJECT_DIR$/src/images/truck_yellow_v.png" />
-      <change beforePath="$PROJECT_DIR$/src/Colour.java" afterPath="$PROJECT_DIR$/src/Colour.java" />
-      <change beforePath="$PROJECT_DIR$/src/MainPiece.java" afterPath="$PROJECT_DIR$/src/MainPiece.java" />
       <change beforePath="$PROJECT_DIR$/src/RushHourApp.java" afterPath="$PROJECT_DIR$/src/RushHourApp.java" />
-      <change beforePath="$PROJECT_DIR$/src/StateSearch.java" afterPath="$PROJECT_DIR$/src/StateSearch.java" />
-      <change beforePath="$PROJECT_DIR$/src/Vehicle.java" afterPath="$PROJECT_DIR$/src/Vehicle.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -143,8 +21,8 @@
       <file leaf-file-name="RushHourApp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+            <state relative-caret-position="116">
+              <caret line="104" column="49" lean-forward="false" selection-start-line="104" selection-start-column="49" selection-end-line="104" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -443,11 +321,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526293050516</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Graphically generates start state.">
+      <created>1526302912805</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1526302912805</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6892000" />
+    <option name="totallyTimeSpent" value="6935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="6" />
@@ -512,7 +397,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Programme now generates an 8x8 grid and programme files contain images folder with all required images of vehicles." />
     <MESSAGE value="Fixed bug with piece movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with piece movement" />
+    <MESSAGE value="Graphically generates start state." />
+    <option name="LAST_COMMIT_MESSAGE" value="Graphically generates start state." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -745,8 +631,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        <state relative-caret-position="116">
+          <caret line="104" column="49" lean-forward="false" selection-start-line="104" selection-start-column="49" selection-end-line="104" selection-end-column="49" />
           <folding />
         </state>
       </provider>

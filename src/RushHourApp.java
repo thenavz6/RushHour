@@ -103,7 +103,6 @@ public class RushHourApp extends Application{
     public void start(Stage primaryStage) throws Exception
     {
         Scene scene = new Scene(createContent());
-        scene.on
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){
