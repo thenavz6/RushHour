@@ -1,4 +1,5 @@
 import java.io.*;
+import javafx.scene.image.Image;
 
 public class Vehicle implements Serializable{
 
@@ -12,6 +13,8 @@ public class Vehicle implements Serializable{
     private int backRow;
     private int backColumn;
     private Direction direction;
+    private Image image;
+
 
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
         this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0);
@@ -21,7 +24,20 @@ public class Vehicle implements Serializable{
         this.frontColumn = column;
         this.direction = direction;
         updateCoordinates();
+
+        // sets up image
+        String location = "images/";
+        String orientation = "";
+        if (this.direction == Direction.NORTH || this.direction == Direction.SOUTH) {
+            orientation = "v";
+        } else if (this.direction == Direction.EAST || this.direction == Direction.WEST) {
+            orientation = "h";
+        }
+        String filename = this.type + "_" + this.colour + "_" + orientation + ".png";
+        this.image = new Image(location + filename);
+
     }
+
 
     public VehicleType getVehicleType() {
         return type;
