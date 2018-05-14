@@ -54,12 +54,12 @@ public class Pause extends Application {
             grid.setVgap(10);
             grid.setPadding(new Insets(10, 10, 10, 10));
             ImageView imv = new ImageView();
-            Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
-
-            imv.setImage(titlepic);
+            //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
+            Image pausePicture = new Image("images/road.png");
+            imv.setImage(pausePicture);
             //ImagePattern pattern = new ImagePattern(titlepic);
             BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
-            grid.setBackground(new Background( new BackgroundImage(titlepic, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
+            grid.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
             exit.setOnAction(e -> primaryStage.hide());
             instruct.setOnAction(new EventHandler<ActionEvent>() {
                 @Override

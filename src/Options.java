@@ -25,8 +25,9 @@ public class Options extends Application {
         gridpane.setVgap(10);
         
         ImageView imv = new ImageView();
-        Image imageCar = new Image(Options.class.getResourceAsStream("car_aqua_h.png"));
-        imv.setImage(imageCar);
+        //Image imageCar = new Image(Options.class.getResourceAsStream("car_aqua_h.png"));
+        Image testbby = new Image("images/car_aqua_h.png");
+        imv.setImage(testbby);
 
         HBox pictureRegion = new HBox();
         

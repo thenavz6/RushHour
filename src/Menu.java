@@ -135,10 +135,14 @@ public class Menu extends Application {
             public void handle(ActionEvent event) {
                 try {
 					//test2.start(primaryStage);
-					Pause paused = new Pause();
+					//Pause paused = new Pause();
+                    //Stage secondaryStage = new Stage();
+                    //secondaryStage.setTitle("Pause");
+                    //paused.start(secondaryStage);
+                    Options option = new Options();
                     Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Pause");
-                    paused.start(secondaryStage);
+                    secondaryStage.setTitle("Options");
+                    option.start(secondaryStage);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -159,12 +163,12 @@ public class Menu extends Application {
         grid.add(option,0,3);
         grid.add(exit, 0, 4);
         ImageView imv = new ImageView();
-        Image titlepic = new Image(Options.class.getResourceAsStream("title.png"));
-
-        imv.setImage(titlepic);
-        ImagePattern pattern = new ImagePattern(titlepic);
+        //Image titlepic = new Image(Options.class.getResourceAsStream("title.png"));
+        Image titlePicture = new Image("images/title.png");
+        imv.setImage(titlePicture);
+        ImagePattern pattern = new ImagePattern(titlePicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,false,true);
-        grid.setBackground(new Background( new BackgroundImage(titlepic, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
+        grid.setBackground(new Background( new BackgroundImage(titlePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
         //grid.set;
         Scene scenes = new Scene(grid,370,370);
         //scenes.setFill(pattern);
