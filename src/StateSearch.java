@@ -27,8 +27,11 @@ public class StateSearch {
 
     public StateNode generateStartState(StateNode state){
         for(StateNode item: allNodes){
-            if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() != VehicleType.EMPTY && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v")){
-                return item.deepCopy();
+            if((item.getVehicles().get(0).getFrontColumn() < 3) &&
+                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY) /*&&
+                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() != VehicleType.EMPTY)*/&&
+                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v"))){
+                        return item.deepCopy();
             }
         }
         return null;
@@ -41,7 +44,7 @@ public class StateSearch {
         nodes.add(endState);
 
         while(!nodes.isEmpty() && iteration < 20) {
-           System.out.println("iteration = " + iteration);
+           //System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
                 //System.out.println("vehicle = " + item);
                 //printState(currentNode);
