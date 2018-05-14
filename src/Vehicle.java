@@ -17,7 +17,7 @@ public class Vehicle implements Serializable{
 
 
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
-        this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0);
+        this.name = colour.toString().charAt(0) + "" + type.toString().charAt(0);
         this.type = type;
         this.colour = colour;
         this.frontRow = row;
@@ -26,18 +26,7 @@ public class Vehicle implements Serializable{
         updateCoordinates();
 
         // sets up image
-        String location = "images/";
-        String orientation = "";
-        if (this.direction == Direction.NORTH || this.direction == Direction.SOUTH) {
-            orientation = "v";
-        } else if (this.direction == Direction.EAST || this.direction == Direction.WEST) {
-            orientation = "h";
-        }
-        String filename = this.type + "_" + this.colour + "_" + orientation + ".png";
-        this.image = new Image(location + filename);
-
     }
-
 
     public VehicleType getVehicleType() {
         return type;
@@ -114,7 +103,7 @@ public class Vehicle implements Serializable{
         if(direction == Direction.NORTH || direction == Direction.SOUTH) {
             if (this.frontRow - 1 >= 0 && this.backRow - 1 >= 0) {
                 if(state.getState().get(this.frontRow - 1).get(this.frontColumn).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow - 1).get(this.backColumn).getVehicleType() == VehicleType.EMPTY) {
-                    if (type == VehicleType.CAR) {
+                    if (type == VehicleType.car) {
                         this.frontRow--;
                         this.backRow--;
                     } else if(state.getState().get(this.midRow - 1).get(this.midColumn).getVehicleType() == VehicleType.EMPTY) {
@@ -134,7 +123,7 @@ public class Vehicle implements Serializable{
         if(direction == Direction.NORTH || direction == Direction.SOUTH) {
             if (this.frontRow + 1 <= 5 && this.backRow + 1 <= 5) {
                 if(state.getState().get(this.frontRow + 1).get(this.frontColumn).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow + 1).get(this.backColumn).getVehicleType() == VehicleType.EMPTY) {
-                    if (type == VehicleType.CAR) {
+                    if (type == VehicleType.car) {
                         this.frontRow++;
                         this.backRow++;
                     } else if(state.getState().get(this.midRow + 1).get(this.midColumn).getVehicleType() == VehicleType.EMPTY){
@@ -154,7 +143,7 @@ public class Vehicle implements Serializable{
         if(direction == Direction.EAST || direction == Direction.WEST) {
             if (this.frontColumn - 1 >= 0 && this.backColumn - 1 >= 0) {
                 if(state.getState().get(this.frontRow).get(this.frontColumn - 1).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow).get(this.backColumn - 1).getVehicleType() == VehicleType.EMPTY) {
-                    if (type == VehicleType.CAR) {
+                    if (type == VehicleType.car) {
                         this.frontColumn--;
                         this.backColumn--;
                     } else if(state.getState().get(this.midRow).get(this.midColumn - 1).getVehicleType() == VehicleType.EMPTY){
@@ -174,7 +163,7 @@ public class Vehicle implements Serializable{
         if(direction == Direction.EAST || direction == Direction.WEST) {
             if (this.frontColumn + 1 <= 5 && this.backColumn + 1 <= 5) {
                 if(state.getState().get(this.frontRow).get(this.frontColumn + 1).getVehicleType() == VehicleType.EMPTY || state.getState().get(this.backRow).get(this.backColumn + 1).getVehicleType() == VehicleType.EMPTY) {
-                    if (type == VehicleType.CAR) {
+                    if (type == VehicleType.car) {
                         this.frontColumn++;
                         this.backColumn++;
                     } else if(state.getState().get(this.midRow).get(this.midColumn + 1).getVehicleType() == VehicleType.EMPTY){
@@ -193,7 +182,7 @@ public class Vehicle implements Serializable{
     public void updateCoordinates(){
         if(this.direction == Direction.NORTH){
             this.backColumn = this.frontColumn;
-            if(this.type == VehicleType.CAR) {
+            if(this.type == VehicleType.car) {
                 this.backRow = this.frontRow + 1;
             }else{
                 this.backRow = this.frontRow + 2;
@@ -202,7 +191,7 @@ public class Vehicle implements Serializable{
             }
         }else if(this.direction == Direction.SOUTH){
             this.backColumn = this.frontColumn;
-            if(this.type == VehicleType.CAR) {
+            if(this.type == VehicleType.car) {
                 this.backRow = this.frontRow - 1;
             }else{
                 this.backRow = this.frontRow - 2;
@@ -211,7 +200,7 @@ public class Vehicle implements Serializable{
             }
         }else if(this.direction == Direction.EAST){
             this.backRow = this.frontRow;
-            if(this.type == VehicleType.CAR) {
+            if(this.type == VehicleType.car) {
                 this.backColumn = this.frontColumn - 1;
             }else{
                 this.backColumn = this.frontColumn - 2;
@@ -220,7 +209,7 @@ public class Vehicle implements Serializable{
             }
         }else if(this.direction == Direction.WEST){
             this.backRow = this.frontRow;
-            if(this.type == VehicleType.CAR) {
+            if(this.type == VehicleType.car) {
                 this.backColumn = this.frontColumn + 1;
             }else{
                 this.backColumn = this.frontColumn + 2;
@@ -255,6 +244,14 @@ public class Vehicle implements Serializable{
         }
         return copy;
 
+    }
+
+    public String getOrientation(){
+        if(this.direction == Direction.NORTH || this.direction == Direction.SOUTH){
+            return "v";
+        }else{
+            return "h";
+        }
     }
 
 
