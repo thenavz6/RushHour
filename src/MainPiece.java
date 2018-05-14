@@ -244,36 +244,6 @@ public class MainPiece extends Rectangle {
         }
     }
 
-    public boolean horizontalcollisionCheck(int newX){
-        for(MainPiece item: RushHourApp.pieces){
-            if(item.type == VehicleType.car) {
-                if (((newX + 1 == item.frontxPos && this.frontyPos == item.frontyPos)  || (newX + 1 == item.backxPos && this.frontyPos == item.backyPos)) && !item.equals(this)){
-                    return false;
-                }
-            }else{
-                if (((newX + 2 == item.frontxPos && this.frontyPos == item.frontyPos)  || (newX + 2 == item.backxPos && this.frontyPos == item.backyPos) || (newX + 2 == item.midxPos && this.frontyPos== item.midyPos)) && !item.equals(this)){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public boolean verticalcollisionCheck(int newY){
-        for(MainPiece item: RushHourApp.pieces){
-            if(item.type == VehicleType.car) {
-                if (((this.frontxPos == item.frontxPos && newY + 1 == item.frontyPos)  || (this.frontxPos == item.backxPos && newY + 1 == item.backyPos)) && !item.equals(this)){
-                    return false;
-                }
-            }else{
-                if (((this.frontxPos == item.frontxPos && newY + 2 == item.frontyPos)  || (this.frontxPos == item.backxPos && newY + 2 == item.backyPos) || (this.frontxPos == item.midxPos && newY + 2 == item.midyPos)) && !item.equals(this)){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     public String getDirection() {
         return direction;
     }
