@@ -31,7 +31,7 @@ public class Vehicle implements Serializable{
         if (this.direction == Direction.NORTH || this.direction == Direction.SOUTH) {
             orientation = "v";
         } else if (this.direction == Direction.EAST || this.direction == Direction.WEST) {
-            orientation = "h"
+            orientation = "h";
         }
         String filename = this.type + "_" + this.colour + "_" + orientation + ".png";
         this.image = new Image(location + filename);
