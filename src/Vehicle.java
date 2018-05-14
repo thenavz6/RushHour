@@ -17,7 +17,7 @@ public class Vehicle implements Serializable{
 
 
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
-        this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0);
+        this.name = colour.toString().charAt(0) + "" + type.toString().charAt(0);
         this.type = type;
         this.colour = colour;
         this.frontRow = row;
@@ -26,18 +26,7 @@ public class Vehicle implements Serializable{
         updateCoordinates();
 
         // sets up image
-        String location = "images/";
-        String orientation = "";
-        if (this.direction == Direction.NORTH || this.direction == Direction.SOUTH) {
-            orientation = "v";
-        } else if (this.direction == Direction.EAST || this.direction == Direction.WEST) {
-            orientation = "h";
-        }
-        String filename = this.type + "_" + this.colour + "_" + orientation + ".png";
-        this.image = new Image(location + filename);
-
     }
-
 
     public VehicleType getVehicleType() {
         return type;
