@@ -35,12 +35,36 @@ public class RushHourApp extends Application{
         root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
         root.getChildren().add(c);
 
-        for (int y = 0; y < HEIGHT; y++){
+        StateSearch state = new StateSearch();
+        StateNode endState = state.generateEndState(6);
+        StateNode startState;
+        state.generateStateSpace(endState);
+        startState = state.generateStartState(endState);
+
+        while(startState == null){
+            endState = state.generateEndState(6);
+            state.generateStateSpace(endState);
+            startState = state.generateStartState(endState);
+        }
+
+        state.printState(startState);
+
+        for(Vehicle item: startState.getVehicles()){
+            MainPiece car = new MainPiece(item.getFrontRow(),item.getFrontColumn(),item.getDirection());
+            javafx.scene.image.Image img = new Image("images/car_"+item.getColour().toString()+"_"+item.getOrientation()+".png");
+            car.setFill(new ImagePattern(img));
+
+            c.getChildren().add(car);
+        }
+
+
+
+        /*for (int y = 0; y < HEIGHT; y++){
             for (int x = 0; x < WIDTH; x++){
                 if (x == 0 && y == 2){
                     MainPiece main = new MainPiece(0, 2);
 
-                    javafx.scene.image.Image img = new Image("images/car_red_h.png");
+                    javafx.scene.image.Image img = new Image("resources/car_red_h.png");
                     main.setFill(new ImagePattern(img));
 
                     c.getChildren().add(main);
@@ -48,7 +72,7 @@ public class RushHourApp extends Application{
                 }
 
             }
-        }
+        }*/
         return root;
     }
 
@@ -79,6 +103,7 @@ public class RushHourApp extends Application{
     public void start(Stage primaryStage) throws Exception
     {
         Scene scene = new Scene(createContent());
+        scene.on
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){

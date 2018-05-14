@@ -241,6 +241,14 @@ public class Vehicle implements Serializable{
 
     }
 
+    public String getOrientation(){
+        if(this.direction == Direction.NORTH || this.direction == Direction.SOUTH){
+            return "v";
+        }else{
+            return "h";
+        }
+    }
+
 
     @Override
     public String toString() {

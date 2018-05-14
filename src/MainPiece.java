@@ -6,12 +6,18 @@ public class MainPiece extends Rectangle {
     private int xPos;
     private int yPos;
 
-    public MainPiece(int x, int y) {
+    public MainPiece(int x, int y, Direction direction) {
         this.xPos = x;
         this.yPos = y;
         System.out.println("x cooridnate =" + x + " " + "Y coordinate = " + y);
-        setWidth(RushHourApp.TILE_SIZE * 2);
-        setHeight(RushHourApp.TILE_SIZE);
+
+        if(direction == Direction.NORTH || direction == Direction.SOUTH){
+            setWidth(RushHourApp.TILE_SIZE);
+            setHeight(RushHourApp.TILE_SIZE * 2);
+        }else{
+            setWidth(RushHourApp.TILE_SIZE * 2);
+            setHeight(RushHourApp.TILE_SIZE);
+        }
 
         // places it in the determined position
         // if not it will default to the top

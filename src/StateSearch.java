@@ -7,8 +7,8 @@ public class StateSearch {
     ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     private ArrayList<StateNode> seen = new ArrayList<>();
-    Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.EMPTY,-1,-1,Direction.EMPTY);
-    Vehicle primaryCar = new Vehicle(VehicleType.CAR,Colour.RED,2,5,Direction.EAST);
+    Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.empty,-1,-1,Direction.EMPTY);
+    Vehicle primaryCar = new Vehicle(VehicleType.CAR,Colour.red,2,5,Direction.EAST);
     ArrayList<StateNode> allNodes = new ArrayList<>();
     private Random generator = new Random();
     int numnodes = 1;
@@ -27,7 +27,7 @@ public class StateSearch {
 
     public StateNode generateStartState(StateNode state){
         for(StateNode item: allNodes){
-            if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY){
+            if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v")){
                 return item.deepCopy();
             }
         }
