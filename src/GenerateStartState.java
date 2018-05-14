@@ -1,4 +1,4 @@
-public class Test {
+public class GenerateStartState {
 
     public static void main(String[] args)
     {
@@ -23,7 +23,5 @@ public class Test {
         state.printState(endState);
 
     }
-
-
 
 }
