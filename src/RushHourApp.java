@@ -1,8 +1,10 @@
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -37,6 +39,10 @@ public class RushHourApp extends Application{
             for (int x = 0; x < WIDTH; x++){
                 if (x == 0 && y == 2){
                     MainPiece main = new MainPiece(0, 2);
+
+                    javafx.scene.image.Image img = new Image("images/car_red_h.png");
+                    main.setFill(new ImagePattern(img));
+
                     c.getChildren().add(main);
                     ptr = main;
                 }
@@ -44,6 +50,29 @@ public class RushHourApp extends Application{
             }
         }
         return root;
+    }
+
+    public void getImage(Vehicle v) {
+        Direction direction = v.getDirection();
+        Colour colour = v.getColour();
+        VehicleType type = v.getVehicleType();
+        if (type == VehicleType.EMPTY || direction == Direction.EMPTY) {
+            return;
+        }
+        if (type == VehicleType.CAR) {
+            if (direction == Direction.NORTH || v.getDirection() == Direction.SOUTH) {
+                javafx.scene.image.Image img = new Image("images/car" + colour + "_v.png");
+            } else {
+                javafx.scene.image.Image img = new Image("images/car" + colour + "_h.png");
+            }
+        } else {
+            if (direction == Direction.NORTH || v.getDirection() == Direction.SOUTH) {
+                javafx.scene.image.Image img = new Image("images/truck" + colour + "_v.png");
+            } else {
+                javafx.scene.image.Image img = new Image("images/truck" + colour + "_h.png");
+            }
+        }
+        // v.setFill(new ImagePattern(img)); <- need to be shape for this to work,
     }
 
     @Override

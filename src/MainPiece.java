@@ -21,6 +21,9 @@ public class MainPiece extends Rectangle {
         setFill(Color.valueOf("#ff0000"));
     }
     public void moveRight(){
+        if (this.xPos == 400) {
+            return;
+        }
         int newX = (this.xPos) + 100;
         System.out.println("x cooridnate =" + this.xPos + " " + "Y coordinate = " + this.yPos);
         this.xPos = newX;
@@ -29,6 +32,9 @@ public class MainPiece extends Rectangle {
 
     }
     public void moveLeft(){
+        if (this.xPos == 0) {
+            return;
+        }
         int newX = (this.xPos) - 100;
         System.out.println("x cooridnate =" + this.xPos + " " + "Y coordinate = " + this.yPos);
         this.xPos = newX;
