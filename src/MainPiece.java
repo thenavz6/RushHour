@@ -25,7 +25,7 @@ public class MainPiece extends Rectangle {
         System.out.println("x cooridnate =" + this.xPos + " " + "Y coordinate = " + this.yPos);
         this.xPos = newX;
         //System.out.println(newX);
-        relocate(newX, this.yPos);
+        relocate(newX, this.yPos*RushHourApp.TILE_SIZE);
 
     }
     public void moveLeft(){
@@ -33,6 +33,6 @@ public class MainPiece extends Rectangle {
         System.out.println("x cooridnate =" + this.xPos + " " + "Y coordinate = " + this.yPos);
         this.xPos = newX;
         //System.out.println(newX);
-        relocate(newX, this.yPos);
+        relocate(newX, this.yPos*RushHourApp.TILE_SIZE);
     }
 }
