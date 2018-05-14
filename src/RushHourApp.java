@@ -1,5 +1,7 @@
+import com.sun.tools.javac.Main;
 import javafx.application.Application;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +15,7 @@ import javafx.scene.layout.GridPane;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class RushHourApp extends Application{
 
@@ -23,6 +26,7 @@ public class RushHourApp extends Application{
 
 
     private MainPiece ptr; // keeps track of the main object;
+    public static ArrayList<MainPiece> pieces = new ArrayList<>();
 
     private Group c = new Group();
 
@@ -50,75 +54,78 @@ public class RushHourApp extends Application{
         state.printState(startState);
 
         for(Vehicle item: startState.getVehicles()){
-            MainPiece car = new MainPiece(item.getFrontRow(),item.getFrontColumn(),item.getDirection());
-            javafx.scene.image.Image img = new Image("images/car_"+item.getColour().toString()+"_"+item.getOrientation()+".png");
-            car.setFill(new ImagePattern(img));
+            MainPiece car;
+            if(item.getDirection() == Direction.WEST){
+                car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
+            }else if(item.getDirection() == Direction.EAST){
+                car = new MainPiece(item.getBackColumn(),item.getBackRow(),item.getOrientation(),item.getVehicleType());
+            }else if(item.getDirection() == Direction.NORTH){
+                car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
+            }else{
+                car = new MainPiece(item.getBackColumn(),item.getBackRow(),item.getOrientation(),item.getVehicleType());
+            }
 
+            javafx.scene.image.Image img = new Image("images/"+item.getVehicleType().toString()+"_"+item.getColour().toString()+"_"+item.getOrientation()+".png");
+            car.setFill(new ImagePattern(img));
+            car.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                    new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            ptr = car;
+                        }
+                    });
+            pieces.add(car);
             c.getChildren().add(car);
         }
 
+        ptr = pieces.get(0);
 
-
-        /*for (int y = 0; y < HEIGHT; y++){
-            for (int x = 0; x < WIDTH; x++){
-                if (x == 0 && y == 2){
-                    MainPiece main = new MainPiece(0, 2);
-
-                    javafx.scene.image.Image img = new Image("resources/car_red_h.png");
-                    main.setFill(new ImagePattern(img));
-
-                    c.getChildren().add(main);
-                    ptr = main;
-                }
-
-            }
-        }*/
         return root;
-    }
-
-    public void getImage(Vehicle v) {
-        Direction direction = v.getDirection();
-        Colour colour = v.getColour();
-        VehicleType type = v.getVehicleType();
-        if (type == VehicleType.EMPTY || direction == Direction.EMPTY) {
-            return;
-        }
-        if (type == VehicleType.CAR) {
-            if (direction == Direction.NORTH || v.getDirection() == Direction.SOUTH) {
-                javafx.scene.image.Image img = new Image("images/car" + colour + "_v.png");
-            } else {
-                javafx.scene.image.Image img = new Image("images/car" + colour + "_h.png");
-            }
-        } else {
-            if (direction == Direction.NORTH || v.getDirection() == Direction.SOUTH) {
-                javafx.scene.image.Image img = new Image("images/truck" + colour + "_v.png");
-            } else {
-                javafx.scene.image.Image img = new Image("images/truck" + colour + "_h.png");
-            }
-        }
-        // v.setFill(new ImagePattern(img)); <- need to be shape for this to work,
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
         Scene scene = new Scene(createContent());
+
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){
-                if (event.getCode() == KeyCode.RIGHT) {
-                    ptr.moveRight();
-                } else if (event.getCode() == KeyCode.LEFT) {
-                    ptr.moveLeft();
+                if(ptr.getDirection().equals("v")){
+                    if (event.getCode() == KeyCode.UP) {
+                        ptr.moveUp();
+                        System.out.println("x = " + ptr.getxPos());
+                        System.out.println("y = " + ptr.getyPos());
+                    } else if (event.getCode() == KeyCode.DOWN) {
+                        ptr.moveDown();
+                        System.out.println("x = " + ptr.getxPos());
+                        System.out.println("y = " + ptr.getyPos());
+                    }
+                }else {
+                    if (event.getCode() == KeyCode.RIGHT) {
+                        ptr.moveRight();
+                        System.out.println("x = " + ptr.getxPos());
+                        System.out.println("y = " + ptr.getyPos());
+                    } else if (event.getCode() == KeyCode.LEFT) {
+                        ptr.moveLeft();
+                        System.out.println("x = " + ptr.getxPos());
+                        System.out.println("y = " + ptr.getyPos());
+                    }
                 }
 
             }
         });
 
+
         primaryStage.setTitle("Rush Hour"); // sets the title name
         primaryStage.setScene(scene); // places scene into primary Stage
         primaryStage.show(); // opens the java file
     }
+
+    public ArrayList<MainPiece> getPieces(){
+        return pieces;
+    }
+
 
     public static void main(String[] args)
     {
