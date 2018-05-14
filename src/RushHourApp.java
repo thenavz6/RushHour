@@ -52,6 +52,8 @@ public class RushHourApp extends Application{
         return root;
     }
 
+    /* ignore this please
+
     public void getImage(Vehicle v) {
         Direction direction = v.getDirection();
         Colour colour = v.getColour();
@@ -73,7 +75,7 @@ public class RushHourApp extends Application{
             }
         }
         // v.setFill(new ImagePattern(img)); <- need to be shape for this to work,
-    }
+    } */
 
     @Override
     public void start(Stage primaryStage) throws Exception
