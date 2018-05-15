@@ -146,27 +146,11 @@ public class StateSearch {
 
         }
 
-        vehicles.add(primaryCar);
-        endState.get(primaryCar.getFrontRow()).set(primaryCar.getFrontColumn(),primaryCar);
-        endState.get(primaryCar.getBackRow()).set(primaryCar.getBackColumn(),primaryCar);
+        addVehicle(primaryCar);
 
         for(int i = vehicles.size(); i < numberOfCars ; i++){
-            VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
-            Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
-            Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
-            int row = generator.nextInt(6);
-            int column = generator.nextInt(6);
-            while(!checkCoordinates(row,column,direction,type)){
-                row = generator.nextInt(6);
-                column = generator.nextInt(6);
-            }
-            Vehicle newVehicle = new Vehicle(type,colour,row,column,direction);
-            vehicles.add(newVehicle);
-            endState.get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(),newVehicle);
-            endState.get(newVehicle.getBackRow()).set(newVehicle.getBackColumn(),newVehicle);
-            if(type == VehicleType.truck) {
-                endState.get(newVehicle.getMidRow()).set(newVehicle.getMidColumn(), newVehicle);
-            }
+            Vehicle newVehicle = generateVehicle();
+            addVehicle(newVehicle);
         }
 
         StateNode goalState = new StateNode(endState,null);
@@ -311,5 +295,32 @@ public class StateSearch {
         System.out.print("\n");
     }
 
+    private void addVehicle(Vehicle newVehicle){
+        vehicles.add(newVehicle);
+        int frontRow = newVehicle.getFrontRow();
+        int frontCol = newVehicle.getFrontColumn();
+        int backRow = newVehicle.getBackRow();
+        int backCol = newVehicle.getBackColumn();
+        if(newVehicle.getVehicleType() == VehicleType.truck) {
+            int midRow = newVehicle.getMidRow();
+            int midCol = newVehicle.getMidColumn();
+            endState.get(midRow).set(midCol, newVehicle);
+        }
+        endState.get(frontRow).set(frontCol,newVehicle);
+        endState.get(backRow).set(backCol,newVehicle);
+    }
+
+    private Vehicle generateVehicle(){
+        VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
+        Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
+        Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
+        int row = generator.nextInt(6);
+        int column = generator.nextInt(6);
+        while(!checkCoordinates(row,column,direction,type)){
+            row = generator.nextInt(6);
+            column = generator.nextInt(6);
+        }
+        return new Vehicle(type,colour,row,column,direction);
+    }
 
 }
