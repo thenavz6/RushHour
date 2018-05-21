@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Group;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
 
 
 import java.awt.*;
@@ -38,7 +40,6 @@ public class RushHourApp extends Application{
         // set size of it
         root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
         root.getChildren().add(c);
-
         ImageView imv = new ImageView();
         //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
         Image pausePicture = new Image("images/grid.png");
@@ -63,11 +64,11 @@ public class RushHourApp extends Application{
 
         for(Vehicle item: startState.getVehicles()){
             MainPiece car;
-            if(item.getDirection() == Direction.WEST){
+            if(item.getDirection() == Direction.west){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
-            }else if(item.getDirection() == Direction.EAST){
+            }else if(item.getDirection() == Direction.east){
                 car = new MainPiece(item.getBackColumn(),item.getBackRow(),item.getOrientation(),item.getVehicleType());
-            }else if(item.getDirection() == Direction.NORTH){
+            }else if(item.getDirection() == Direction.north){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
             }else{
                 car = new MainPiece(item.getBackColumn(),item.getBackRow(),item.getOrientation(),item.getVehicleType());
@@ -99,7 +100,7 @@ public class RushHourApp extends Application{
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){
-                if(ptr.getDirection().equals("v") & stopControls == false){
+                if (ptr.getDirection().equals("v") & stopControls == false) {
                     if (event.getCode() == KeyCode.UP) {
                         ptr.moveUp();
                         System.out.println("x = " + ptr.getxPos());
@@ -135,6 +136,7 @@ public class RushHourApp extends Application{
         primaryStage.setTitle("Rush Hour"); // sets the title name
         primaryStage.setScene(scene); // places scene into primary Stage
         primaryStage.show(); // opens the java file
+
     }
 
     public ArrayList<MainPiece> getPieces(){
@@ -144,6 +146,7 @@ public class RushHourApp extends Application{
     //public void setStopControls(boolean stopControls) {
     //    this.stopControls = stopControls;
     //}
+
 
     public static void main(String[] args)
     {

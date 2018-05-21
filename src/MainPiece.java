@@ -4,6 +4,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+
 public class MainPiece extends Rectangle {
 
     private int frontxPos;
