@@ -4,39 +4,19 @@ import java.lang.Math;
 
 public class StateSearch {
 
-    ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
+    private ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     private ArrayList<StateNode> seen = new ArrayList<>();
-    Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.empty,-1,-1,Direction.EMPTY);
-    Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,5,Direction.EAST);
-    ArrayList<StateNode> allNodes = new ArrayList<>();
+    private Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.empty,-1,-1,Direction.EMPTY);
+    private Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,5,Direction.EAST);
+    private ArrayList<StateNode> allNodes = new ArrayList<>();
     private Random generator = new Random();
-    int numnodes = 1;
+    private int numnodes = 1;
 
-
-
-    public void solve(StateNode goalState, StateNode startState){
-        for(Vehicle item: goalState.getVehicles()){
-            System.out.print(item + " ");
-        }
-
-        for(Vehicle item: startState.getVehicles()){
-            System.out.print(item + " ");
-        }
-    }
-
-    public StateNode generateStartState(StateNode state){
-        for(StateNode item: allNodes){
-            if((item.getVehicles().get(0).getFrontColumn() < 3) &&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY) /*&&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() != VehicleType.EMPTY)*/&&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v"))){
-                        return item.deepCopy();
-            }
-        }
-        return null;
-    }
-
+    /**
+     * Constructor for StateSearch
+     * @param endState state of all vehicles for win condition
+     */
     public void generateStateSpace(StateNode endState){
 
         Queue<StateNode> nodes = new ConcurrentLinkedDeque<>();
@@ -44,15 +24,15 @@ public class StateSearch {
         nodes.add(endState);
 
         while(!nodes.isEmpty() && iteration < 20) {
-           //System.out.println("iteration = " + iteration);
+            //System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
-                //System.out.println("vehicle = " + item);
-                //printState(currentNode);
+            //System.out.println("vehicle = " + item);
+            //printState(currentNode);
             for (int o = 0; o < 2; o++) {
                 //System.out.println("orientation = " + o);
                 StateNode childState = currentNode.deepCopy();
                 for (Vehicle vehicle : childState.getVehicles()) {
-                   // System.out.println("1 Vehicle");
+                    // System.out.println("1 Vehicle");
                     Vehicle memory = vehicle.deepCopy();
                     if (o == 0) {
                         if (vehicle.getDirection() == Direction.NORTH || vehicle.getDirection() == Direction.SOUTH) {
@@ -113,6 +93,41 @@ public class StateSearch {
 
     }
 
+
+    public void solve(StateNode goalState, StateNode startState){
+        for(Vehicle item: goalState.getVehicles()){
+            System.out.print(item + " ");
+        }
+
+        for(Vehicle item: startState.getVehicles()){
+            System.out.print(item + " ");
+        }
+    }
+
+    /**
+     * generates a starting state for the game
+     * @param state end state //TODO: ???
+     * @return startState, or null if unsuccessful
+     */
+    public StateNode generateStartState(StateNode state){
+        for(StateNode item: allNodes){
+            if((item.getVehicles().get(0).getFrontColumn() < 3) &&
+                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY) /*&&
+                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() != VehicleType.EMPTY)*/&&
+                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v"))){
+                        return item.deepCopy();
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * TODO: ??????
+     * @param state
+     * @param newVehicle
+     * @param oldVehicle
+     */
     public void updateSate(StateNode state, Vehicle newVehicle, Vehicle oldVehicle){
 
         state.getState().get(oldVehicle.getFrontRow()).set(oldVehicle.getFrontColumn(),emptyVehicle);
@@ -130,6 +145,11 @@ public class StateSearch {
 
     }
 
+    /**
+     * generates end positions for all vehicles
+     * @param numberOfCars total number of cars on board
+     * @return node for end state
+     */
     public StateNode generateEndState(int numberOfCars){
 
         endState = new ArrayList<>();
@@ -172,6 +192,14 @@ public class StateSearch {
         return goalState;
     }
 
+    /**
+     * TODO: ?????
+     * @param row
+     * @param column
+     * @param direction
+     * @param type
+     * @return
+     */
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
 
         if(endState.get(row).get(column).getVehicleType() != VehicleType.EMPTY){
@@ -284,6 +312,10 @@ public class StateSearch {
         return true;
     }
 
+    /**
+     * prints state to standard output
+     * @param state
+     */
     public void printState(StateNode state){
 
         for(ArrayList<Vehicle> row: state.getState()){
@@ -295,6 +327,10 @@ public class StateSearch {
         System.out.print("\n");
     }
 
+    /**
+     * adds a vehicle to node
+     * @param newVehicle vehicle to be added
+     */
     private void addVehicle(Vehicle newVehicle){
         vehicles.add(newVehicle);
         int frontRow = newVehicle.getFrontRow();
@@ -310,6 +346,10 @@ public class StateSearch {
         endState.get(backRow).set(backCol,newVehicle);
     }
 
+    /**
+     * generates a semi-random vehicle in a valid position
+     * @return new vehicle
+     */
     private Vehicle generateVehicle(){
         VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
         Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];

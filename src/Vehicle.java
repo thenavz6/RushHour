@@ -16,6 +16,14 @@ public class Vehicle implements Serializable{
     private Image image;
 
 
+    /**
+     * constructor for Vehicle
+     * @param type whether vehicle is a car (2 blocks long) or a truck (3 blocks long)
+     * @param colour colour of vehicle - corresponds to image name
+     * @param row row of front of vehicle
+     * @param column column of front of vehicle
+     * @param direction direction vehicle is facing
+     */
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
         this.name = colour.toString().charAt(0) + "" + type.toString().charAt(0);
         this.type = type;
@@ -28,6 +36,10 @@ public class Vehicle implements Serializable{
         // sets up image
     }
 
+    /**
+     * getter for vehicle type
+     * @return vehicle type (car or truck)
+     */
     public VehicleType getVehicleType() {
         return type;
     }
