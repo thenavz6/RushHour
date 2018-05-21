@@ -139,10 +139,14 @@ public class Menu extends Application {
                     //Stage secondaryStage = new Stage();
                     //secondaryStage.setTitle("Pause");
                     //paused.start(secondaryStage);
-                    Options option = new Options();
+                    //Options option = new Options();
+                    //Stage secondaryStage = new Stage();
+                    //secondaryStage.setTitle("Options");
+                    //option.start(secondaryStage);
+                    Victory vict = new Victory();
                     Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Options");
-                    option.start(secondaryStage);
+                    secondaryStage.setTitle("Victory");
+                    vict.start(secondaryStage);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
