@@ -1,4 +1,5 @@
 import com.sun.tools.javac.Main;
+import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
@@ -69,6 +70,7 @@ public class MainPiece extends Rectangle {
     public void moveRight(){
         if(type == VehicleType.car) {
             if (this.frontxPos == 400) {
+                System.out.println("CONGRATS");
                 return;
             }
         }else if(this.frontxPos == 300) {

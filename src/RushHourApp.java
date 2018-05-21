@@ -55,11 +55,11 @@ public class RushHourApp extends Application{
 
         for(Vehicle item: startState.getVehicles()){
             MainPiece car;
-            if(item.getDirection() == Direction.WEST){
+            if(item.getDirection() == Direction.west){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
-            }else if(item.getDirection() == Direction.EAST){
+            }else if(item.getDirection() == Direction.east){
                 car = new MainPiece(item.getBackColumn(),item.getBackRow(),item.getOrientation(),item.getVehicleType());
-            }else if(item.getDirection() == Direction.NORTH){
+            }else if(item.getDirection() == Direction.north){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
             }else{
                 car = new MainPiece(item.getBackColumn(),item.getBackRow(),item.getOrientation(),item.getVehicleType());

@@ -7,8 +7,8 @@ public class StateSearch {
     ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     private ArrayList<StateNode> seen = new ArrayList<>();
-    Vehicle emptyVehicle = new Vehicle(VehicleType.EMPTY,Colour.empty,-1,-1,Direction.EMPTY);
-    Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,5,Direction.EAST);
+    Vehicle emptyVehicle = new Vehicle(VehicleType.empty,Colour.empty,-1,-1,Direction.empty);
+    Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,5,Direction.east);
     ArrayList<StateNode> allNodes = new ArrayList<>();
     private Random generator = new Random();
     int numnodes = 1;
@@ -27,11 +27,8 @@ public class StateSearch {
 
     public StateNode generateStartState(StateNode state){
         for(StateNode item: allNodes){
-            if((item.getVehicles().get(0).getFrontColumn() < 3) &&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY) /*&&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() != VehicleType.EMPTY)*/&&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v"))){
-                        return item.deepCopy();
+            if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.empty){
+                return item.deepCopy();
             }
         }
         return null;
@@ -44,7 +41,7 @@ public class StateSearch {
         nodes.add(endState);
 
         while(!nodes.isEmpty() && iteration < 20) {
-           //System.out.println("iteration = " + iteration);
+           // System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
                 //System.out.println("vehicle = " + item);
                 //printState(currentNode);
@@ -55,7 +52,7 @@ public class StateSearch {
                    // System.out.println("1 Vehicle");
                     Vehicle memory = vehicle.deepCopy();
                     if (o == 0) {
-                        if (vehicle.getDirection() == Direction.NORTH || vehicle.getDirection() == Direction.SOUTH) {
+                        if (vehicle.getDirection() == Direction.north || vehicle.getDirection() == Direction.south) {
                             if (vehicle.moveUpOne(childState)) {
                                 updateSate(childState, vehicle, memory);
                                 //printState(childState);
@@ -67,7 +64,7 @@ public class StateSearch {
 
                             }
                         }
-                        if (vehicle.getDirection() == Direction.EAST || vehicle.getDirection() == Direction.WEST) {
+                        if (vehicle.getDirection() == Direction.east || vehicle.getDirection() == Direction.west) {
                             if (vehicle.moveRightOne(childState)) {
                                 updateSate(childState, vehicle, memory);
                                 //printState(childState);
@@ -80,7 +77,7 @@ public class StateSearch {
                         }
                     }
                     if (o == 1) {
-                        if (vehicle.getDirection() == Direction.NORTH || vehicle.getDirection() == Direction.SOUTH) {
+                        if (vehicle.getDirection() == Direction.north || vehicle.getDirection() == Direction.south) {
                             if (vehicle.moveDownOne(childState)) {
                                 updateSate(childState, vehicle, memory);
                                 //printState(childState);
@@ -91,7 +88,7 @@ public class StateSearch {
                                 numnodes++;
                             }
                         }
-                        if (vehicle.getDirection() == Direction.EAST || vehicle.getDirection() == Direction.WEST) {
+                        if (vehicle.getDirection() == Direction.east || vehicle.getDirection() == Direction.west) {
                             if (vehicle.moveLeftOne(childState)) {
                                 updateSate(childState, vehicle, memory);
                                 //printState(childState);
@@ -175,14 +172,14 @@ public class StateSearch {
         int vertCount = 0;
         int horCount = 0;
         for(Vehicle item: vehicles){
-            if(item.getDirection() == Direction.NORTH || item.getDirection() == Direction.SOUTH){
+            if(item.getDirection() == Direction.north || item.getDirection() == Direction.south){
                 vertCount++;
             }else{
                 horCount++;
             }
         }
         if(Math.abs(horCount-vertCount) > 1){
-            generateEndState(numberOfCars);
+            goalState = generateEndState(numberOfCars);
         }
 
         return goalState;
@@ -190,13 +187,13 @@ public class StateSearch {
 
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
 
-        if(endState.get(row).get(column).getVehicleType() != VehicleType.EMPTY){
+        if(endState.get(row).get(column).getVehicleType() != VehicleType.empty){
             return false;
         }
-        if(direction == Direction.NORTH){
+        if(direction == Direction.north){
             int vCount = 0;
             for(int i = 0; i < 6; i++){
-                if(endState.get(i).get(column).getDirection() == Direction.NORTH || endState.get(i).get(column).getDirection() == Direction.SOUTH){
+                if(endState.get(i).get(column).getDirection() == Direction.north || endState.get(i).get(column).getDirection() == Direction.south){
                     vCount++;
                 }
             }
@@ -207,22 +204,22 @@ public class StateSearch {
                 if(row > 4){
                     return false;
                 }
-                if (endState.get(row + 1).get(column).getVehicleType() != VehicleType.EMPTY) {
+                if (endState.get(row + 1).get(column).getVehicleType() != VehicleType.empty) {
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(row > 3){
                     return false;
                 }
-                if((endState.get(row + 1).get(column).getVehicleType() != VehicleType.EMPTY) || (endState.get(row + 2).get(column).getVehicleType() != VehicleType.EMPTY)){
+                if((endState.get(row + 1).get(column).getVehicleType() != VehicleType.empty) || (endState.get(row + 2).get(column).getVehicleType() != VehicleType.empty)){
                     return false;
                 }
             }
         }
-        if(direction == Direction.SOUTH){
+        if(direction == Direction.south){
             int vCount = 0;
             for(int i = 0; i < 6; i++){
-                if(endState.get(i).get(column).getDirection() == Direction.NORTH || endState.get(i).get(column).getDirection() == Direction.SOUTH){
+                if(endState.get(i).get(column).getDirection() == Direction.north || endState.get(i).get(column).getDirection() == Direction.south){
                     vCount++;
                 }
             }
@@ -233,22 +230,22 @@ public class StateSearch {
                 if(row < 1){
                     return false;
                 }
-                if (endState.get(row - 1).get(column).getVehicleType() != VehicleType.EMPTY) {
+                if (endState.get(row - 1).get(column).getVehicleType() != VehicleType.empty) {
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(row < 2){
                     return false;
                 }
-                if((endState.get(row - 1).get(column).getVehicleType() != VehicleType.EMPTY) || (endState.get(row - 2).get(column).getVehicleType() != VehicleType.EMPTY)){
+                if((endState.get(row - 1).get(column).getVehicleType() != VehicleType.empty) || (endState.get(row - 2).get(column).getVehicleType() != VehicleType.empty)){
                     return false;
                 }
             }
         }
-        if(direction == Direction.EAST){
+        if(direction == Direction.east){
             int vCount = 0;
             for(int i = 0; i < 6; i++){
-                if(endState.get(row).get(i).getDirection() == Direction.EAST || endState.get(row).get(i).getDirection() == Direction.WEST){
+                if(endState.get(row).get(i).getDirection() == Direction.east || endState.get(row).get(i).getDirection() == Direction.west){
                     vCount++;
                 }
             }
@@ -259,22 +256,22 @@ public class StateSearch {
                 if(column < 1){
                     return false;
                 }
-                if (endState.get(row).get(column - 1).getVehicleType() != VehicleType.EMPTY) {
+                if (endState.get(row).get(column - 1).getVehicleType() != VehicleType.empty) {
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(column < 2){
                     return false;
                 }
-                if((endState.get(row).get(column - 1).getVehicleType() != VehicleType.EMPTY) || (endState.get(row).get(column - 2).getVehicleType() != VehicleType.EMPTY)){
+                if((endState.get(row).get(column - 1).getVehicleType() != VehicleType.empty) || (endState.get(row).get(column - 2).getVehicleType() != VehicleType.empty)){
                     return false;
                 }
             }
         }
-        if(direction == Direction.WEST){
+        if(direction == Direction.west){
             int vCount = 0;
             for(int i = 0; i < 6; i++){
-                if(endState.get(row).get(i).getDirection() == Direction.EAST || endState.get(row).get(i).getDirection() == Direction.WEST){
+                if(endState.get(row).get(i).getDirection() == Direction.east || endState.get(row).get(i).getDirection() == Direction.west){
                     vCount++;
                 }
             }
@@ -285,14 +282,14 @@ public class StateSearch {
                 if(column > 4){
                     return false;
                 }
-                if (endState.get(row).get(column + 1).getVehicleType() != VehicleType.EMPTY) {
+                if (endState.get(row).get(column + 1).getVehicleType() != VehicleType.empty) {
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(column > 3){
                     return false;
                 }
-                if((endState.get(row).get(column + 1).getVehicleType() != VehicleType.EMPTY) || (endState.get(row).get(column + 2).getVehicleType() != VehicleType.EMPTY)){
+                if((endState.get(row).get(column + 1).getVehicleType() != VehicleType.empty) || (endState.get(row).get(column + 2).getVehicleType() != VehicleType.empty)){
                     return false;
                 }
             }
