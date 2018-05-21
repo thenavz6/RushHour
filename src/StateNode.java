@@ -141,12 +141,19 @@ public class StateNode implements Serializable{
         return Objects.equals(state, stateNode.state);
     }
 
+    /**
+     * TODO: ???
+     * @return
+     */
     @Override
     public int hashCode() {
 
         return Objects.hash(state);
     }
 
+    /**
+     * Prints state of current node and calls on children recursively
+     */
     public void printNode(){
         if(this.children == null) {
             printState(this);
@@ -161,6 +168,10 @@ public class StateNode implements Serializable{
         }
     }
 
+    /**
+     * prints the given state
+     * @param state state to be printed
+     */
     public void printState(StateNode state){
 
         ArrayList<Vehicle> printed = new ArrayList<>();

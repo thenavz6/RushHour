@@ -44,73 +44,141 @@ public class Vehicle implements Serializable{
         return type;
     }
 
+    /**
+     * sets vehicle type
+     * @param type new type
+     */
     public void setType(VehicleType type) {
         this.type = type;
     }
 
+    /**
+     * getter for colour
+     * @return colour
+     */
     public Colour getColour() {
         return colour;
     }
 
+    /**
+     * sets colour
+     * @param colour new colour
+     */
     public void setColour(Colour colour) {
         this.colour = colour;
     }
 
+    /**
+     * getter for front row
+     * @return front row
+     */
     public int getFrontRow() {
         return frontRow;
     }
 
-    public void setMidRow(int midRow) {
-        this.midRow = midRow;
-    }
-
-    public void setMidColumn(int midColumn) {
-        this.midColumn = midColumn;
-    }
-
+    /**
+     * getter for front column
+     * @return front column
+     */
     public int getFrontColumn() {
         return frontColumn;
-
     }
 
-    public int getBackRow() {
-        return backRow;
-    }
-
-    public int getBackColumn() {
-        return backColumn;
-    }
-
-    public int getMidRow() {
-        return midRow;
-    }
-
-    public int getMidColumn() {
-        return midColumn;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /**
+     * sets row of front
+     * @param frontRow row of front
+     */
     public void setFrontRow(int frontRow) {
         this.frontRow = frontRow;
         updateCoordinates();
     }
 
+    /**
+     * sets column of front
+     * @param frontColumn column of front
+     */
     public void setFrontColumn(int frontColumn) {
         this.frontColumn = frontColumn;
         updateCoordinates();
     }
 
+    /**
+     * getter for row of middle
+     * @return middle row
+     */
+    public int getMidRow() {
+        return midRow;
+    }
+
+    /**
+     * getter for column of middle
+     * @return middle column
+     */
+    public int getMidColumn() {
+        return midColumn;
+    }
+
+    /**
+     * sets row for middle
+     * @param midRow new row
+     */
+    public void setMidRow(int midRow) {
+        this.midRow = midRow;
+    }
+
+    /**
+     * sets column for middle
+     * @param midColumn new column
+     */
+    public void setMidColumn(int midColumn) {
+        this.midColumn = midColumn;
+    }
+
+    /**
+     * getter for back row
+     * @return back row
+     */
+    public int getBackRow() {
+        return backRow;
+    }
+
+    /**
+     * getter for back column
+     * @return back column
+     */
+    public int getBackColumn() {
+        return backColumn;
+    }
+
+    /**
+     * getter for direction
+     * @return direction - north, south, east or west
+     */
+    public Direction getDirection() {
+        return direction;
+    }
+
+    /**
+     * sets direction
+     * @param direction new direction
+     */
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    /**
+     * sets name
+     * @param name new name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Moves piece one square up if facing north or south
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveUpOne(StateNode state){
         if(direction == Direction.NORTH || direction == Direction.SOUTH) {
             if (this.frontRow - 1 >= 0 && this.backRow - 1 >= 0) {
@@ -131,6 +199,11 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Moves piece one square down if facing north or south
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveDownOne(StateNode state){
         if(direction == Direction.NORTH || direction == Direction.SOUTH) {
             if (this.frontRow + 1 <= 5 && this.backRow + 1 <= 5) {
@@ -151,6 +224,11 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Moves piece one square left if facing east or west
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveLeftOne(StateNode state){
         if(direction == Direction.EAST || direction == Direction.WEST) {
             if (this.frontColumn - 1 >= 0 && this.backColumn - 1 >= 0) {
@@ -171,6 +249,11 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Moves piece one square right if facing east or west
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveRightOne(StateNode state){
         if(direction == Direction.EAST || direction == Direction.WEST) {
             if (this.frontColumn + 1 <= 5 && this.backColumn + 1 <= 5) {
@@ -191,6 +274,9 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * TODO: ?????
+     */
     public void updateCoordinates(){
         if(this.direction == Direction.NORTH){
             this.backColumn = this.frontColumn;
@@ -231,6 +317,10 @@ public class Vehicle implements Serializable{
         }
     }
 
+    /**
+     * creates a proper copy of the current vehicle
+     * @return copy of vehicle
+     */
     public Vehicle deepCopy(){
 
         Vehicle copy = null;
@@ -258,6 +348,10 @@ public class Vehicle implements Serializable{
 
     }
 
+    /**
+     * getter for direction
+     * @return direction (North, South, East, West)
+     */
     public String getOrientation(){
         if(this.direction == Direction.NORTH || this.direction == Direction.SOUTH){
             return "v";
@@ -266,7 +360,10 @@ public class Vehicle implements Serializable{
         }
     }
 
-
+    /**
+     * overrides toString for formatting purposes
+     * @return name followed by a space
+     */
     @Override
     public String toString() {
         return name + " ";

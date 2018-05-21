@@ -244,7 +244,7 @@ public class MainPiece extends Rectangle {
     }
 
     /**
-     *
+     * TODO: ?????
      */
     public void updateCoords(){
         if(this.direction.equals("v")){

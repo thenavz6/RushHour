@@ -1,5 +1,9 @@
 public class GenerateStartState {
 
+    /**
+     * TODO: ????
+     * @param args
+     */
     public static void main(String[] args)
     {
         StateSearch state = new StateSearch();
