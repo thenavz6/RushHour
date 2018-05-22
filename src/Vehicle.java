@@ -1,5 +1,4 @@
 import java.io.*;
-import javafx.scene.image.Image;
 
 
 public class Vehicle implements Serializable{
@@ -14,8 +13,6 @@ public class Vehicle implements Serializable{
     private int backRow;
     private int backColumn;
     private Direction direction;
-    private Image image;
-
 
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
         this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0);

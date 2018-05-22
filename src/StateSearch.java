@@ -41,7 +41,7 @@ public class StateSearch {
         nodes.add(endState);
 
         while(!nodes.isEmpty() && iteration < 20) {
-            // System.out.println("iteration = " + iteration);
+           // System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
             //System.out.println("vehicle = " + item);
             //printState(currentNode);

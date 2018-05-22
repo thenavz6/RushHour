@@ -2,14 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3659bc4-ef32-4be4-8ab8-c86433127237" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Colour.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Direction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/GenerateStartState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Instructions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$2$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Pause.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/StateNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/StateSearch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/Vehicle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/VehicleType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_aqua_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_aqua_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_black_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_black_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_blue_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_blue_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_camo_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_camo_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_green_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_green_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_grey_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_grey_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_light_blue_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_light_blue_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_lime_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_lime_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_orange_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_orange_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_pink_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_pink_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_purple_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_purple_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_red_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_violet_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_violet_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_white_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_white_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_yellow_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/car_yellow_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/exit_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/random.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/return_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/road.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/road2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/rushhour.icns" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/title.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_aqua_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_aqua_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_black_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_black_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_blue_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_blue_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_camo_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_camo_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_green_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_green_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_grey_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_grey_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_light_blue_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_light_blue_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_lime_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_lime_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_orange_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_orange_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_pink_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_pink_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_purple_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_purple_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_violet_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_violet_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_white_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_white_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_yellow_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/images/truck_yellow_v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/random.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/return_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/road.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/road2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RushHour/title.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/MainPiece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/MainPiece.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Options.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/Options.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Colour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Colour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Instructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Instructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPiece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Options.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Options.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StateSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StateSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vehicle.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +114,8 @@
       <file leaf-file-name="RushHourApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
-              <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+            <state relative-caret-position="-256">
+              <caret line="102" column="48" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6279#6280#0" expanded="true" />
@@ -39,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/Vehicle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="229">
-              <caret line="256" selection-start-line="256" selection-end-line="256" />
+              <caret line="251" selection-start-line="251" selection-end-line="251" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +146,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StateSearch.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StateSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StateSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+            <state relative-caret-position="-3541">
+              <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,13 +161,25 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="141" selection-start-line="141" selection-end-line="141" />
+            <state relative-caret-position="-424">
+              <caret line="140" column="51" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
               <folding>
                 <element signature="e#1968#2419#0" expanded="true" />
                 <element signature="e#2418#2419#0" expanded="true" />
                 <element signature="e#2618#3069#0" expanded="true" />
                 <element signature="e#3068#3069#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pause.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Pause.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-764">
+              <caret line="61" column="79" selection-start-line="61" selection-start-column="79" selection-end-line="61" selection-end-column="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,11 +197,8 @@
       <file leaf-file-name="MainPiece.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPiece.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3735">
-              <caret line="253" selection-start-line="253" selection-end-line="253" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="83">
+              <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -107,8 +206,8 @@
       <file leaf-file-name="Instructions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Instructions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="389">
+              <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,13 +244,14 @@
         <option value="$PROJECT_DIR$/src/object.java" />
         <option value="$PROJECT_DIR$/src/Circle.java" />
         <option value="$PROJECT_DIR$/src/Vehicle.java" />
-        <option value="$PROJECT_DIR$/src/MainPiece.java" />
-        <option value="$PROJECT_DIR$/src/StateSearch.java" />
         <option value="$PROJECT_DIR$/src/RushHourApp.java" />
         <option value="$PROJECT_DIR$/src/Options.java" />
         <option value="$PROJECT_DIR$/src/Colour.java" />
         <option value="$PROJECT_DIR$/src/Pause.java" />
+        <option value="$PROJECT_DIR$/src/Instructions.java" />
+        <option value="$PROJECT_DIR$/src/MainPiece.java" />
         <option value="$PROJECT_DIR$/src/Menu.java" />
+        <option value="$PROJECT_DIR$/src/StateSearch.java" />
       </list>
     </option>
   </component>
@@ -407,9 +507,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/images/victory.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StateSearch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -580,20 +677,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3735">
-          <caret line="253" selection-start-line="253" selection-end-line="253" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Vehicle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
-          <caret line="256" selection-start-line="256" selection-end-line="256" />
+          <caret line="251" selection-start-line="251" selection-end-line="251" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -607,16 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StateSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StateNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -626,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+        <state relative-caret-position="-256">
+          <caret line="102" column="48" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6279#6280#0" expanded="true" />
@@ -653,10 +730,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pause.java">
+    <entry file="file://$PROJECT_DIR$/src/Instructions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="61" column="79" selection-start-line="61" selection-start-column="79" selection-end-line="61" selection-end-column="79" />
+        <state relative-caret-position="389">
+          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPiece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StateSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3541">
+          <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -665,13 +759,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="141" selection-start-line="141" selection-end-line="141" />
+        <state relative-caret-position="-424">
+          <caret line="140" column="51" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
           <folding>
             <element signature="e#1968#2419#0" expanded="true" />
             <element signature="e#2418#2419#0" expanded="true" />
             <element signature="e#2618#3069#0" expanded="true" />
             <element signature="e#3068#3069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pause.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-764">
+          <caret line="61" column="79" selection-start-line="61" selection-start-column="79" selection-end-line="61" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

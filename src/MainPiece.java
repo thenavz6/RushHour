@@ -77,6 +77,7 @@ public class MainPiece extends Rectangle {
                 Stage secondaryStage = new Stage();
                 secondaryStage.setTitle("Victory!");
                 victor.start(secondaryStage);
+
                 return;
             }
         }else if(this.frontxPos == 300) {

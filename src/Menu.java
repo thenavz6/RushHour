@@ -139,7 +139,6 @@ public class Menu extends Application {
                     //Stage secondaryStage = new Stage();
                     //secondaryStage.setTitle("Pause");
                     //paused.start(secondaryStage);
-
                     //Options option = new Options();
                     //Stage secondaryStage = new Stage();
                     //secondaryStage.setTitle("Options");

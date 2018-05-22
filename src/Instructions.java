@@ -22,6 +22,7 @@ public class Instructions extends Application {
         Group root = new Group();
         VBox topBox = new VBox();
 
+
         //Text logo = new Text("Controls");
         //topBox.getChildren().add(logo);
         //topBox.setAlignment(Pos.CENTER);
@@ -39,6 +40,7 @@ public class Instructions extends Application {
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         borderPane.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
         //root.getChildren().add()
+
 
         VBox box = new VBox();
         Button back = new Button();
