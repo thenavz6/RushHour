@@ -25,8 +25,9 @@ public class Options extends Application {
         gridpane.setVgap(10);
         
         ImageView imv = new ImageView();
-        Image imageCar = new Image(Options.class.getResourceAsStream("car_aqua_h.png"));
-        imv.setImage(imageCar);
+        //Image imageCar = new Image(Options.class.getResourceAsStream("car_aqua_h.png"));
+        Image testbby = new Image("images/car_aqua_h.png");
+        imv.setImage(testbby);
 
         HBox pictureRegion = new HBox();
         
@@ -40,7 +41,8 @@ public class Options extends Application {
         //root.getChildren().add(imv);
         Button btn = new Button();
         btn.setText("Return");
-        btn.setOnAction(e -> men.start(stage));
+        //btn.setOnAction(e -> men.start(stage));
+        btn.setOnAction(e -> stage.hide());
         //StackPane layout = new StackPane();
         root.getChildren().add(btn);
        

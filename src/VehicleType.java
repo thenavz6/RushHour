@@ -1,3 +1,3 @@
 public enum VehicleType {
-    car,truck,EMPTY
+    car,truck,empty
 }

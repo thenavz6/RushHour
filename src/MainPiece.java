@@ -1,6 +1,9 @@
 import com.sun.tools.javac.Main;
+import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
 
 public class MainPiece extends Rectangle {
 
@@ -69,6 +72,11 @@ public class MainPiece extends Rectangle {
     public void moveRight(){
         if(type == VehicleType.car) {
             if (this.frontxPos == 400) {
+                System.out.println("CONGRATS");
+                Victory victor = new Victory();
+                Stage secondaryStage = new Stage();
+                secondaryStage.setTitle("Victory!");
+                victor.start(secondaryStage);
                 return;
             }
         }else if(this.frontxPos == 300) {
