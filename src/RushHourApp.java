@@ -14,6 +14,8 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 
 
 import java.awt.*;
@@ -80,7 +82,21 @@ public class RushHourApp extends Application{
                     new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            ptr = car;
+                        	
+                            // removes previous effect when new car is choosen 
+                    		ptr.setEffect(null);
+
+		                    DropShadow borderGlow = new DropShadow();
+        		            borderGlow.setColor(Color.YELLOW);
+                		    borderGlow.setOffsetX(0f);
+		                    borderGlow.setOffsetY(0f);
+        		            borderGlow.setHeight(20);
+                		    borderGlow.setWidth(20);
+
+                		    // change new pointer
+    		                ptr = car;
+    		                // make selected car glow 
+            		        car.setEffect(borderGlow);
                         }
                     });
             pieces.add(car);
