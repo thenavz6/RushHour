@@ -21,7 +21,7 @@ public class Menu extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        RushHourApp test = new RushHourApp();
+        RushHourApp gameBoard = new RushHourApp();
 
         Button play = new Button();
         play.setMinSize(230,50);
@@ -46,13 +46,13 @@ public class Menu extends Application {
         exit.setFont(new Font(25));
         exit.setText("Exit");
 
-        ComboBox comboBox = new ComboBox();
-        comboBox.getItems().add("Easy");
-        comboBox.getItems().add("Medium");
-        comboBox.getItems().add("Hard");
-        comboBox.getSelectionModel().selectFirst();
-        comboBox.setMinSize(230,50);
-        comboBox.setButtonCell(new ListCell<String>() {
+        ComboBox diffBox = new ComboBox();
+        diffBox.getItems().add("Easy");
+        diffBox.getItems().add("Medium");
+        diffBox.getItems().add("Hard");
+        diffBox.getSelectionModel().selectFirst();
+        diffBox.setMinSize(230,50);
+        diffBox.setButtonCell(new ListCell<String>() {
             @Override
             public void updateItem(String item, boolean empty) {
                 super.updateItem(item,empty);
@@ -63,7 +63,7 @@ public class Menu extends Application {
                 }
             }
         });
-        comboBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+        diffBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> list) {
                 return new ListCell<String>() {
@@ -73,26 +73,10 @@ public class Menu extends Application {
                         if (item != null) {
                             setText(item);
                             setAlignment(Pos.CENTER);
-                            //setPadding(new Insets(3,3,3,0));
                         }
                     }
                 };
             }
-        });
-        MenuItem menuItem1 = new MenuItem("Easy");
-        MenuItem menuItem2 = new MenuItem("Medium");
-        MenuItem menuItem3 = new MenuItem("Hard");
-        MenuButton menuButton = new MenuButton("Difficulty", null, menuItem1, menuItem2, menuItem3);
-        menuButton.setAlignment(Pos.CENTER);
-        menuButton.setMinWidth(100);
-        menuItem1.setOnAction(e -> {
-            menuButton.setText(menuItem1.getText());
-        });
-        menuItem2.setOnAction(e -> {
-            menuButton.setText(menuItem2.getText());
-        });
-        menuItem3.setOnAction(e -> {
-            menuButton.setText(menuItem3.getText());
         });
 
         GridPane grid = new GridPane();
@@ -100,7 +84,23 @@ public class Menu extends Application {
         grid.setHgap(10);
         grid.setVgap(20);
         grid.setPadding(new Insets(10, 10, 10, 10));
-        exit.setOnAction(e -> Platform.exit());
+
+        play.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    primaryStage.hide();
+                    Stage secondaryStage = new Stage();
+                    secondaryStage.setTitle("Rush Hour");
+                    gameBoard.start(secondaryStage);
+                    //test.start(primaryStage)
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         instruct.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -110,29 +110,19 @@ public class Menu extends Application {
                 instruct.start(secondaryStage);
             }
         });
-        play.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    primaryStage.hide();
-                    Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Rush Hour");
-                    test.start(secondaryStage);
-                    //test.start(primaryStage)
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-                
-            }
-        });
+
         option.setOnAction( new EventHandler<ActionEvent>() { // change this later
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    Victory vict = new Victory();
+                    //Victory vict = new Victory();
+                    //Stage secondaryStage = new Stage();
+                    //secondaryStage.setTitle("Victory");
+                    //vict.start(secondaryStage);
+                    Options option = new Options();
                     Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Victory");
-                    vict.start(secondaryStage);
+                    secondaryStage.setTitle("Options");
+                    option.start(secondaryStage);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -140,17 +130,19 @@ public class Menu extends Application {
             }
         });
 
+        exit.setOnAction(e -> Platform.exit());
+
         grid.add(play, 0, 0);
-        grid.add(comboBox, 0, 1);
+        grid.add(diffBox, 0, 1);
         grid.add(instruct, 0, 2);
         grid.add(option,0,3);
         grid.add(exit, 0, 4);
 
         ImageView imv = new ImageView();
-        Image titlePicture = new Image("images/menu2.png");
-        imv.setImage(titlePicture);
+        Image menuPicture = new Image("images/menu2.png");
+        imv.setImage(menuPicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,false,true);
-        grid.setBackground(new Background( new BackgroundImage(titlePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
+        grid.setBackground(new Background( new BackgroundImage(menuPicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         Scene scenes = new Scene(grid,600,600);
         scenes.setOnKeyPressed(ke -> { // remove this later

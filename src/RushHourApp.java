@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import javafx.scene.effect.DropShadow;
 import java.util.ArrayList;
 
 import static javafx.stage.Screen.*;
@@ -26,6 +28,7 @@ public class RushHourApp extends Application{
     public static final int HEIGHT = 6;
     private static long startTime;
     private static int movesTaken = 0;
+
     private static Stage testStage;
     private MainPiece ptr; // keeps track of the main object;
     public static ArrayList<MainPiece> pieces = new ArrayList<>();
@@ -40,10 +43,10 @@ public class RushHourApp extends Application{
         root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
         root.getChildren().add(c);
         ImageView imv = new ImageView();
-        Image pausePicture = new Image("images/grid2.png");
-        imv.setImage(pausePicture);
+        Image gridPicture = new Image("images/grid2.png");
+        imv.setImage(gridPicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
-        root.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
+        root.setBackground(new Background( new BackgroundImage(gridPicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         StateSearch state = new StateSearch();
         StateNode endState = state.generateEndState(6);
@@ -57,7 +60,7 @@ public class RushHourApp extends Application{
             startState = state.generateStartState(endState);
         }
 
-        state.printState(startState);
+        //state.printState(startState);
 
         for(Vehicle item: startState.getVehicles()){
             MainPiece car;
@@ -77,7 +80,19 @@ public class RushHourApp extends Application{
                     new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
+                            // removes previous effect when new car is choosen
+                            ptr.setEffect(null);
+
+                            DropShadow borderGlow = new DropShadow();
+                            borderGlow.setColor(Color.YELLOW);
+                            borderGlow.setOffsetX(0f);
+                            borderGlow.setOffsetY(0f);
+                            borderGlow.setHeight(20);
+                            borderGlow.setWidth(20);
+                            // change new pointer
                             ptr = car;
+                            // make selected car glow
+                            car.setEffect(borderGlow);
                         }
                     });
             pieces.add(car);
