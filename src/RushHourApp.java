@@ -60,7 +60,7 @@ public class RushHourApp extends Application{
             startState = state.generateStartState(endState);
         }
 
-        state.printState(startState);
+        //state.printState(startState);
 
         for(Vehicle item: startState.getVehicles()){
             MainPiece car;
@@ -90,7 +90,7 @@ public class RushHourApp extends Application{
         ptr = pieces.get(0);
 
         return root;
-    }
+                                   }
 
     @Override
     public void start(Stage primaryStage) throws Exception

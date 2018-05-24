@@ -65,6 +65,7 @@ public class Victory extends Application {
         Button nextPuzzle = new Button();
         nextPuzzle.setText("New Puzzle");
         nextPuzzle.setMinWidth(100);
+
         // close stage and restart it or
         // run the generator again for the stage
 

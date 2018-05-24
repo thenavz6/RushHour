@@ -130,9 +130,6 @@ public class Pause extends Application {
         }
 
 
-        public static void main(String[] args) {
-            launch(args);
-        }
 
     }
 
