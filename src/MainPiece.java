@@ -1,7 +1,4 @@
-import com.sun.tools.javac.Main;
-import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -73,6 +70,8 @@ public class MainPiece extends Rectangle {
         if(type == VehicleType.car) {
             if (this.frontxPos == 400) {
                 System.out.println("CONGRATS");
+                //RushHourApp stopControls = new RushHourApp();
+                //stopControls.setStopControls(true);
                 Victory victor = new Victory();
                 Stage secondaryStage = new Stage();
                 secondaryStage.setTitle("Victory!");

@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -9,59 +10,56 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
-import javafx.scene.paint.ImagePattern;
+
+import static javafx.stage.Screen.getPrimary;
 
 public class Menu extends Application {
-	// Try border panes
+
     @Override
     public void start(Stage primaryStage) {
-        //BorderPane border = new BorderPane();
         RushHourApp test = new RushHourApp();
-        Options test2 = new Options();
-    		
-        primaryStage.setTitle("Rush Hour");
 
         Button play = new Button();
-        play.setMinWidth(100);
+        play.setMinSize(230,50);
+        play.setFont(new Font(25));
         play.setText("Play");
+
         Button instruct = new Button();
-        instruct.setMinWidth(100);
+        //instruct.setMinWidth(100);
+        instruct.setMinSize(230,50);
+        instruct.setFont(new Font(25));
         instruct.setText("Instructions");
+
         Button option = new Button();
-        //Image imageTest = new Image(getClass().getResourceAsStream("car_green_h.png"));
-        //option.setGraphic(new ImageView(imageTest));
-        option.setMinWidth(100);
+        //option.setMinWidth(100);
+        option.setMinSize(230,50);
+        option.setFont(new Font(25));
         option.setText("Options");
+
         Button exit = new Button();
-        exit.setMinWidth(100);
+        //exit.setMinWidth(100);
+        exit.setMinSize(230,50);
+        exit.setFont(new Font(25));
         exit.setText("Exit");
+
         ComboBox comboBox = new ComboBox();
         comboBox.getItems().add("Easy");
         comboBox.getItems().add("Medium");
         comboBox.getItems().add("Hard");
         comboBox.getSelectionModel().selectFirst();
-        comboBox.minWidth(100);
+        comboBox.setMinSize(230,50);
         comboBox.setButtonCell(new ListCell<String>() {
             @Override
             public void updateItem(String item, boolean empty) {
                 super.updateItem(item,empty);
                 if (item != null) {
                     setText(item);
-                    setAlignment(Pos.CENTER_RIGHT);
-                    //Insets old = getPadding();
-                    //setPadding(new Insets(old.getTop(),0,old.getBottom(),0));
+                    setFont(new Font(25));
+                    setAlignment(Pos.CENTER);
                 }
             }
         });
@@ -96,88 +94,66 @@ public class Menu extends Application {
         menuItem3.setOnAction(e -> {
             menuButton.setText(menuItem3.getText());
         });
+
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
-        grid.setVgap(10);
+        grid.setVgap(20);
         grid.setPadding(new Insets(10, 10, 10, 10));
-        //grid.setMargin(grid,new Insets(0,0,0,0));
         exit.setOnAction(e -> Platform.exit());
         instruct.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //test tester = new test();
                 Instructions instruct = new Instructions();
-
                 Stage secondaryStage = new Stage();
                 secondaryStage.setTitle("Instructions");
                 instruct.start(secondaryStage);
-                //Alert alert = new Alert(AlertType.INFORMATION);
-                //alert.setTitle("Instructions");
-                //alert.setHeaderText(null);
-                //alert.setContentText("Howdy");
-                //alert.showAndWait();
             }
         });
         play.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-					test.start(primaryStage);
+                    primaryStage.hide();
+                    Stage secondaryStage = new Stage();
+                    secondaryStage.setTitle("Rush Hour");
+                    test.start(secondaryStage);
+                    //test.start(primaryStage)
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
                 
             }
         });
-        option.setOnAction( new EventHandler<ActionEvent>() {
+        option.setOnAction( new EventHandler<ActionEvent>() { // change this later
             @Override
             public void handle(ActionEvent event) {
                 try {
-					//test2.start(primaryStage);
-					//Pause paused = new Pause();
-                    //Stage secondaryStage = new Stage();
-                    //secondaryStage.setTitle("Pause");
-                    //paused.start(secondaryStage);
-
-                    //Options option = new Options();
-                    //Stage secondaryStage = new Stage();
-                    //secondaryStage.setTitle("Options");
-                    //option.start(secondaryStage);
                     Victory vict = new Victory();
                     Stage secondaryStage = new Stage();
                     secondaryStage.setTitle("Victory");
                     vict.start(secondaryStage);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
                 
             }
         });
-        Text logo = new Text("Rush Hour");
-        VBox textPos = new VBox();
-        textPos.getChildren().addAll(logo);
-        textPos.setAlignment(Pos.CENTER);
-        //logo.setTextAlignment(centre);
-        //grid.add(textPos,0,0);
-        //grid.add(logo, 0, 0);
+
         grid.add(play, 0, 0);
         grid.add(comboBox, 0, 1);
         grid.add(instruct, 0, 2);
         grid.add(option,0,3);
         grid.add(exit, 0, 4);
+
         ImageView imv = new ImageView();
-        //Image titlepic = new Image(Options.class.getResourceAsStream("title.png"));
-        Image titlePicture = new Image("images/title.png");
+        Image titlePicture = new Image("images/menu2.png");
         imv.setImage(titlePicture);
-        ImagePattern pattern = new ImagePattern(titlePicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,false,true);
         grid.setBackground(new Background( new BackgroundImage(titlePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
-        //grid.set;
-        Scene scenes = new Scene(grid,370,370);
-        //scenes.setFill(pattern);
-        scenes.setOnKeyPressed(ke -> {
+
+        Scene scenes = new Scene(grid,600,600);
+        scenes.setOnKeyPressed(ke -> { // remove this later
             KeyCode keyCode = ke.getCode();
             if (keyCode.equals(KeyCode.ESCAPE)) {
                 Pause paused = new Pause();
@@ -186,7 +162,13 @@ public class Menu extends Application {
                 paused.start(secondaryStage);
             }
         });
+
+        Rectangle2D screenBounds = getPrimary().getVisualBounds();
+        primaryStage.setOnCloseRequest(e -> Platform.exit());
+        primaryStage.setX((screenBounds.getWidth() - (600)) / 2);
+        primaryStage.setY((screenBounds.getHeight() - (600)) / 2);
         primaryStage.setScene(scenes);
+        primaryStage.setTitle("Rush Hour");
         //primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.show();
     }

@@ -1,5 +1,6 @@
-import com.sun.tools.javac.Main;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,11 +14,9 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.GridPane;
-
-
-import java.awt.*;
 import java.util.ArrayList;
+
+import static javafx.stage.Screen.*;
 
 public class RushHourApp extends Application{
 
@@ -25,8 +24,9 @@ public class RushHourApp extends Application{
     public static final int TILE_SIZE = 100;
     public static final int WIDTH = 6;
     public static final int HEIGHT = 6;
-    private boolean stopControls = false;
-
+    private static long startTime;
+    private static int movesTaken = 0;
+    private static Stage testStage;
     private MainPiece ptr; // keeps track of the main object;
     public static ArrayList<MainPiece> pieces = new ArrayList<>();
 
@@ -36,15 +36,12 @@ public class RushHourApp extends Application{
     private Parent createContent()
     {
         Pane root = new Pane();
-
         // set size of it
         root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
         root.getChildren().add(c);
         ImageView imv = new ImageView();
-        //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
-        Image pausePicture = new Image("images/grid.png");
+        Image pausePicture = new Image("images/grid2.png");
         imv.setImage(pausePicture);
-        //ImagePattern pattern = new ImagePattern(titlepic);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         root.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
@@ -100,7 +97,14 @@ public class RushHourApp extends Application{
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){
-                if (ptr.getDirection().equals("v") & stopControls == false) {
+                if (event.getCode() == KeyCode.ESCAPE) {
+                    Pause paused = new Pause();
+                    Stage secondaryStage = new Stage();
+                    secondaryStage.setTitle("Pause");
+                    paused.start(secondaryStage);
+                    //stopControls = true;
+
+                } else if (ptr.getDirection().equals("v")) { //& stopControls == false) {
                     if (event.getCode() == KeyCode.UP) {
                         ptr.moveUp();
                         System.out.println("x = " + ptr.getxPos());
@@ -110,7 +114,8 @@ public class RushHourApp extends Application{
                         System.out.println("x = " + ptr.getxPos());
                         System.out.println("y = " + ptr.getyPos());
                     }
-                } else if (ptr.getDirection().equals("h") & stopControls == false) {
+                    movesTaken++;
+                } else if (ptr.getDirection().equals("h")) { // & stopControls == false) {
                     if (event.getCode() == KeyCode.RIGHT) {
                         ptr.moveRight();
                         System.out.println("x = " + ptr.getxPos());
@@ -120,19 +125,17 @@ public class RushHourApp extends Application{
                         System.out.println("x = " + ptr.getxPos());
                         System.out.println("y = " + ptr.getyPos());
                     }
-                } else if (event.getCode() == KeyCode.ESCAPE) {
-                    Pause paused = new Pause();
-                    Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Pause");
-                    paused.start(secondaryStage);
-                    //stopControls = true;
+                    movesTaken++;
                 }
 
             }
         });
-        // Need to make it change that if pause = 1 then you can't handle the key events
-        // Add pause with KeyCode.ESCAPE
-
+        testStage = primaryStage;
+        startTime = System.nanoTime();
+        Rectangle2D screenBounds = getPrimary().getVisualBounds();
+        primaryStage.setX((screenBounds.getWidth() - (WIDTH * TILE_SIZE)) / 2);
+        primaryStage.setY((screenBounds.getHeight() - (HEIGHT * TILE_SIZE)) / 2);
+        primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setTitle("Rush Hour"); // sets the title name
         primaryStage.setScene(scene); // places scene into primary Stage
         primaryStage.show(); // opens the java file
@@ -148,6 +151,18 @@ public class RushHourApp extends Application{
     //}
 
 
+
+    public Stage getTestStage() {
+        return testStage;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public int getMovesTaken() {
+        return movesTaken;
+    }
     public static void main(String[] args)
     {
         launch(args);

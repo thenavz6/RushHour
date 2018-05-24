@@ -1,16 +1,15 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import static javafx.stage.Screen.getPrimary;
 
 public class Instructions extends Application {
 
@@ -19,26 +18,12 @@ public class Instructions extends Application {
 
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(15,20,10,10));
-        Group root = new Group();
-        VBox topBox = new VBox();
 
-        //Text logo = new Text("Controls");
-        //topBox.getChildren().add(logo);
-        //topBox.setAlignment(Pos.CENTER);
-        //borderPane.setTop(topBox);
-
-        //Rectangle r = new Rectangle(25,25,480,400);
-        //r.setFill(Color.BLUE);
-        //root.getChildren().add(r);
-        //borderPane.setCenter(root);
         ImageView imv = new ImageView();
-        //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
-        Image pausePicture = new Image("images/controls.png");
+        Image pausePicture = new Image("images/controls2.png");
         imv.setImage(pausePicture);
-        //ImagePattern pattern = new ImagePattern(titlepic);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         borderPane.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
-        //root.getChildren().add()
 
         VBox box = new VBox();
         Button back = new Button();
@@ -48,8 +33,12 @@ public class Instructions extends Application {
         box.getChildren().add(back);
         borderPane.setBottom(box);
 
-        Scene scene = new Scene(borderPane,500,500);
-        stage.setTitle("test");
+        Scene scene = new Scene(borderPane,630,500);
+        Rectangle2D screenBounds = getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - (630)) / 2);
+        stage.setY((screenBounds.getHeight() - (500)) / 2);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Instructions");
         stage.setScene(scene);
         stage.show();
 
