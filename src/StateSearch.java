@@ -13,10 +13,6 @@ public class StateSearch {
     private Random generator = new Random();
     private int numnodes = 1;
 
-    /**
-     * Constructor for StateSearch
-     * @param endState state of all vehicles for win condition
-     */
 
 
     public void solve(StateNode goalState, StateNode startState){
@@ -29,6 +25,11 @@ public class StateSearch {
         }
     }
 
+    /**
+     * generates a starting state for the game
+     * @param state end state //TODO: ???
+     * @return startState, or null if unsuccessful
+     */
     public StateNode generateStartState(StateNode state){
         for(StateNode item: allNodes){
             if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.empty){
@@ -38,6 +39,10 @@ public class StateSearch {
         return null;
     }
 
+    /**
+     * Constructor for StateSearch
+     * @param endState state of all vehicles for win condition
+     */
     public void generateStateSpace(StateNode endState){
 
         Queue<StateNode> nodes = new ConcurrentLinkedDeque<>();
@@ -115,32 +120,6 @@ public class StateSearch {
     }
 
 
-    public void solve(StateNode goalState, StateNode startState){
-        for(Vehicle item: goalState.getVehicles()){
-            System.out.print(item + " ");
-        }
-
-        for(Vehicle item: startState.getVehicles()){
-            System.out.print(item + " ");
-        }
-    }
-
-    /**
-     * generates a starting state for the game
-     * @param state end state //TODO: ???
-     * @return startState, or null if unsuccessful
-     */
-    public StateNode generateStartState(StateNode state){
-        for(StateNode item: allNodes){
-            if((item.getVehicles().get(0).getFrontColumn() < 3) &&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.EMPTY) /*&&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() != VehicleType.EMPTY)*/&&
-                    (item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getOrientation().equals("v"))){
-                        return item.deepCopy();
-            }
-        }
-        return null;
-    }
 
 
     /**
