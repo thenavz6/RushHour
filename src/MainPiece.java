@@ -1,7 +1,14 @@
+import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
+import java.io.File;
+import java.nio.file.Paths;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.Path;
 
 
 public class MainPiece extends Rectangle {
@@ -80,7 +87,12 @@ public class MainPiece extends Rectangle {
                 translateTransition.setByX(300);
                 translateTransition.play();
 
-                System.out.println("CONGRATS");
+                // add drive away sounds
+                Media media =  new Media(Paths.get("src/images/drive_away.wav").toUri().toString());
+                MediaPlayer player = new MediaPlayer(media);
+                player.setAutoPlay(true);
+
+                System.out.println("CONGRATS"); // testing purposes
                 RushHourApp stopControls = new RushHourApp();
                 stopControls.setStopControls(true);
                 Victory victor = new Victory();
