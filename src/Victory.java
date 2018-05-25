@@ -31,10 +31,13 @@ public class Victory extends Application {
         //root.getChildren().add(r);
         //borderPane.setCenter(root);
 
+        //imageView.setImage(new Image(this.getClass().getResource("java.gif").toExternalForm()));
         ImageView imv = new ImageView();
         //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
-        Image pausePicture = new Image("images/victory.png");
+        //Image pausePicture = new Image("images/victory.png");
+        Image pausePicture = new Image("images/victory.gif");
         imv.setImage(pausePicture);
+        //imv.setImage(pausePicture);
         //ImagePattern pattern = new ImagePattern(titlepic);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         borderPane.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
