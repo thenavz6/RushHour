@@ -15,6 +15,7 @@ public class MainPiece extends Rectangle {
     private int midyPos;
     private String direction;
     private VehicleType type;
+    private final static int BUFFER = 80;
 
     /**
      * Constructor for MainPiece
@@ -74,7 +75,7 @@ public class MainPiece extends Rectangle {
 
         // places it in the determined position
         // if not it will default to the top
-        relocate(frontxPos, frontyPos);
+        relocate(frontxPos + BUFFER, frontyPos + BUFFER);
     }
 
     /**
@@ -134,7 +135,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(newX, this.frontyPos);
+        relocate(newX + BUFFER, this.frontyPos + BUFFER);
 
     }
 
@@ -166,7 +167,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(newX, this.frontyPos);
+        relocate(newX + BUFFER, this.frontyPos + BUFFER);
     }
 
     /**
@@ -197,7 +198,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(this.frontxPos, newY);
+        relocate(this.frontxPos + BUFFER, newY + BUFFER);
     }
 
     /**
@@ -249,7 +250,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(this.frontxPos, newY);
+        relocate(this.frontxPos + BUFFER, newY + BUFFER);
     }
 
     /**

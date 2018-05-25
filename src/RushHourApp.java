@@ -25,6 +25,7 @@ public class RushHourApp extends Application{
 
 
     public static final int TILE_SIZE = 100;
+    public static final int BUFFER = 80;
     public static final int WIDTH = 6;
     public static final int HEIGHT = 6;
     private boolean stopControls = false;
@@ -40,7 +41,7 @@ public class RushHourApp extends Application{
         Pane root = new Pane();
 
         // set size of it
-        root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
+        root.setPrefSize(WIDTH* TILE_SIZE + 2*BUFFER, HEIGHT * TILE_SIZE + 2 * BUFFER);
         root.getChildren().add(c);
         ImageView imv = new ImageView();
         //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
