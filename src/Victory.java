@@ -84,9 +84,9 @@ public class Victory extends Application {
         botLeftBox.getChildren().add(moveNumber);
         botLeftBox.getChildren().add(timeNumber);
 
-        Button restart = new Button();
-        restart.setText("Restart");
-        restart.setMinWidth(100);
+        //Button restart = new Button();
+        //restart.setText("Restart");
+        //restart.setMinWidth(100);
 
         Button nextPuzzle = new Button();
         nextPuzzle.setText("New Puzzle");
@@ -109,19 +109,19 @@ public class Victory extends Application {
 
         Label minuteLabel = new Label(Integer.toString(movesTaken));
         minuteLabel.setFont(new Font(25));
-        minuteLabel.setTranslateY(85);
+        minuteLabel.setTranslateY(50); // 85 with restart
         minuteLabel.setTranslateX(-400);
         minuteLabel.setTextFill(Color.web("#000000"));
         Label secondLabel = new Label(minuteTime + " M " + secondTime + " S");
         secondLabel.setTextFill(Color.web("#000000"));
         secondLabel.setFont(new Font(25));
-        secondLabel.setTranslateY(90);
+        secondLabel.setTranslateY(55); // 90 with restart
         secondLabel.setTranslateX(-340);
 
         box.getChildren().add(minuteLabel);
         box.getChildren().add(secondLabel);
         box.getChildren().add(nextPuzzle);
-        box.getChildren().add(restart);
+        //box.getChildren().add(restart);
         box.getChildren().add(back);
         box.setAlignment(Pos.BOTTOM_RIGHT);
         borderPane.setBottom(box);
