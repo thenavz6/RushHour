@@ -1,7 +1,11 @@
 import java.io.*;
-import javafx.scene.image.Image;
 
-
+/**
+ * Vehicle Class
+ * Has the information for the vehicle object when it is on the board
+ * Used to update and get information about the piece such as the type,
+ * color, name, direction it is facing and the co ordinates on the board.
+ */
 public class Vehicle implements Serializable{
 
     private String name;
@@ -14,9 +18,15 @@ public class Vehicle implements Serializable{
     private int backRow;
     private int backColumn;
     private Direction direction;
-    private Image image;
 
-
+    /**
+     * constructor for Vehicle
+     * @param type whether vehicle is a car (2 blocks long) or a truck (3 blocks long)
+     * @param colour colour of vehicle - corresponds to image name
+     * @param row row of front of vehicle
+     * @param column column of front of vehicle
+     * @param direction direction vehicle is facing
+     */
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
         this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0);
         this.type = type;
@@ -27,77 +37,147 @@ public class Vehicle implements Serializable{
         updateCoordinates();
     }
 
+    /**
+     * Gets the vehicle type
+     * @return type
+     */
     public VehicleType getVehicleType() {
         return type;
     }
 
+    /**
+     * Sets vehicle type
+     * @param type
+     */
     public void setType(VehicleType type) {
         this.type = type;
     }
 
+    /**
+     * Getter for vehicle colour
+     * @return colour
+     */
     public Colour getColour() {
         return colour;
     }
 
+    /**
+     * Sets a new colour for the vehicle
+     * @param colour
+     */
     public void setColour(Colour colour) {
         this.colour = colour;
     }
 
+    /**
+     * Getter for front row
+     * @return frontRow
+     */
     public int getFrontRow() {
         return frontRow;
     }
 
+    /**
+     * Sets row for middle
+     * @param midRow
+     */
     public void setMidRow(int midRow) {
         this.midRow = midRow;
     }
 
+    /**
+     * Sets column for middle
+     * @param midColumn
+     */
     public void setMidColumn(int midColumn) {
         this.midColumn = midColumn;
     }
 
-    public int getFrontColumn() {
-        return frontColumn;
+    /**
+     * Getter for front column
+     * @return frontColumn
+     */
+    public int getFrontColumn() { return frontColumn; }
 
-    }
-
+    /**
+     * Getter for back row
+     * @return backRow
+     */
     public int getBackRow() {
         return backRow;
     }
 
+    /**
+     * Getter for back column
+     * @return backColumn
+     */
     public int getBackColumn() {
         return backColumn;
     }
 
+    /**
+     * Getter for row of middle
+     * @return midRow
+     */
     public int getMidRow() {
         return midRow;
     }
 
+    /**
+     * Getter for column of middle
+     * @return midColumn
+     */
     public int getMidColumn() {
         return midColumn;
     }
 
+    /**
+     * Getter for direction of the vehicle
+     * @return direction - north, south, east or west
+     */
     public Direction getDirection() {
         return direction;
     }
 
+    /**
+     * Sets direction the vehicle is facing
+     * @param direction
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
+    /**
+     * Sets name of the vehicle
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Sets row of front
+     * @param frontRow row of front
+     */
     public void setFrontRow(int frontRow) {
         this.frontRow = frontRow;
         updateCoordinates();
     }
 
+    /**
+     * Sets column of front
+     * @param frontColumn column of front
+     */
     public void setFrontColumn(int frontColumn) {
         this.frontColumn = frontColumn;
         updateCoordinates();
     }
 
+    /**
+     * Moves piece one square up if facing north or south
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveUpOne(StateNode state){
         if(direction == Direction.north || direction == Direction.south) {
             if (this.frontRow - 1 >= 0 && this.backRow - 1 >= 0) {
@@ -118,6 +198,11 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Moves piece one square down if facing north or south
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveDownOne(StateNode state){
         if(direction == Direction.north || direction == Direction.south) {
             if (this.frontRow + 1 <= 5 && this.backRow + 1 <= 5) {
@@ -138,6 +223,11 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Moves piece one square left if facing east or west
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveLeftOne(StateNode state){
         if(direction == Direction.east || direction == Direction.west) {
             if (this.frontColumn - 1 >= 0 && this.backColumn - 1 >= 0) {
@@ -158,6 +248,11 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Moves piece one square right if facing east or west
+     * @param state current state
+     * @return boolean - true if piece was successfully moved, false otherwise
+     */
     public boolean moveRightOne(StateNode state){
         if(direction == Direction.east || direction == Direction.west) {
             if (this.frontColumn + 1 <= 5 && this.backColumn + 1 <= 5) {
@@ -178,6 +273,10 @@ public class Vehicle implements Serializable{
         return false;
     }
 
+    /**
+     * Updates the co ordinate location for the vehicle piece
+     * when the user moves the piece.
+     */
     public void updateCoordinates(){
         if(this.direction == Direction.north){
             this.backColumn = this.frontColumn;
@@ -218,6 +317,10 @@ public class Vehicle implements Serializable{
         }
     }
 
+    /**
+     * creates a proper copy of the current vehicle
+     * @return copy of vehicle
+     */
     public Vehicle deepCopy(){
 
         Vehicle copy = null;
@@ -245,6 +348,10 @@ public class Vehicle implements Serializable{
 
     }
 
+    /**
+     * getter for direction
+     * @return direction (North, South, East, West)
+     */
     public String getOrientation(){
         if(this.direction == Direction.north || this.direction == Direction.south){
             return "v";
@@ -253,6 +360,10 @@ public class Vehicle implements Serializable{
         }
     }
 
+    /**
+     * overrides toString for formatting purposes
+     * @return name followed by a space
+     */
     @Override
     public String toString() {
         return name + " ";

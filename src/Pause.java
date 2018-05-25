@@ -12,17 +12,36 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.text.Font;
 
 import static javafx.stage.Screen.getPrimary;
 
-
+/**
+ * Pause Class
+ * When the user wants to pause the game, they press the ESCAPE button
+ * This class provides a stage to give options for the user to do various functions
+ * It has buttons to go restart the level, hints for the level, instructions for the game
+ * and return back to the main menu. Creates a GUI for the user to use.
+ */
 public class Pause extends Application {
-        // Try border panes
         private static long pauseTime;
-        @Override
+
+    /**
+     * Start function for Pause, gets run once the player presses ESCAPE during gameplay
+     * Creates a UI for the user to use. Has buttons for the user to use i.e.
+     * Resume, Hints, Restart, Instructions and Exit.
+     * @param primaryStage A stage that displays the UI elements
+     */
+    @Override
         public void start(Stage primaryStage) {
             long imPaused = System.nanoTime();
             RushHourApp test = new RushHourApp();
+
+            GridPane grid = new GridPane();
+            grid.setAlignment(Pos.CENTER);
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(10, 10, 10, 10));
 
             primaryStage.setTitle("Rush Hour");
             Button play = new Button();
@@ -37,23 +56,17 @@ public class Pause extends Application {
             Button instruct = new Button();
             instruct.setMinWidth(100);
             instruct.setText("Instructions"); // Goes to instructions
-            Button option = new Button();
-            option.setMinWidth(100);
-            option.setText("Options"); // Goes to options
             Button exit = new Button();
             exit.setMinWidth(100);
             exit.setText("Menu"); // Closes the stage and goes back to Menu
 
-            GridPane grid = new GridPane();
-            grid.setAlignment(Pos.CENTER);
-            grid.setHgap(10);
-            grid.setVgap(10);
-            grid.setPadding(new Insets(10, 10, 10, 10));
+
             ImageView imv = new ImageView();
             Image pausePicture = new Image("images/road.png");
             imv.setImage(pausePicture);
             BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
             grid.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
+
             exit.setOnAction(e -> {
                 Stage gameStage = test.getTestStage();
                 test.setStopControls(false);
@@ -64,6 +77,7 @@ public class Pause extends Application {
                 secondaryStage.setTitle("Menu");
                 mainMenu.start(secondaryStage);
             });
+
             instruct.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -74,6 +88,7 @@ public class Pause extends Application {
                     instruct.start(secondaryStage);
                 }
             });
+
             hints.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -84,6 +99,7 @@ public class Pause extends Application {
                     alert.showAndWait();
                 }
             });
+
             play.setOnAction( new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -94,35 +110,20 @@ public class Pause extends Application {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }
             });
-            option.setOnAction( new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    try {
-                        Options option = new Options();
-                        Stage secondaryStage = new Stage();
-                        secondaryStage.setTitle("Options");
-                        option.start(secondaryStage);
-                        //test2.start(primaryStage);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
 
-                }
-            });
             Text logo = new Text("Paused");
+            logo.setFont(new Font(30));
             VBox textPos = new VBox();
             textPos.getChildren().addAll(logo);
             textPos.setAlignment(Pos.CENTER);
-            grid.add(textPos,0,0);
+            grid.add(logo,0,0);
             grid.add(play, 0, 1);
             grid.add(hints, 0, 2);
             grid.add(restart,0,3);
             grid.add(instruct, 0, 4);
-            grid.add(option,0,5);
-            grid.add(exit, 0, 6);
+            grid.add(exit, 0, 5);
 
             Scene scenes = new Scene(grid,250,300);
             primaryStage.setOnCloseRequest(e -> {
@@ -130,19 +131,27 @@ public class Pause extends Application {
                 setPauseTime(0); // do the same for restart
                 primaryStage.hide();
             });
+
             Rectangle2D screenBounds = getPrimary().getVisualBounds();
             primaryStage.setX((screenBounds.getWidth() - (250)) / 2);
             primaryStage.setY((screenBounds.getHeight() - (300)) / 2);
             primaryStage.setScene(scenes);
-            //primaryStage.setTitle("Paused");
-            //primaryStage.setScene(new Scene(root, 300, 250));
+            primaryStage.setResizable(false);
             primaryStage.show();
         }
 
+    /**
+     * Getter for how long the user has paused
+     * @return pauseTime
+     */
     public long getPauseTime() {
         return pauseTime;
     }
 
+    /**
+     * Sets pauseTime variable
+     * @param time
+     */
     public void setPauseTime(long time) {
             pauseTime = time;
     }

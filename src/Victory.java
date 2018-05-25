@@ -14,13 +14,27 @@ import javafx.stage.StageStyle;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import java.util.concurrent.TimeUnit;
-
 import static javafx.stage.Screen.getPrimary;
 
+/**
+ * Victory Class
+ * Appears when the user has reached the exit condition on the game
+ * Shows the time and moves taken to reach the exit condition
+ * and presents next, restart and menu options for the user
+ * Next generates a new puzzle with the same difficulty as the one played
+ * Restart puts the grid back to the original state
+ * Menu returns the user back to the main menu.
+ */
 public class Victory extends Application {
+
+    /**
+     * Start function for Victory, gets run when the class is called
+     * Sets all the UI features for the stage and button interaction for the buttons
+     * Has buttons to go to a new puzzle, restart the current puzzle and go back to main menu.
+     * @param stage Main stage that the class is displayed on
+     */
     @Override
     public void start(Stage stage) {
-
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(15,20,10,10));
         RushHourApp statGetter = new RushHourApp();
@@ -34,12 +48,9 @@ public class Victory extends Application {
         borderPane.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         VBox box = new VBox();
-        VBox box2 = new VBox();
 
         box.setPadding(new Insets(15,20,10,10));
         box.setSpacing(10);
-        box2.setPadding(new Insets(15,20,10,10));
-        box2.setSpacing(10);
 
         Button back = new Button();
         back.setText("Menu");
@@ -54,10 +65,6 @@ public class Victory extends Application {
             Stage secondaryStage = new Stage();
             secondaryStage.setTitle("Menu");
             mainMenu.start(secondaryStage);
-            //Menu mainMenu = new Menu();
-            //mainMenu.start(plz);
-            //stage.close();
-
         });
 
         Text moveNumber = new Text();
@@ -104,7 +111,7 @@ public class Victory extends Application {
         Rectangle2D screenBounds = getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - (600)) / 2);
         stage.setY((screenBounds.getHeight() - (300)) / 2);
-        stage.initStyle(StageStyle.UTILITY);
+        stage.setResizable(false);
         stage.setTitle("Victory");
         stage.setScene(scene);
         stage.show();

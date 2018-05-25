@@ -16,6 +16,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.effect.DropShadow;
+import javafx.stage.StageStyle;
+
 import java.util.ArrayList;
 
 import static javafx.stage.Screen.*;
@@ -154,6 +156,7 @@ public class RushHourApp extends Application{
         primaryStage.setX((screenBounds.getWidth() - (WIDTH * TILE_SIZE + 2*BUFFER)) / 2);
         primaryStage.setY((screenBounds.getHeight() - (HEIGHT * TILE_SIZE + 2*BUFFER)) / 2);
         primaryStage.setOnCloseRequest(e -> Platform.exit());
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Rush Hour"); // sets the title name
         primaryStage.setScene(scene); // places scene into primary Stage
         primaryStage.show(); // opens the java file

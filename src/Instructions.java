@@ -8,11 +8,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import static javafx.stage.Screen.getPrimary;
 
+/**
+ * Instructions Class
+ * Provides a set of instructions for the user on how to play the game
+ * Has a visual element and a return button that closes the stage
+ */
 public class Instructions extends Application {
-
+    /**
+     * Start function for when the user clicks on the instructions button
+     * Sets out all the UI and button elements for the stage.
+     * Creates a background image that displays how to play the game
+     * and a button that returns the user that closes the stage.
+     * @param stage Stage for the UI elements
+     */
     @Override
     public void start(Stage stage) {
 
@@ -39,6 +49,7 @@ public class Instructions extends Application {
         stage.setY((screenBounds.getHeight() - (500)) / 2);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Instructions");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 

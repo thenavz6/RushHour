@@ -13,15 +13,35 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
-
 import static javafx.stage.Screen.getPrimary;
 
+/**
+ * Menu Class containing the constructor
+ * The class that the user first sees when the start the game up
+ * Provides functionality and a GUI for a main menu for the user to use
+ * Has buttons to start the game, look at the instructions and exit.
+ * A combo box grabs a value for the difficulty of puzzle the user wants to play
+ */
 public class Menu extends Application {
 
+    /**
+     * Main Menu for the user to use to navigate and start a game to play
+     * Creates the UI elements for the stage such as buttons and background images
+     * Makes where each button is going to displayed in the stage and the size of the window
+     * Has buttons for the user to use i.e. Play, Instructions and Exit.
+     * @param primaryStage Stage to display the GUI of the main menu
+     */
     @Override
     public void start(Stage primaryStage) {
         RushHourApp gameBoard = new RushHourApp();
+
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(20);
+        grid.setPadding(new Insets(10, 10, 10, 10));
 
         Button play = new Button();
         play.setMinSize(230,50);
@@ -29,19 +49,11 @@ public class Menu extends Application {
         play.setText("Play");
 
         Button instruct = new Button();
-        //instruct.setMinWidth(100);
         instruct.setMinSize(230,50);
         instruct.setFont(new Font(25));
         instruct.setText("Instructions");
 
-        Button option = new Button();
-        //option.setMinWidth(100);
-        option.setMinSize(230,50);
-        option.setFont(new Font(25));
-        option.setText("Options");
-
         Button exit = new Button();
-        //exit.setMinWidth(100);
         exit.setMinSize(230,50);
         exit.setFont(new Font(25));
         exit.setText("Exit");
@@ -63,6 +75,7 @@ public class Menu extends Application {
                 }
             }
         });
+
         diffBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> list) {
@@ -79,12 +92,6 @@ public class Menu extends Application {
             }
         });
 
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(20);
-        grid.setPadding(new Insets(10, 10, 10, 10));
-
         play.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -93,7 +100,6 @@ public class Menu extends Application {
                     Stage secondaryStage = new Stage();
                     secondaryStage.setTitle("Rush Hour");
                     gameBoard.start(secondaryStage);
-                    //test.start(primaryStage)
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -111,32 +117,12 @@ public class Menu extends Application {
             }
         });
 
-        option.setOnAction( new EventHandler<ActionEvent>() { // change this later
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    //Victory vict = new Victory();
-                    //Stage secondaryStage = new Stage();
-                    //secondaryStage.setTitle("Victory");
-                    //vict.start(secondaryStage);
-                    Options option = new Options();
-                    Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Options");
-                    option.start(secondaryStage);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-                
-            }
-        });
-
         exit.setOnAction(e -> Platform.exit());
 
         grid.add(play, 0, 0);
         grid.add(diffBox, 0, 1);
         grid.add(instruct, 0, 2);
-        grid.add(option,0,3);
-        grid.add(exit, 0, 4);
+        grid.add(exit, 0, 3);
 
         ImageView imv = new ImageView();
         Image menuPicture = new Image("images/menu2.png");
@@ -145,23 +131,13 @@ public class Menu extends Application {
         grid.setBackground(new Background( new BackgroundImage(menuPicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         Scene scenes = new Scene(grid,600,600);
-        scenes.setOnKeyPressed(ke -> { // remove this later
-            KeyCode keyCode = ke.getCode();
-            if (keyCode.equals(KeyCode.ESCAPE)) {
-                Pause paused = new Pause();
-                Stage secondaryStage = new Stage();
-                secondaryStage.setTitle("Pause");
-                paused.start(secondaryStage);
-            }
-        });
-
         Rectangle2D screenBounds = getPrimary().getVisualBounds();
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setX((screenBounds.getWidth() - (600)) / 2);
         primaryStage.setY((screenBounds.getHeight() - (600)) / 2);
         primaryStage.setScene(scenes);
         primaryStage.setTitle("Rush Hour");
-        //primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     
