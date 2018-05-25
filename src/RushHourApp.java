@@ -17,6 +17,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 
+import java.lang.reflect.Array;
+import java.util.Queue;
+import java.util.PriorityQueue;
+
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -51,21 +55,18 @@ public class RushHourApp extends Application{
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         root.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
-        StateSearch state = new StateSearch();
-        StateNode endState = state.generateEndState(6);
-        StateNode startState;
-        state.generateStateSpace(endState);
-        startState = state.generateStartState(endState);
 
-        while(startState == null){
-            endState = state.generateEndState(6);
-            state.generateStateSpace(endState);
-            startState = state.generateStartState(endState);
-        }
+        // generation section
 
-        //state.printState(startState);
+        // create an queue to store the easy
+        PriorityQueue<StateNode> easy = new PriorityQueue<StateNode>();
 
-        for(Vehicle item: startState.getVehicles()){
+        Levels t1 = new Levels(easy);
+        t1.start();
+
+        StateNode a = easy.poll();
+
+        for(Vehicle item: a.getVehicles()){
             MainPiece car;
             if(item.getDirection() == Direction.west){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
@@ -83,8 +84,8 @@ public class RushHourApp extends Application{
                     new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                        	
-                            // removes previous effect when new car is choosen 
+
+                            // removes previous effect when new car is choosen
                     		ptr.setEffect(null);
 
 		                    DropShadow borderGlow = new DropShadow();
@@ -96,7 +97,7 @@ public class RushHourApp extends Application{
 
                 		    // change new pointer
     		                ptr = car;
-    		                // make selected car glow 
+    		                // make selected car glow
             		        car.setEffect(borderGlow);
                         }
                     });
@@ -105,7 +106,6 @@ public class RushHourApp extends Application{
         }
 
         ptr = pieces.get(0);
-
         return root;
                                    }
 
