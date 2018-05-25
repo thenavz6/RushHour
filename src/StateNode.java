@@ -7,7 +7,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import java.util.Objects;
 
-
+/**
+ * State Node Class
+ * Creates a board state of the game that can be changed
+ * Writes a byte array and reads it to check if two board states
+ * are equal.
+ */
 public class StateNode implements Serializable{
 
     private ArrayList<ArrayList<Vehicle>> state;
@@ -150,16 +155,6 @@ public class StateNode implements Serializable{
             }
         }
         return eq;
-    }
-
-    /**
-     * TODO: ???
-     * @return
-     */
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(state);
     }
 
     /**

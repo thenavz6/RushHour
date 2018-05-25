@@ -140,7 +140,7 @@ public class Menu extends Application {
     public String getDifficulty(){
         return difficulty;
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }

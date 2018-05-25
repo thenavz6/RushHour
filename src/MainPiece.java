@@ -270,7 +270,10 @@ public class MainPiece extends Rectangle {
     }
 
     /**
-     * TODO: ?????
+     * When a piece moves on the board update the co ordinate data on
+     * the piece, writing where it is located on the board so that the
+     * game state can find which located that piece is now at after
+     * the user has moved it.
      */
     public void updateCoords(){
         if(this.direction.equals("v")){

@@ -12,7 +12,6 @@ public class Vehicle implements Serializable{
     private int id;
     private VehicleType type;
     private Colour colour;
-    private Coordinates coordinates;
     private int frontRow;
     private int frontColumn;
     private int midRow;
@@ -28,6 +27,7 @@ public class Vehicle implements Serializable{
      * @param row row of front of vehicle
      * @param column column of front of vehicle
      * @param direction direction vehicle is facing
+     * @param id unique id of the vehicle
      */
     public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction, int id) {
         this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0)+""+direction.toString().charAt(0);
@@ -36,7 +36,6 @@ public class Vehicle implements Serializable{
         this.frontRow = row;
         this.frontColumn = column;
         this.direction = direction;
-        this.coordinates = new Coordinates(row,column);
         this.id = id;
         updateCoordinates();
     }
@@ -49,17 +48,21 @@ public class Vehicle implements Serializable{
         return type;
     }
 
+    /**
+     * Gets the vehicle id
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Set the vehicle unique id
+     * @param i
+     */
     public void setId(int i){
         this.id = i;
 
-    }
-
-    public Coordinates getCoordinates() {
-        return coordinates;
     }
 
     /**
@@ -387,6 +390,11 @@ public class Vehicle implements Serializable{
         return eq;
     }
 
+    /**
+     * Gets which way the vehicle is positioned
+     * either facing vertical or horizontal.
+     * @return direction
+     */
     public String getOrientation(){
         if(this.direction == Direction.north || this.direction == Direction.south){
             return "v";
@@ -395,7 +403,10 @@ public class Vehicle implements Serializable{
         }
     }
 
-
+    /**
+     * Get name of the vehicle
+     * @return name
+     */
     public String getName(){
         return this.name;
     }

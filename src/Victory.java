@@ -88,6 +88,21 @@ public class Victory extends Application {
         Button nextPuzzle = new Button();
         nextPuzzle.setText("New Puzzle");
         nextPuzzle.setMinWidth(100);
+        nextPuzzle.setOnAction(e -> {
+            try {
+                Stage gameStage = statGetter.getTestStage();
+                timeGet.setPauseTime(0); // same for restart and new level
+                statGetter.setStopControls(false);
+                gameStage.close();
+                stage.close();
+                RushHourApp newGame = new RushHourApp();
+                Stage secondaryStage = new Stage();
+                secondaryStage.setTitle("Rush Hour");
+                newGame.start(secondaryStage);
+                } catch (Exception f) {
+                    f.printStackTrace();
+                }
+        });
         Label minuteLabel = new Label(Integer.toString(movesTaken));
         minuteLabel.setFont(new Font(25));
         minuteLabel.setTranslateY(85);

@@ -37,8 +37,8 @@ public class Instructions extends Application {
 
         VBox box = new VBox();
         Button back = new Button();
-        back.setText("Return");
-        back.setMinWidth(100);
+        back.setGraphic(new ImageView("images/barrow.png"));
+        back.setBackground(null);
         back.setOnAction(e -> stage.hide());
         box.getChildren().add(back);
         borderPane.setBottom(box);

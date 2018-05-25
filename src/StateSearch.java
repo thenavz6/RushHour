@@ -13,6 +13,15 @@ public class StateSearch {
     private Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,generator.nextInt(2)+1,Direction.east,1);
     private Stack<StateNode> movements = new Stack<>();
 
+    /**
+     * Function used to solve the board state
+     * Once the startState is given, go through all the possible
+     * combinations, adding each move to the queue and seeing if
+     * reaching the end state is possible. Once all possible moves
+     * have been done, finish the function
+     * @param startState current board state
+     * @return false once all moves have been completed
+     */
     public boolean solve(StateNode startState){
 
         movements.clear();
@@ -47,10 +56,18 @@ public class StateSearch {
         return true;
     }
 
+    /**
+     * Getter for board movements
+     * @return movements
+     */
     public Stack<StateNode> getMovementList(){
         return movements;
     }
 
+    /**
+     * Print out the amount of moves to complete the board
+     * @param movements Possible board state movements
+     */
     public void printMoves(Stack<StateNode> movements){
         int i = 1;
         for(StateNode item: movements){
@@ -60,10 +77,20 @@ public class StateSearch {
         }
     }
 
+    /**
+     * Getter for the solution of the puzzle
+     * @return first element of movements
+     */
     public StateNode getEndState(){
         return movements.firstElement();
     }
 
+    /**
+     * Get the neighbouring moves for the current state of the board
+     * Copies the neighbour board state and returns it.
+     * @param state Current state of the board
+     * @return result A arraylist containing the neighbour board state
+     */
     public ArrayList<StateNode> getNeighbours(StateNode state){
         ArrayList<StateNode> result = new ArrayList<>();
         StateNode stateCopy = state.deepCopy();
@@ -86,6 +113,15 @@ public class StateSearch {
         return result;
     }
 
+    /**
+     * Move the piece in the board while generating solution for it
+     * Moves the vehicle specified in the board and stores the
+     * new board position in a new child board state.
+     * @param childState Previous board state
+     * @param vehicle vehicle that needs to be moved
+     * @param results arrayList of the neighbour states
+     * @param direction which direction to move the vehicle
+     */
     public void move(StateNode childState, Vehicle vehicle, ArrayList<StateNode> results, String direction){
         StateNode childStatetoAdd = childState.deepCopy();
         Vehicle vehicleCopy = null;
@@ -121,6 +157,16 @@ public class StateSearch {
         }
     }
 
+    /**
+     * Check if moving the vehicle piece is possible and the same as the
+     * previous generated board state. Checks the vehicle direction and moves it
+     * then checks if the childState and the new State match up.
+     * @param childState new board state
+     * @param vehicle vehicle that is being moved
+     * @param direction direction of the vehicle movement
+     * @return true if the board states match
+     * @return false if the board state doesn't match
+     */
     public boolean checkMove(StateNode childState, Vehicle vehicle, String direction){
         Vehicle memory = vehicle.deepCopy();
         StateNode testState = childState.deepCopy();
@@ -160,6 +206,17 @@ public class StateSearch {
         return false;
     }
 
+    /**
+     * Generates a new empty board state to get populated.
+     * Once a empty board is present, based on the difficulty the user has selected
+     * Put the appropriate amount of cars that needs to be generated on the board.
+     * Check if the new board is solvable and the possible moves that the user could do
+     * If it isnt, move around vehicle or remove some until a new puzzle that can be solved
+     * is generated for the user to play.
+     * @param numberOfCars how many cars that needs to be generated
+     * @param difficulty difficulty the user has selected
+     * @return goalState A board that has been randomly generated for a difficulty setting
+     */
     public StateNode generateStartState(int numberOfCars, String difficulty){
 
         endState.clear();
@@ -242,6 +299,13 @@ public class StateSearch {
         return goalState;
     }
 
+    /**
+     * Check if the current board state has the appropriate amount of cars
+     * Used for the puzzle generation to check if it is solvable.
+     * @param vehicles Vehicle array
+     * @return true if even amount of vehicles
+     * @return false if odd amount of vehicles
+     */
     public boolean checkEven(ArrayList<Vehicle> vehicles){
         int hCount = 0;
         int vCount = 0;
@@ -259,6 +323,14 @@ public class StateSearch {
         }
     }
 
+    /**
+     * Update the current board state with new vehicles and old vehicles
+     * this is used to test if the current state can be solved and moves around
+     * the pieces while generating the board
+     * @param state Current State of the board
+     * @param newVehicle new Vehicle to be added to the board
+     * @param oldVehicle old Vehicle to be removed from the board
+     */
     public void updateSate(StateNode state, Vehicle newVehicle, Vehicle oldVehicle){
 
         state.getState().get(oldVehicle.getFrontRow()).set(oldVehicle.getFrontColumn(),emptyVehicle);
@@ -276,6 +348,17 @@ public class StateSearch {
 
     }
 
+    /**
+     * Checks the board state and the given variables to see if the
+     * vehicle piece is at the current location.
+     * Used to see if pieces are in the correct location
+     * @param row Board row position
+     * @param column Board column position
+     * @param direction direction the piece is facing
+     * @param type vehicle type of the piece
+     * @return true if all the coordinates are correct
+     * @return false if it doesn't match up with the given coordinates
+     */
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
         if(row > 5 || column > 5 || row < 0 || column < 0){
 
@@ -423,6 +506,13 @@ public class StateSearch {
         return true;
     }
 
+    /**
+     * Print the board state in the output.
+     * The array is represented as a 3 char string
+     * that is used to represent which colour and vehicle
+     * it is or if its a empty space.
+     * @param state
+     */
     public void printState(StateNode state){
 
         for(ArrayList<Vehicle> row: state.getState()){
