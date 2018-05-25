@@ -1,14 +1,11 @@
-import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
-import java.io.File;
 import java.nio.file.Paths;
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.shape.Path;
+
 
 
 public class MainPiece extends Rectangle {
