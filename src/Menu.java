@@ -32,6 +32,9 @@ public class Menu extends Application {
      * Has buttons for the user to use i.e. Play, Instructions and Exit.
      * @param primaryStage Stage to display the GUI of the main menu
      */
+
+    static String difficulty;
+
     @Override
     public void start(Stage primaryStage) {
         RushHourApp gameBoard = new RushHourApp();
@@ -96,6 +99,7 @@ public class Menu extends Application {
                 primaryStage.hide();
                 Stage secondaryStage = new Stage();
                 secondaryStage.setTitle("Rush Hour");
+                difficulty = diffBox.getValue();
                 gameBoard.start(secondaryStage);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -132,7 +136,10 @@ public class Menu extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
-    
+
+    public String getDifficulty(){
+        return difficulty;
+    }
     
     public static void main(String[] args) {
         launch(args);

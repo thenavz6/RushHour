@@ -207,7 +207,6 @@ public class Vehicle implements Serializable{
                         this.midRow--;
                         this.backRow--;
                     }
-                   // System.out.println("Moved " + this.name + " up 1");
                     updateCoordinates();
                     return true;
                 }
@@ -233,7 +232,6 @@ public class Vehicle implements Serializable{
                         this.midRow++;
                         this.backRow++;
                     }
-                    //System.out.println("Moved " + this.name + "down 1");
                     updateCoordinates();
                     return true;
                 }
@@ -259,7 +257,6 @@ public class Vehicle implements Serializable{
                         this.midColumn--;
                         this.backColumn--;
                     }
-                    //System.out.println("Moved " + this.name + "left 1");
                     updateCoordinates();
                     return true;
                 }

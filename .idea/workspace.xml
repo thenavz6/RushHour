@@ -2,49 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3659bc4-ef32-4be4-8ab8-c86433127237" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml.orig" afterPath="" />
       <change beforePath="$PROJECT_DIR$/RushHour.iml" afterPath="$PROJECT_DIR$/RushHour.iml" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Colour.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Colour.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Direction.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Direction.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/GenerateStartState.class" afterPath="$PROJECT_DIR$/out/production/RushHour/GenerateStartState.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Instructions.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Instructions.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/MainPiece.class" afterPath="$PROJECT_DIR$/out/production/RushHour/MainPiece.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$1.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$2$1.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$2$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$2.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$3.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$4.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$4.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$5.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu$5.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Menu.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Options.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Options.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$1.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$2.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$3.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$4.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Pause$4.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Pause.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$1.class" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$2.class" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$2.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp.class" afterPath="$PROJECT_DIR$/out/production/RushHour/RushHourApp.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/StateNode.class" afterPath="$PROJECT_DIR$/out/production/RushHour/StateNode.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/StateSearch.class" afterPath="$PROJECT_DIR$/out/production/RushHour/StateSearch.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RushHour/Vehicle.class" afterPath="$PROJECT_DIR$/out/production/RushHour/Vehicle.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/VehicleType.class" afterPath="$PROJECT_DIR$/out/production/RushHour/VehicleType.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/random.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/return_arrow.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/road.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/road2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/title.png" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/GenerateStartState.java" afterPath="$PROJECT_DIR$/src/GenerateStartState.java" />
-      <change beforePath="$PROJECT_DIR$/src/MainPiece.java" afterPath="$PROJECT_DIR$/src/MainPiece.java" />
-      <change beforePath="$PROJECT_DIR$/src/Pause.java" afterPath="$PROJECT_DIR$/src/Pause.java" />
+      <change beforePath="$PROJECT_DIR$/src/Levels.java" afterPath="$PROJECT_DIR$/src/Levels.java" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" afterPath="$PROJECT_DIR$/src/Menu.java" />
       <change beforePath="$PROJECT_DIR$/src/RushHourApp.java" afterPath="$PROJECT_DIR$/src/RushHourApp.java" />
-      <change beforePath="$PROJECT_DIR$/src/StateNode.java" afterPath="$PROJECT_DIR$/src/StateNode.java" />
       <change beforePath="$PROJECT_DIR$/src/StateSearch.java" afterPath="$PROJECT_DIR$/src/StateSearch.java" />
-      <change beforePath="$PROJECT_DIR$/src/Victory.java" afterPath="$PROJECT_DIR$/src/Victory.java" />
-      <change beforePath="$PROJECT_DIR$/src/images/grid.png" afterPath="$PROJECT_DIR$/src/images/grid.png" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicle.java" afterPath="$PROJECT_DIR$/src/Vehicle.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/RushHour$Menu.coverage" NAME="Menu Coverage Results" MODIFIED="1526964028663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/RushHour$Menu.coverage" NAME="Menu Coverage Results" MODIFIED="1527245515045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/RushHour$RushHourApp.coverage" NAME="RushHourApp Coverage Results" MODIFIED="1526987979086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
@@ -63,8 +31,31 @@
       <file leaf-file-name="RushHourApp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+            <state relative-caret-position="460">
+              <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+              <folding>
+                <element signature="e#7661#7662#0" expanded="true" />
+                <element signature="e#7690#7691#0" expanded="true" />
+                <element signature="e#7747#7748#0" expanded="true" />
+                <element signature="e#7795#7796#0" expanded="true" />
+                <element signature="e#7832#7833#0" expanded="true" />
+                <element signature="e#7864#7865#0" expanded="true" />
+                <element signature="e#7898#7899#0" expanded="true" />
+                <element signature="e#7930#7931#0" expanded="true" />
+                <element signature="e#7964#7965#0" expanded="true" />
+                <element signature="e#7997#7998#0" expanded="true" />
+                <element signature="e#8046#8047#0" expanded="true" />
+                <element signature="e#8074#8075#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Levels.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Levels.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="21" column="78" lean-forward="false" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +66,8 @@
       <file leaf-file-name="Directions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Directions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+            <state relative-caret-position="46">
+              <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -86,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/src/Direction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23">
-              <caret line="1" column="33" lean-forward="false" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+              <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -95,9 +86,12 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2760">
-              <caret line="143" column="57" lean-forward="false" selection-start-line="143" selection-start-column="57" selection-end-line="143" selection-end-column="57" />
-              <folding />
+            <state relative-caret-position="686">
+              <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+              <folding>
+                <element signature="e#5111#5112#0" expanded="true" />
+                <element signature="e#5144#5145#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,19 +99,28 @@
       <file leaf-file-name="Vehicle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Vehicle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3128">
-              <caret line="172" column="29" lean-forward="false" selection-start-line="172" selection-start-column="29" selection-end-line="172" selection-end-column="29" />
+            <state relative-caret-position="307">
+              <caret line="247" column="47" lean-forward="false" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="47" />
               <folding>
-                <element signature="e#980#981#0" expanded="true" />
-                <element signature="e#1005#1006#0" expanded="true" />
                 <element signature="method#setFrontRow#0;class#Vehicle#0" expanded="false" />
                 <element signature="method#setFrontColumn#0;class#Vehicle#0" expanded="false" />
+                <element signature="method#moveUpOne#0;class#Vehicle#0" expanded="false" />
+                <element signature="method#moveDownOne#0;class#Vehicle#0" expanded="false" />
+                <element signature="method#moveLeftOne#0;class#Vehicle#0" expanded="false" />
                 <element signature="method#deepCopy#0;class#Vehicle#0" expanded="false" />
                 <element signature="method#getOrientation#0;class#Vehicle#0" expanded="false" />
-                <element signature="e#9685#9686#0" expanded="true" />
-                <element signature="e#9717#9718#0" expanded="true" />
                 <element signature="method#toString#0;class#Vehicle#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="output.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="2861" column="0" lean-forward="false" selection-start-line="2861" selection-start-column="0" selection-end-line="2861" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,11 +128,14 @@
       <file leaf-file-name="StateSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StateSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4528">
-              <caret line="210" column="23" lean-forward="false" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="23" />
+            <state relative-caret-position="268">
+              <caret line="233" column="391" lean-forward="false" selection-start-line="233" selection-start-column="391" selection-end-line="233" selection-end-column="391" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#printState#0;class#StateSearch#0" expanded="false" />
+                <element signature="e#1743#1744#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+                <element signature="e#2036#2037#0" expanded="true" />
+                <element signature="e#2083#2084#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,8 +144,8 @@
       <file leaf-file-name="GenerateStartState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GenerateStartState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="184">
+              <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -148,7 +154,7 @@
       <file leaf-file-name="StateNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StateNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
+            <state relative-caret-position="1656">
               <caret line="95" column="23" lean-forward="false" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
               <folding>
                 <element signature="method#printState#0;class#StateNode#0" expanded="false" />
@@ -201,15 +207,16 @@
         <option value="$PROJECT_DIR$/src/Pause.java" />
         <option value="$PROJECT_DIR$/src/Instructions.java" />
         <option value="$PROJECT_DIR$/src/MainPiece.java" />
-        <option value="$PROJECT_DIR$/src/Menu.java" />
         <option value="$PROJECT_DIR$/src/StateNode.java" />
         <option value="$PROJECT_DIR$/src/Direction.java" />
         <option value="$PROJECT_DIR$/src/Coordinates.java" />
         <option value="$PROJECT_DIR$/src/Directions.java" />
-        <option value="$PROJECT_DIR$/src/Vehicle.java" />
         <option value="$PROJECT_DIR$/src/SearchNode.java" />
-        <option value="$PROJECT_DIR$/src/RushHourApp.java" />
+        <option value="$PROJECT_DIR$/src/Menu.java" />
         <option value="$PROJECT_DIR$/src/GenerateStartState.java" />
+        <option value="$PROJECT_DIR$/src/Levels.java" />
+        <option value="$PROJECT_DIR$/src/RushHourApp.java" />
+        <option value="$PROJECT_DIR$/src/Vehicle.java" />
         <option value="$PROJECT_DIR$/src/StateSearch.java" />
       </list>
     </option>
@@ -220,10 +227,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="878" />
+    <option name="width" value="1920" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -241,7 +248,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -259,8 +267,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -444,6 +451,7 @@
       <workItem from="1526948524174" duration="66863000" />
       <workItem from="1527076745700" duration="51298000" />
       <workItem from="1527219029842" duration="8878000" />
+      <workItem from="1527239856697" duration="8978000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed bug with piece movement">
       <created>1526293050516</created>
@@ -459,14 +467,21 @@
       <option name="project" value="LOCAL" />
       <updated>1526302912805</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge branches 'Nava' and 'master' of https://github.com/thenavz6/RushHour&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/RushHour/Colour.class&#10;#&#9;out/production/RushHour/Direction.class&#10;#&#9;out/production/RushHour/GenerateStartState.class&#10;#&#9;out/production/RushHour/Instructions.class&#10;#&#9;out/production/RushHour/MainPiece.class&#10;#&#9;out/production/RushHour/Menu$1.class&#10;#&#9;out/production/RushHour/Menu$2$1.class&#10;#&#9;out/production/RushHour/Menu$2.class&#10;#&#9;out/production/RushHour/Menu.class&#10;#&#9;out/production/RushHour/Pause.class&#10;#&#9;out/production/RushHour/RushHourApp$1.class&#10;#&#9;out/production/RushHour/RushHourApp$2.class&#10;#&#9;out/production/RushHour/RushHourApp.class&#10;#&#9;out/production/RushHour/Vehicle.class&#10;#&#9;out/production/RushHour/VehicleType.class&#10;#&#9;src/GenerateStartState.java&#10;#&#9;src/Pause.java&#10;#&#9;src/RushHourApp.java&#10;#&#9;src/StateSearch.java&#10;#&#9;src/Vehicle.java&#10;#&#9;src/Victory.java">
+      <created>1527248548936</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1527248548936</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134426000" />
+    <option name="totallyTimeSpent" value="143404000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1058" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1058" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -477,12 +492,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31643003" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39553753" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14010416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -491,33 +507,11 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985932" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31643003" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -561,32 +555,34 @@
     <MESSAGE value="Fixed bug with piece movement" />
     <MESSAGE value="Graphically generates start state." />
     <MESSAGE value="Merge branch 'master' of https://github.com/thenavz6/RushHour into Nava&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/GenerateStartState.java&#10;#&#9;src/StateSearch.java&#10;#&#9;src/Vehicle.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/thenavz6/RushHour into Nava&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/GenerateStartState.java&#10;#&#9;src/StateSearch.java&#10;#&#9;src/Vehicle.java" />
+    <MESSAGE value="Merge branches 'Nava' and 'master' of https://github.com/thenavz6/RushHour&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/RushHour/Colour.class&#10;#&#9;out/production/RushHour/Direction.class&#10;#&#9;out/production/RushHour/GenerateStartState.class&#10;#&#9;out/production/RushHour/Instructions.class&#10;#&#9;out/production/RushHour/MainPiece.class&#10;#&#9;out/production/RushHour/Menu$1.class&#10;#&#9;out/production/RushHour/Menu$2$1.class&#10;#&#9;out/production/RushHour/Menu$2.class&#10;#&#9;out/production/RushHour/Menu.class&#10;#&#9;out/production/RushHour/Pause.class&#10;#&#9;out/production/RushHour/RushHourApp$1.class&#10;#&#9;out/production/RushHour/RushHourApp$2.class&#10;#&#9;out/production/RushHour/RushHourApp.class&#10;#&#9;out/production/RushHour/Vehicle.class&#10;#&#9;out/production/RushHour/VehicleType.class&#10;#&#9;src/GenerateStartState.java&#10;#&#9;src/Pause.java&#10;#&#9;src/RushHourApp.java&#10;#&#9;src/StateSearch.java&#10;#&#9;src/Vehicle.java&#10;#&#9;src/Victory.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branches 'Nava' and 'master' of https://github.com/thenavz6/RushHour&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/RushHour/Colour.class&#10;#&#9;out/production/RushHour/Direction.class&#10;#&#9;out/production/RushHour/GenerateStartState.class&#10;#&#9;out/production/RushHour/Instructions.class&#10;#&#9;out/production/RushHour/MainPiece.class&#10;#&#9;out/production/RushHour/Menu$1.class&#10;#&#9;out/production/RushHour/Menu$2$1.class&#10;#&#9;out/production/RushHour/Menu$2.class&#10;#&#9;out/production/RushHour/Menu.class&#10;#&#9;out/production/RushHour/Pause.class&#10;#&#9;out/production/RushHour/RushHourApp$1.class&#10;#&#9;out/production/RushHour/RushHourApp$2.class&#10;#&#9;out/production/RushHour/RushHourApp.class&#10;#&#9;out/production/RushHour/Vehicle.class&#10;#&#9;out/production/RushHour/VehicleType.class&#10;#&#9;src/GenerateStartState.java&#10;#&#9;src/Pause.java&#10;#&#9;src/RushHourApp.java&#10;#&#9;src/StateSearch.java&#10;#&#9;src/Vehicle.java&#10;#&#9;src/Victory.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPiece.java" />
     <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -597,7 +593,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -612,7 +619,18 @@
         <state relative-caret-position="644">
           <caret line="40" column="20" lean-forward="false" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -629,7 +647,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -640,7 +669,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -655,7 +695,18 @@
         <state relative-caret-position="213">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -672,7 +723,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -683,7 +745,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -740,16 +813,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Options.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Options.java" />
     <entry file="file://$PROJECT_DIR$/src/Coordinates.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -783,14 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Directions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib/src.zip!/java.base/jdk/internal/util/Preconditions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -798,54 +854,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="143" column="57" lean-forward="false" selection-start-line="143" selection-start-column="57" selection-end-line="143" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="33" lean-forward="false" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Vehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="172" column="29" lean-forward="false" selection-start-line="172" selection-start-column="29" selection-end-line="172" selection-end-column="29" />
-          <folding>
-            <element signature="e#980#981#0" expanded="true" />
-            <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="method#setFrontRow#0;class#Vehicle#0" expanded="false" />
-            <element signature="method#setFrontColumn#0;class#Vehicle#0" expanded="false" />
-            <element signature="method#deepCopy#0;class#Vehicle#0" expanded="false" />
-            <element signature="method#getOrientation#0;class#Vehicle#0" expanded="false" />
-            <element signature="e#9685#9686#0" expanded="true" />
-            <element signature="e#9717#9718#0" expanded="true" />
-            <element signature="method#toString#0;class#Vehicle#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SearchNode.java" />
-    <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StateNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
+        <state relative-caret-position="1656">
           <caret line="95" column="23" lean-forward="false" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
           <folding>
             <element signature="method#printState#0;class#StateNode#0" expanded="false" />
@@ -853,17 +865,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateStartState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/output.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1507">
+        <state relative-caret-position="433">
           <caret line="2861" column="0" lean-forward="false" selection-start-line="2861" selection-start-column="0" selection-end-line="2861" selection-end-column="0" />
           <folding />
         </state>
@@ -874,13 +878,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+          <folding>
+            <element signature="e#5111#5112#0" expanded="true" />
+            <element signature="e#5144#5145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Vehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="247" column="47" lean-forward="false" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="47" />
+          <folding>
+            <element signature="method#setFrontRow#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#setFrontColumn#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#moveUpOne#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#moveDownOne#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#moveLeftOne#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#deepCopy#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#getOrientation#0;class#Vehicle#0" expanded="false" />
+            <element signature="method#toString#0;class#Vehicle#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Directions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Direction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateStartState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/StateSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4528">
-          <caret line="210" column="23" lean-forward="false" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="23" />
+        <state relative-caret-position="268">
+          <caret line="233" column="391" lean-forward="false" selection-start-line="233" selection-start-column="391" selection-end-line="233" selection-end-column="391" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#printState#0;class#StateSearch#0" expanded="false" />
+            <element signature="e#1743#1744#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#2083#2084#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Levels.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="21" column="78" lean-forward="false" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RushHourApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding>
+            <element signature="e#7661#7662#0" expanded="true" />
+            <element signature="e#7690#7691#0" expanded="true" />
+            <element signature="e#7747#7748#0" expanded="true" />
+            <element signature="e#7795#7796#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+            <element signature="e#7864#7865#0" expanded="true" />
+            <element signature="e#7898#7899#0" expanded="true" />
+            <element signature="e#7930#7931#0" expanded="true" />
+            <element signature="e#7964#7965#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8046#8047#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
           </folding>
         </state>
       </provider>

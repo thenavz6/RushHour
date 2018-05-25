@@ -99,40 +99,24 @@ public class StateSearch {
         switch(direction) {
 
             case "right":
-                System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveRightOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
                 results.add(childStatetoAdd);
-                System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
                 break;
             case "left":
-                System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveLeftOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
                 results.add(childStatetoAdd);
-                System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
                 break;
             case "up":
-                System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveUpOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
                 results.add(childStatetoAdd);
-                System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
                 break;
             case "down":
-                System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveDownOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
                 results.add(childStatetoAdd);
-                System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
                 break;
         }
     }
@@ -176,12 +160,10 @@ public class StateSearch {
         return false;
     }
 
-    public StateNode generateStartState(int numberOfCars){
+    public StateNode generateStartState(int numberOfCars, String difficulty){
 
-        System.out.println("trying to make state here");
         endState.clear();
         vehicles.clear();
-        ArrayList<Coordinates> usedCoordinates = new ArrayList<>();
         if(endState.size() != 0){
             System.out.println("Endstate is not empty");
         }
@@ -205,66 +187,18 @@ public class StateSearch {
         vehicles.add(primaryCar);
         endState.get(primaryCar.getFrontRow()).set(primaryCar.getFrontColumn(),primaryCar);
         endState.get(primaryCar.getBackRow()).set(primaryCar.getBackColumn(),primaryCar);
-        System.out.println("trying to make vehicles here");
+        int tooLong = 0;
         for(int i = vehicles.size(); i < numberOfCars ; i++){
-            System.out.println("i is" + i);
-            if(i < numberOfCars) {
-                VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
-                Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
-                Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
-                int row = generator.nextInt(6);
-                int column = generator.nextInt(6);
+            if(tooLong > 100){
+                break;
+            }
+            VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
+            Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
+            Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
+            int row = generator.nextInt(6);
+            int column = generator.nextInt(6);
 
-                int threshold = 0;
-                outterwhile:
-                while (!checkCoordinates(row, column, direction, type)) {
-                    if(threshold > 100){
-                        for(int j = 0; j < 5; j++){
-                            for(int k = 0; k < 5; k++){
-                                if(endState.get(j).get(k).getVehicleType() == VehicleType.empty && endState.get(j).get(k+1).getVehicleType() == VehicleType.empty){
-                                    type = VehicleType.car;
-                                    direction = Direction.west;
-                                    row = j;
-                                    column = k;
-                                    break outterwhile;
-                                }
-                            }
-                        }
-                    }
-                    System.out.println("checking coordinates");
-                    if(type == VehicleType.car){
-                        if(direction == Direction.north){
-                            row = generator.nextInt(5);
-                            column = getEmptyColumn(row);
-                        }else if(direction == Direction.south){
-                            row = generator.nextInt(5) + 1;
-                            column = getEmptyColumn(row);
-                        }else if(direction == Direction.east){
-                            column = generator.nextInt(5) + 1;
-                            row = getEmptyRow(column);
-                        }
-                        else if(direction == Direction.west){
-                            column = generator.nextInt(5);
-                            row = getEmptyRow(column);
-                        }
-                    }else{
-                        if(direction == Direction.north){
-                            row = generator.nextInt(4);
-                            column = getEmptyColumn(row);
-                        }else if(direction == Direction.south){
-                            row = generator.nextInt(4) + 2;
-                            column = getEmptyColumn(row);
-                        }else if(direction == Direction.east){
-                            column = generator.nextInt(4) + 2;
-                            row = getEmptyRow(column);
-                        }
-                        else if(direction == Direction.west){
-                            column = generator.nextInt(4);
-                            row = getEmptyRow(column);
-                        }
-                    }
-                    threshold++;
-                }
+            if(checkCoordinates(row,column,direction,type)){
                 Vehicle newVehicle = new Vehicle(type, colour, row, column, direction,i+1);
                 vehicles.add(newVehicle);
                 endState.get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(), newVehicle);
@@ -273,69 +207,39 @@ public class StateSearch {
                     endState.get(newVehicle.getMidRow()).set(newVehicle.getMidColumn(), newVehicle);
                 }
             }else{
-                Vehicle newVehicle = backUpGenerator();
-                while(newVehicle == null){
-                    newVehicle = backUpGenerator();
-                }
-                newVehicle.setId(i+1);
-                vehicles.add(newVehicle);
-                 endState.get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(), newVehicle);
-                endState.get(newVehicle.getBackRow()).set(newVehicle.getBackColumn(), newVehicle);
+                i--;
             }
-            System.out.println("Size of vehicle list " + vehicles.size());
+            int vehicleCount = 0;
+            for(ArrayList<Vehicle> item1: endState){
+                for(Vehicle item2: item1){
+                    if(item2.getVehicleType() != VehicleType.empty){
+                        vehicleCount++;
+                    }
+                }
+            }
+            tooLong++;
         }
 
-        System.out.println("Vehicles Made");
-        for(Vehicle item: vehicles){
-            System.out.println(item.getId());
-        }
         StateNode goalState = new StateNode(endState,null);
         goalState.addVehicles(vehicles);
 
         if(!checkEven(vehicles)){
-            goalState = generateStartState(numberOfCars);
+            goalState = generateStartState(numberOfCars,difficulty);
         }
-        if(goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty){
-            goalState = generateStartState(numberOfCars);
-        }
-        System.out.println("New Goal state Generated");
-        return goalState;
-    }
-
-    public Vehicle backUpGenerator(){
-
-        int tryAgain = 1;
-        while(tryAgain == 1) {
-            tryAgain = 0;
-            int j = generator.nextInt(5);
-            for (int k = 0; k < endState.get(j).size() - 1; k++) {
-                if (endState.get(j).get(k).getVehicleType() == VehicleType.empty && endState.get(j).get(k + 1).getVehicleType() == VehicleType.empty) {
-                    VehicleType type = VehicleType.car;
-                    Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
-                    Direction direction = Direction.west;
-                    int row = j;
-                    int column = k;
-                    if (!checkCoordinates(row, column, direction, type)) {
-                        tryAgain = 1;
-                    }else{
-                        return new Vehicle(type, colour, row, column, direction, -1);
-                    }
-                } else if (endState.get(j).get(k).getVehicleType() == VehicleType.empty && endState.get(j + 1).get(k).getVehicleType() == VehicleType.empty) {
-                    VehicleType type = VehicleType.car;
-                    Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
-                    Direction direction = Direction.north;
-                    int row = j;
-                    int column = k;
-                    if (!checkCoordinates(row, column, direction, type)) {
-                        tryAgain = 1;
-                    }else{
-                        return new Vehicle(type, colour, row, column, direction, -1);
-                    }
-                }
-
+        if(difficulty.equals("Easy")) {
+            if (goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty || goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() == VehicleType.empty ) {
+                goalState = generateStartState(numberOfCars, difficulty);
+            }
+        }else if(difficulty.equals("Medium")){
+            if (goalState.getState().get(3).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty || goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty || goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() == VehicleType.empty ) {
+                goalState = generateStartState(numberOfCars, difficulty);
+            }
+        }else if(difficulty.equals("Hard")){
+            if (goalState.getState().get(3).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty || goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty || goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 2).getVehicleType() == VehicleType.empty ) {
+                goalState = generateStartState(numberOfCars, difficulty);
             }
         }
-        return null;
+        return goalState;
     }
 
     public boolean checkEven(ArrayList<Vehicle> vehicles){
@@ -372,31 +276,13 @@ public class StateSearch {
 
     }
 
-    public int getEmptyRow(int column){
-        for(int i = 0; i < 6; i++){
-                if(endState.get(i).get(column).getVehicleType() == VehicleType.empty){
-                    return i;
-                }
-        }
-        return -1;
-    }
-
-    public int getEmptyColumn(int row){
-        for(int j = 0; j<6; j++){
-            if(endState.get(row).get(j).getVehicleType() == VehicleType.empty){
-                return j;
-            }
-        }
-        return -1;
-    }
-
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
         if(row > 5 || column > 5 || row < 0 || column < 0){
-            System.out.println("Too big or small");
+
             return false;
         }
         if(endState.get(row).get(column).getVehicleType() != VehicleType.empty){
-            System.out.println("Something here");
+
             return false;
         }
 
@@ -408,25 +294,25 @@ public class StateSearch {
                 }
             }
             if(vCount > 4){
-                System.out.println("Too many verticals");
+
                 return false;
             }
             if(type == VehicleType.car) {
                 if(row > 4){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if (endState.get(row + 1).get(column).getVehicleType() != VehicleType.empty) {
-                    System.out.println("Overlapping");
+
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(row > 3){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if((endState.get(row + 1).get(column).getVehicleType() != VehicleType.empty) || (endState.get(row + 2).get(column).getVehicleType() != VehicleType.empty)){
-                    System.out.println("Overlapping");
+
                     return false;
                 }
             }
@@ -439,25 +325,25 @@ public class StateSearch {
                 }
             }
             if(vCount > 4){
-                System.out.println("Too many verticals");
+
                 return false;
             }
             if(type == VehicleType.car) {
                 if(row < 1){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if (endState.get(row - 1).get(column).getVehicleType() != VehicleType.empty) {
-                    System.out.println("overlapping");
+
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(row < 3){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if((endState.get(row - 1).get(column).getVehicleType() != VehicleType.empty) || (endState.get(row - 2).get(column).getVehicleType() != VehicleType.empty)){
-                    System.out.println("overlapping");
+
                     return false;
                 }
             }
@@ -476,25 +362,24 @@ public class StateSearch {
             }
 
             if(hCount > 4){
-                System.out.println("Too many horizontals");
+
                 return false;
             }
             if(type == VehicleType.car) {
                 if(column < 1){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if (endState.get(row).get(column - 1).getVehicleType() != VehicleType.empty) {
-                    System.out.println("Overlapping");
+
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(column < 3){
-                    System.out.println("Out of bounds");
                     return false;
                 }
                 if((endState.get(row).get(column - 1).getVehicleType() != VehicleType.empty) || (endState.get(row).get(column - 2).getVehicleType() != VehicleType.empty)){
-                    System.out.println("Overlapping");
+
                     return false;
                 }
             }
@@ -512,25 +397,25 @@ public class StateSearch {
                 }
             }
             if(hCount > 4){
-                System.out.println("Too many horizontals");
+
                 return false;
             }
             if(type == VehicleType.car) {
                 if(column > 4){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if (endState.get(row).get(column + 1).getVehicleType() != VehicleType.empty) {
-                    System.out.println("Overlapping");
+
                     return false;
                 }
             }else if(type == VehicleType.truck){
                 if(column > 3){
-                    System.out.println("Out of bounds");
+
                     return false;
                 }
                 if((endState.get(row).get(column + 1).getVehicleType() != VehicleType.empty) || (endState.get(row).get(column + 2).getVehicleType() != VehicleType.empty)){
-                    System.out.println("Overlapping");
+
                     return false;
                 }
             }

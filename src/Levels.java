@@ -1,5 +1,6 @@
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 public class Levels implements Runnable{
 
@@ -13,16 +14,21 @@ public class Levels implements Runnable{
     public void run(){
         // generation the puzzles section
         StateSearch state = new StateSearch();
-        StateNode endState = state.generateEndState(6);
-        StateNode startState;
-        state.generateStateSpace(endState);
-        startState = state.generateStartState(endState);
+        Random generator = new Random();
+        int numberOfCars = generator.nextInt(6)+6;
+        StateNode startState = state.generateStartState(numberOfCars,Menu.difficulty);
 
-        while (startState == null) {
-            endState = state.generateEndState(6);
-            state.generateStateSpace(endState);
-            startState = state.generateStartState(endState);
+        while(!state.solve(startState)){
+            startState = state.generateStartState(numberOfCars,Menu.difficulty);
         }
+        state.solve(startState);
+        state.printMoves(state.getMovementList());
+
+        /*System.out.println("Start State: ");
+        state.printState(startState);
+        System.out.println("End State: ");
+        state.printState(state.getEndState());*/
+
         // adds it onto the Priority Queue
         // for some reason it does not add onto the queue
         q.add(startState);
