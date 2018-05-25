@@ -1,6 +1,11 @@
 import java.io.*;
 
-
+/**
+ * Vehicle Class
+ * Has the information for the vehicle object when it is on the board
+ * Used to update and get information about the piece such as the type,
+ * color, name, direction it is facing and the co ordinates on the board.
+ */
 public class Vehicle implements Serializable{
 
     private String name;
@@ -13,7 +18,6 @@ public class Vehicle implements Serializable{
     private int backRow;
     private int backColumn;
     private Direction direction;
-
 
     /**
      * constructor for Vehicle
@@ -34,23 +38,23 @@ public class Vehicle implements Serializable{
     }
 
     /**
-     * getter for vehicle type
-     * @return vehicle type (car or truck)
+     * Gets the vehicle type
+     * @return type
      */
     public VehicleType getVehicleType() {
         return type;
     }
 
     /**
-     * sets vehicle type
-     * @param type new type
+     * Sets vehicle type
+     * @param type
      */
     public void setType(VehicleType type) {
         this.type = type;
     }
 
     /**
-     * getter for colour
+     * Getter for vehicle colour
      * @return colour
      */
     public Colour getColour() {
@@ -58,31 +62,101 @@ public class Vehicle implements Serializable{
     }
 
     /**
-     * sets colour
-     * @param colour new colour
+     * Sets a new colour for the vehicle
+     * @param colour
      */
     public void setColour(Colour colour) {
         this.colour = colour;
     }
 
     /**
-     * getter for front row
-     * @return front row
+     * Getter for front row
+     * @return frontRow
      */
     public int getFrontRow() {
         return frontRow;
     }
 
     /**
-     * getter for front column
-     * @return front column
+     * Sets row for middle
+     * @param midRow
      */
-    public int getFrontColumn() {
-        return frontColumn;
+    public void setMidRow(int midRow) {
+        this.midRow = midRow;
     }
 
     /**
-     * sets row of front
+     * Sets column for middle
+     * @param midColumn
+     */
+    public void setMidColumn(int midColumn) {
+        this.midColumn = midColumn;
+    }
+
+    /**
+     * Getter for front column
+     * @return frontColumn
+     */
+    public int getFrontColumn() { return frontColumn; }
+
+    /**
+     * Getter for back row
+     * @return backRow
+     */
+    public int getBackRow() {
+        return backRow;
+    }
+
+    /**
+     * Getter for back column
+     * @return backColumn
+     */
+    public int getBackColumn() {
+        return backColumn;
+    }
+
+    /**
+     * Getter for row of middle
+     * @return midRow
+     */
+    public int getMidRow() {
+        return midRow;
+    }
+
+    /**
+     * Getter for column of middle
+     * @return midColumn
+     */
+    public int getMidColumn() {
+        return midColumn;
+    }
+
+    /**
+     * Getter for direction of the vehicle
+     * @return direction - north, south, east or west
+     */
+    public Direction getDirection() {
+        return direction;
+    }
+
+    /**
+     * Sets direction the vehicle is facing
+     * @param direction
+     */
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    /**
+     * Sets name of the vehicle
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets row of front
      * @param frontRow row of front
      */
     public void setFrontRow(int frontRow) {
@@ -91,84 +165,12 @@ public class Vehicle implements Serializable{
     }
 
     /**
-     * sets column of front
+     * Sets column of front
      * @param frontColumn column of front
      */
     public void setFrontColumn(int frontColumn) {
         this.frontColumn = frontColumn;
         updateCoordinates();
-    }
-
-    /**
-     * getter for row of middle
-     * @return middle row
-     */
-    public int getMidRow() {
-        return midRow;
-    }
-
-    /**
-     * getter for column of middle
-     * @return middle column
-     */
-    public int getMidColumn() {
-        return midColumn;
-    }
-
-    /**
-     * sets row for middle
-     * @param midRow new row
-     */
-    public void setMidRow(int midRow) {
-        this.midRow = midRow;
-    }
-
-    /**
-     * sets column for middle
-     * @param midColumn new column
-     */
-    public void setMidColumn(int midColumn) {
-        this.midColumn = midColumn;
-    }
-
-    /**
-     * getter for back row
-     * @return back row
-     */
-    public int getBackRow() {
-        return backRow;
-    }
-
-    /**
-     * getter for back column
-     * @return back column
-     */
-    public int getBackColumn() {
-        return backColumn;
-    }
-
-    /**
-     * getter for direction
-     * @return direction - north, south, east or west
-     */
-    public Direction getDirection() {
-        return direction;
-    }
-
-    /**
-     * sets direction
-     * @param direction new direction
-     */
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    /**
-     * sets name
-     * @param name new name
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -272,7 +274,8 @@ public class Vehicle implements Serializable{
     }
 
     /**
-     * TODO: ?????
+     * Updates the co ordinate location for the vehicle piece
+     * when the user moves the piece.
      */
     public void updateCoordinates(){
         if(this.direction == Direction.north){

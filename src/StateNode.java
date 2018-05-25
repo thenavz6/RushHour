@@ -10,97 +10,52 @@ import java.util.Objects;
 
 public class StateNode implements Serializable{
 
-    private ArrayList<ArrayList<Vehicle>> state;
-    private ArrayList<Vehicle> vehicles = new ArrayList<>();
-    private StateNode parent;
-    private ArrayList<StateNode> children = new ArrayList<>();
+    ArrayList<ArrayList<Vehicle>> state;
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
+    StateNode parent;
+    ArrayList<StateNode> children = new ArrayList<>();
 
-    /**
-     * Constructor for StateNode
-     * @param state Current location of all pieces on board
-     * @param parent parent node, i.e. the move before this one
-     */
     public StateNode(ArrayList<ArrayList<Vehicle>> state, StateNode parent) {
         this.state = state;
         this.parent = parent;
     }
 
-    /**
-     * adds an existing node as a child node to the current node
-     * @param childState child node
-     */
     public void addChild(StateNode childState){
         this.children.add(childState);
     }
 
-    /**
-     * adds a vehicle to the list of existing vehicles
-     * @param vehicles vehicle to be added
-     */
     public void addVehicles(ArrayList<Vehicle> vehicles){
         this.vehicles.addAll(vehicles);
     }
 
-    /**
-     * getter for list of existing vehicles
-     * @return list of existing vehicles
-     */
     public ArrayList<Vehicle> getVehicles(){
         return this.vehicles;
     }
 
-    /**
-     * getter for state
-     * @return state
-     */
     public ArrayList<ArrayList<Vehicle>> getState() {
         return state;
     }
 
-    /**
-     * changes state to new state
-     * @param state new state to be changed to
-     */
     public void setState(ArrayList<ArrayList<Vehicle>> state) {
         this.state = state;
     }
 
-    /**
-     * getter for parent node
-     * @return parent node
-     */
     public StateNode getParent() {
         return parent;
     }
 
-    /**
-     * sets a parent node for the current node
-     * @param parent parent node
-     */
     public void setParent(StateNode parent) {
         this.parent = parent;
     }
 
-    /**
-     *  getter for child nodes
-     * @return list of child nodes
-     */
     public ArrayList<StateNode> getChildren() {
         return children;
     }
 
-    /**
-     * sets child nodes
-     * @param children list of child nodes
-     */
     public void setChildren(ArrayList<StateNode> children) {
         this.children = children;
     }
 
-    /**
-     * creates a full copy of current node
-     * @return copy of node
-     */
     public StateNode deepCopy(){
 
         StateNode copy = null;
@@ -128,11 +83,6 @@ public class StateNode implements Serializable{
 
     }
 
-    /**
-     * compares two StateNodes and returns whether they're equal
-     * @param o object being compared to
-     * @return boolean true or false
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -141,19 +91,12 @@ public class StateNode implements Serializable{
         return Objects.equals(state, stateNode.state);
     }
 
-    /**
-     * TODO: ???
-     * @return
-     */
     @Override
     public int hashCode() {
 
         return Objects.hash(state);
     }
 
-    /**
-     * Prints state of current node and calls on children recursively
-     */
     public void printNode(){
         if(this.children == null) {
             printState(this);
@@ -168,10 +111,6 @@ public class StateNode implements Serializable{
         }
     }
 
-    /**
-     * prints the given state
-     * @param state state to be printed
-     */
     public void printState(StateNode state){
 
         ArrayList<Vehicle> printed = new ArrayList<>();

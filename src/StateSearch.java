@@ -4,14 +4,14 @@ import java.lang.Math;
 
 public class StateSearch {
 
-    private ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
+    ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     private ArrayList<StateNode> seen = new ArrayList<>();
     Vehicle emptyVehicle = new Vehicle(VehicleType.empty,Colour.empty,-1,-1,Direction.empty);
     Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,5,Direction.east);
     ArrayList<StateNode> allNodes = new ArrayList<>();
     private Random generator = new Random();
-    private int numnodes = 1;
+    int numnodes = 1;
 
 
 
@@ -25,11 +25,6 @@ public class StateSearch {
         }
     }
 
-    /**
-     * generates a starting state for the game
-     * @param state end state //TODO: ???
-     * @return startState, or null if unsuccessful
-     */
     public StateNode generateStartState(StateNode state){
         for(StateNode item: allNodes){
             if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() != VehicleType.empty){
@@ -39,10 +34,6 @@ public class StateSearch {
         return null;
     }
 
-    /**
-     * Constructor for StateSearch
-     * @param endState state of all vehicles for win condition
-     */
     public void generateStateSpace(StateNode endState){
 
         Queue<StateNode> nodes = new ConcurrentLinkedDeque<>();
@@ -50,7 +41,7 @@ public class StateSearch {
         nodes.add(endState);
 
         while(!nodes.isEmpty() && iteration < 20) {
-           // System.out.println("iteration = " + iteration);
+            // System.out.println("iteration = " + iteration);
             StateNode currentNode = nodes.poll();
             //System.out.println("vehicle = " + item);
             //printState(currentNode);
@@ -119,15 +110,6 @@ public class StateSearch {
 
     }
 
-
-
-
-    /**
-     * TODO: ??????
-     * @param state
-     * @param newVehicle
-     * @param oldVehicle
-     */
     public void updateSate(StateNode state, Vehicle newVehicle, Vehicle oldVehicle){
 
         state.getState().get(oldVehicle.getFrontRow()).set(oldVehicle.getFrontColumn(),emptyVehicle);
@@ -145,11 +127,6 @@ public class StateSearch {
 
     }
 
-    /**
-     * generates end positions for all vehicles
-     * @param numberOfCars total number of cars on board
-     * @return node for end state
-     */
     public StateNode generateEndState(int numberOfCars){
 
         endState = new ArrayList<>();
@@ -166,11 +143,27 @@ public class StateSearch {
 
         }
 
-        addVehicle(primaryCar);
+        vehicles.add(primaryCar);
+        endState.get(primaryCar.getFrontRow()).set(primaryCar.getFrontColumn(),primaryCar);
+        endState.get(primaryCar.getBackRow()).set(primaryCar.getBackColumn(),primaryCar);
 
         for(int i = vehicles.size(); i < numberOfCars ; i++){
-            Vehicle newVehicle = generateVehicle();
-            addVehicle(newVehicle);
+            VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
+            Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
+            Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
+            int row = generator.nextInt(6);
+            int column = generator.nextInt(6);
+            while(!checkCoordinates(row,column,direction,type)){
+                row = generator.nextInt(6);
+                column = generator.nextInt(6);
+            }
+            Vehicle newVehicle = new Vehicle(type,colour,row,column,direction);
+            vehicles.add(newVehicle);
+            endState.get(newVehicle.getFrontRow()).set(newVehicle.getFrontColumn(),newVehicle);
+            endState.get(newVehicle.getBackRow()).set(newVehicle.getBackColumn(),newVehicle);
+            if(type == VehicleType.truck) {
+                endState.get(newVehicle.getMidRow()).set(newVehicle.getMidColumn(), newVehicle);
+            }
         }
 
         StateNode goalState = new StateNode(endState,null);
@@ -192,14 +185,6 @@ public class StateSearch {
         return goalState;
     }
 
-    /**
-     * TODO: ?????
-     * @param row
-     * @param column
-     * @param direction
-     * @param type
-     * @return
-     */
     public boolean checkCoordinates(int row, int column, Direction direction,VehicleType type){
 
         if(endState.get(row).get(column).getVehicleType() != VehicleType.empty){
@@ -312,10 +297,6 @@ public class StateSearch {
         return true;
     }
 
-    /**
-     * prints state to standard output
-     * @param state
-     */
     public void printState(StateNode state){
 
         for(ArrayList<Vehicle> row: state.getState()){
@@ -327,40 +308,5 @@ public class StateSearch {
         System.out.print("\n");
     }
 
-    /**
-     * adds a vehicle to node
-     * @param newVehicle vehicle to be added
-     */
-    private void addVehicle(Vehicle newVehicle){
-        vehicles.add(newVehicle);
-        int frontRow = newVehicle.getFrontRow();
-        int frontCol = newVehicle.getFrontColumn();
-        int backRow = newVehicle.getBackRow();
-        int backCol = newVehicle.getBackColumn();
-        if(newVehicle.getVehicleType() == VehicleType.truck) {
-            int midRow = newVehicle.getMidRow();
-            int midCol = newVehicle.getMidColumn();
-            endState.get(midRow).set(midCol, newVehicle);
-        }
-        endState.get(frontRow).set(frontCol,newVehicle);
-        endState.get(backRow).set(backCol,newVehicle);
-    }
-
-    /**
-     * generates a semi-random vehicle in a valid position
-     * @return new vehicle
-     */
-    private Vehicle generateVehicle(){
-        VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
-        Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
-        Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
-        int row = generator.nextInt(6);
-        int column = generator.nextInt(6);
-        while(!checkCoordinates(row,column,direction,type)){
-            row = generator.nextInt(6);
-            column = generator.nextInt(6);
-        }
-        return new Vehicle(type,colour,row,column,direction);
-    }
 
 }
