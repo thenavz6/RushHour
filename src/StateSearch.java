@@ -6,232 +6,87 @@ import java.lang.Math;
 
 public class StateSearch {
 
-    ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
+    private ArrayList<ArrayList<Vehicle>> endState = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
-    private ArrayList<StateNode> seen = new ArrayList<>();
-    Vehicle emptyVehicle = new Vehicle(VehicleType.empty,Colour.empty,-1,-1,Direction.nan,-1);
-    ArrayList<StateNode> allNodes = new ArrayList<>();
+    private Vehicle emptyVehicle = new Vehicle(VehicleType.empty,Colour.empty,-1,-1,Direction.nan,-1);
     private Random generator = new Random();
-    Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,generator.nextInt(2)+1,Direction.east,1);
-    int numnodes = 1;
+    private Vehicle primaryCar = new Vehicle(VehicleType.car,Colour.red,2,generator.nextInt(2)+1,Direction.east,1);
+    private Stack<StateNode> movements = new Stack<>();
 
-    public void solve(StateNode goalState, StateNode startState){
-        for(Vehicle item: goalState.getVehicles()){
-            System.out.print(item + " ");
+    public boolean solve(StateNode startState){
+
+        movements.clear();
+        Queue<StateNode> queue = new ConcurrentLinkedDeque<>();
+        ArrayList<StateNode> explored = new ArrayList<>();
+        StateNode startCopy = startState.deepCopy();
+        startCopy.setParent(null);
+        queue.add(startCopy);
+        StateNode currentNode = null;
+        while (!queue.isEmpty()) {
+            currentNode = queue.poll();
+            if (explored.contains(currentNode)) continue;
+            if (currentNode.getVehicles().get(0).getFrontColumn() == 5) break;
+            explored.add(currentNode);
+
+            for (StateNode item: getNeighbours(currentNode)) {
+                if (!explored.contains(item))
+                    queue.add(item);
+                    item.setParent(currentNode);
+            }
         }
 
-        for(Vehicle item: startState.getVehicles()){
-            System.out.print(item + " ");
+        if (queue.isEmpty()) return false;
+
+        StateNode prev = currentNode;
+
+        while (prev != null) {
+            movements.push(prev);
+            prev = prev.getParent();
+        }
+
+        return true;
+    }
+
+    public Stack<StateNode> getMovementList(){
+        return movements;
+    }
+
+    public void printMoves(Stack<StateNode> movements){
+        int i = 1;
+        for(StateNode item: movements){
+            System.out.println("Move " + i);
+            printState(item);
+            i++;
         }
     }
 
-    public StateNode generateStartState(StateNode endState){
-        for(StateNode item: allNodes){
-            if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType()!=VehicleType.empty && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 2).getVehicleType()!=VehicleType.empty){
-                return item;
-            }else if(item.getVehicles().get(0).getFrontColumn() < 4 && item.getState().get(2).get(item.getVehicles().get(0).getFrontColumn() + 1).getVehicleType()!=VehicleType.empty){
-                return item;
-            }
-        }
-        return null;
+    public StateNode getEndState(){
+        return movements.firstElement();
     }
 
-    public ArrayList<Vehicle> neighbours(Vehicle vehicle, StateNode state){
-        int vehicleFrontColumn = vehicle.getFrontColumn();
-        int vehicleFrontRow = vehicle.getFrontRow();
-        int vehicleBackColumn = vehicle.getBackColumn();
-        int vehicleBackRow = vehicle.getBackRow();
-        ArrayList<Vehicle> neighbours = new ArrayList<>();
+    public ArrayList<StateNode> getNeighbours(StateNode state){
+        ArrayList<StateNode> result = new ArrayList<>();
+        StateNode stateCopy = state.deepCopy();
 
-        if(vehicle.getDirection() == Direction.north){
-            if(vehicleFrontRow - 1 < 0){
-                neighbours.add(state.getState().get(vehicleBackRow + 1).get(vehicleFrontColumn));
-            }else if(vehicleBackRow + 1 > 5){
-                neighbours.add(state.getState().get(vehicleFrontRow - 1).get(vehicleFrontColumn));
-            }
-            else {
-                neighbours.add(state.getState().get(vehicleFrontRow - 1).get(vehicleFrontColumn));
-                neighbours.add(state.getState().get(vehicleBackRow + 1).get(vehicleFrontColumn));
-            }
-        }else if(vehicle.getDirection() == Direction.south) {
-            if (vehicleFrontRow + 1 > 5) {
-                neighbours.add(state.getState().get(vehicleBackRow - 1).get(vehicleFrontColumn));
-            } else if (vehicleBackRow - 1 > 5){
-                neighbours.add(state.getState().get(vehicleFrontRow + 1).get(vehicleFrontColumn));
-            } else{
-                neighbours.add(state.getState().get(vehicleBackRow - 1).get(vehicleFrontColumn));
-                neighbours.add(state.getState().get(vehicleFrontRow + 1).get(vehicleFrontColumn));
-            }
-        }else if(vehicle.getDirection() == Direction.east){
-
-            if(vehicleFrontColumn + 1 > 5){
-                neighbours.add(state.getState().get(vehicleBackRow).get(vehicleBackColumn - 1));
-            }else if(vehicleBackColumn - 1 < 0){
-                neighbours.add(state.getState().get(vehicleFrontRow).get(vehicleFrontColumn + 1));
+        for(Vehicle item: stateCopy.getVehicles()){
+            if(item.getOrientation().equals("v")){
+                if(checkMove(stateCopy,item,"up")){
+                    move(stateCopy,item, result, "up");
+                }if(checkMove(stateCopy,item,"down")){
+                    move(stateCopy,item, result, "down");
+                }
             }else{
-                neighbours.add(state.getState().get(vehicleFrontRow).get(vehicleFrontColumn + 1));
-                neighbours.add(state.getState().get(vehicleBackRow).get(vehicleBackColumn - 1));
-            }
-
-        }else if(vehicle.getDirection() == Direction.west){
-            if(vehicleFrontColumn - 1 < 0){
-                neighbours.add(state.getState().get(vehicleBackRow).get(vehicleBackColumn + 1));
-            }else if(vehicleBackColumn + 1 > 5){
-                neighbours.add(state.getState().get(vehicleFrontRow).get(vehicleFrontColumn - 1));
-            }else {
-                neighbours.add(state.getState().get(vehicleFrontRow).get(vehicleFrontColumn - 1));
-                neighbours.add(state.getState().get(vehicleBackRow).get(vehicleBackColumn + 1));
-            }
-        }
-
-        for(int i = 0; i < neighbours.size();i++){
-            if(neighbours.get(i).getVehicleType() == VehicleType.empty){
-                neighbours.remove(i);
-            }
-        }
-
-        return neighbours;
-    }
-
-    public void generateStateSpace(StateNode endState){
-
-        Queue<StateNode> nodes = new ConcurrentLinkedDeque<>();
-        allNodes.clear();
-        seen.clear();
-        int iteration = 1;
-        nodes.add(endState);
-        Directions directionOld = null;
-        Vehicle vehicleOld = null;
-        while(!nodes.isEmpty() && iteration < 750) {
-            System.out.println("iteration = " + iteration);
-            StateNode currentNode = nodes.poll();
-            printState(currentNode);
-            int moved = 0;
-
-            int random = generator.nextInt(currentNode.getVehicles().size());
-            StateNode childState = currentNode.deepCopy();
-            Directions direction = Directions.left;
-            Vehicle vehicle = childState.getVehicles().get(0);
-            ArrayList<Vehicle> neighbours = new ArrayList<>();
-
-            if (checkMove(childState, vehicle, "left")) {
-                continue;
-            }else{
-                neighbours = neighbours(vehicle, childState);
-                vehicle = neighbours.get(generator.nextInt(neighbours.size()));
-            }
-
-            direction = randomDirection(directionOld,vehicle);
-            if(vehicle.getId() == 1){
-                direction = Directions.left;
-            }
-
-            vehicleOld = vehicle;
-            directionOld = direction;
-
-
-            while (moved < 1) {
-                System.out.println("YOU ARE THE CHOSEN VEHICLE " + vehicle.getName());
-                System.out.println("YOU ARE THE CHOSEN DIRECTION " + direction.toString());
-                System.out.println("YOU ARE THE CHOSEN STATE ");
-                printState(childState);
-                if(direction == Directions.up) {
-                    if (checkMove(childState, vehicle, "up")) {
-                        System.out.println("Can Do");
-                        move(childState, currentNode, nodes, vehicle, "up");
-                        moved++;
-                    } else {
-                        System.out.println("Cant Move " + vehicle.getName() + "  up 1");
-                        neighbours = neighbours(vehicle,childState);
-                        vehicle = neighbours.get(generator.nextInt(neighbours.size()));
-                        direction = randomDirection(directionOld,vehicle);
-                        if(vehicle.getId() == 1){
-                            direction = Directions.left;
-                        }
-                        directionOld = direction;
-                        vehicleOld = vehicle;
-                    }
-                }else if(direction == Directions.right) {
-                    if (checkMove(childState, vehicle, "right")) {
-                        System.out.println("Can Do");
-                        move(childState, currentNode, nodes, vehicle, "right");
-                        moved++;
-                    } else {
-                        System.out.println("Cant Move " + vehicle.getName() + " Right 1");
-                        neighbours = neighbours(vehicle,childState);
-                        vehicle = neighbours.get(generator.nextInt(neighbours.size()));
-                        direction = randomDirection(directionOld,vehicle);
-                        if(vehicle.getId() == 1){
-                            direction = Directions.left;
-                        }
-                        directionOld = direction;
-                        vehicleOld = vehicle;
-                    }
-                }else if(direction == Directions.down) {
-                    if (checkMove(childState, vehicle, "down")) {
-                        System.out.println("Can Do");
-                        move(childState, currentNode, nodes, vehicle, "down");
-                        moved++;
-                    } else {
-                        System.out.println("Cant Move " + vehicle.getName() + " Down 1");
-                        neighbours = neighbours(vehicle,childState);
-                        vehicle = neighbours.get(generator.nextInt(neighbours.size()));
-                        direction = randomDirection(directionOld,vehicle);
-                        if(vehicle.getId() == 1){
-                            direction = Directions.left;
-                        }
-                        directionOld = direction;
-                        vehicleOld = vehicle;
-                    }
-                }else if(direction == Directions.left) {
-                    if (checkMove(childState, vehicle, "left")) {
-                        System.out.println("Can Do");
-                        move(childState, currentNode, nodes, vehicle, "left");
-                        moved++;
-                    } else {
-                        System.out.println("Cant Move " + vehicle.getName() + " Left 1");
-                        neighbours = neighbours(vehicle,childState);
-                        vehicle = neighbours.get(generator.nextInt(neighbours.size()));
-                        direction = randomDirection(directionOld,vehicle);
-                        if(vehicle.getId() == 1){
-                            direction = Directions.left;
-                        }
-                        directionOld = direction;
-                        vehicleOld = vehicle;
-                    }
+                if(checkMove(stateCopy,item,"left")){
+                    move(stateCopy,item, result, "left");
+                }if(checkMove(stateCopy,item,"right")){
+                    move(stateCopy,item, result, "right");
                 }
             }
-            iteration++;
-            seen.add(currentNode);
         }
-        System.out.println("StateSpace Generated");
+        return result;
     }
 
-    public Directions randomDirection(Directions oldDirection, Vehicle vehicle){
-        Directions direction;
-        if(vehicle.getOrientation().equals("v")){
-            direction = Directions.values()[generator.nextInt(Directions.values().length - 2)];
-            while(direction == oldDirection) {
-                direction = Directions.values()[generator.nextInt(Directions.values().length - 2)];
-            }
-        }else{
-            direction = Directions.values()[generator.nextInt(Directions.values().length - 2) + 2];
-            while(direction == oldDirection) {
-                direction = Directions.values()[generator.nextInt(Directions.values().length - 2) + 2];
-            }
-        }
-        return direction;
-    }
-
-    public Vehicle randomVehicle(StateNode childState, Vehicle vehicleOld){
-        Vehicle vehicle = childState.getVehicles().get(generator.nextInt(childState.getVehicles().size()-1));
-        while(vehicle.getColour() == Colour.red && vehicle.equals(vehicleOld)){
-            vehicle = childState.getVehicles().get(generator.nextInt(childState.getVehicles().size()-1));
-        }
-        return vehicle;
-    }
-
-    public void move(StateNode childState, StateNode currentNode, Queue<StateNode> nodes, Vehicle vehicle, String direction){
+    public void move(StateNode childState, Vehicle vehicle, ArrayList<StateNode> results, String direction){
         StateNode childStatetoAdd = childState.deepCopy();
         Vehicle vehicleCopy = null;
         for(Vehicle item: childStatetoAdd.getVehicles()){
@@ -248,64 +103,36 @@ public class StateSearch {
                 System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveRightOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
-                currentNode.addChild(childStatetoAdd);
-                childStatetoAdd.setParent(currentNode);
-                nodes.add(childStatetoAdd);
-                allNodes.add(childStatetoAdd);
-                seen.add(childStatetoAdd);
-                System.out.println("YOU ARE THE RESULT OF THIS RIGHT MOVE ");
-                System.out.println("VEHICLE ROW AFTER" + vehicleCopy.getFrontRow());
-                System.out.println("VEHICLE COL AFTER" + vehicleCopy.getFrontColumn());
-                printState(childStatetoAdd);
-                numnodes++;
+                results.add(childStatetoAdd);
+                System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
+                System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
                 break;
             case "left":
                 System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
                 System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveLeftOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
-                currentNode.addChild(childStatetoAdd);
-                childStatetoAdd.setParent(currentNode);
-                nodes.add(childStatetoAdd);
-                allNodes.add(childStatetoAdd);
-                seen.add(childStatetoAdd);
-                System.out.println("YOU ARE THE RESULT OF LEFT THIS MOVE ");
+                results.add(childStatetoAdd);
                 System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
                 System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
-                printState(childStatetoAdd);
-                numnodes++;
                 break;
             case "up":
                 System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
                 System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveUpOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
-                currentNode.addChild(childStatetoAdd);
-                childStatetoAdd.setParent(currentNode);
-                nodes.add(childStatetoAdd);
-                allNodes.add(childStatetoAdd);
-                seen.add(childStatetoAdd);
-                System.out.println("YOU ARE THE RESULT OF THIS UP MOVE ");
+                results.add(childStatetoAdd);
                 System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
                 System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
-                printState(childStatetoAdd);
-                numnodes++;
                 break;
             case "down":
                 System.out.println("VEHICLE ROW BEFORE" + vehicleCopy.getFrontRow());
                 System.out.println("VEHICLE COL BEFORE" + vehicleCopy.getFrontColumn());
                 vehicleCopy.moveDownOne(childStatetoAdd);
                 updateSate(childStatetoAdd, vehicleCopy, memory);
-                currentNode.addChild(childStatetoAdd);
-                childStatetoAdd.setParent(currentNode);
-                nodes.add(childStatetoAdd);
-                allNodes.add(childStatetoAdd);
-                seen.add(childStatetoAdd);
-                System.out.println("YOU ARE THE RESULT OF THIS DOWN MOVE ");
+                results.add(childStatetoAdd);
                 System.out.println("VEHICLE ROW AFTER " + vehicleCopy.getFrontRow());
                 System.out.println("VEHICLE COL AFTER " + vehicleCopy.getFrontColumn());
-                printState(childStatetoAdd);
-                numnodes++;
                 break;
         }
     }
@@ -349,7 +176,7 @@ public class StateSearch {
         return false;
     }
 
-    public StateNode generateEndState(int numberOfCars){
+    public StateNode generateStartState(int numberOfCars){
 
         System.out.println("trying to make state here");
         endState.clear();
@@ -381,7 +208,7 @@ public class StateSearch {
         System.out.println("trying to make vehicles here");
         for(int i = vehicles.size(); i < numberOfCars ; i++){
             System.out.println("i is" + i);
-            if(i < 6) {
+            if(i < numberOfCars) {
                 VehicleType type = VehicleType.values()[generator.nextInt(VehicleType.values().length - 1)];
                 Colour colour = Colour.values()[generator.nextInt(Colour.values().length - 2)];
                 Direction direction = Direction.values()[generator.nextInt(Direction.values().length - 1)];
@@ -466,7 +293,10 @@ public class StateSearch {
         goalState.addVehicles(vehicles);
 
         if(!checkEven(vehicles)){
-            goalState = generateEndState(numberOfCars);
+            goalState = generateStartState(numberOfCars);
+        }
+        if(goalState.getState().get(2).get(goalState.getVehicles().get(0).getFrontColumn() + 1).getVehicleType() == VehicleType.empty){
+            goalState = generateStartState(numberOfCars);
         }
         System.out.println("New Goal state Generated");
         return goalState;
@@ -608,7 +438,7 @@ public class StateSearch {
                     vCount++;
                 }
             }
-            if(vCount > 3){
+            if(vCount > 4){
                 System.out.println("Too many verticals");
                 return false;
             }
@@ -645,7 +475,7 @@ public class StateSearch {
                 }
             }
 
-            if(hCount > 3){
+            if(hCount > 4){
                 System.out.println("Too many horizontals");
                 return false;
             }
@@ -681,7 +511,7 @@ public class StateSearch {
                     hCount++;
                 }
             }
-            if(hCount > 3){
+            if(hCount > 4){
                 System.out.println("Too many horizontals");
                 return false;
             }

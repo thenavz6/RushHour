@@ -14,15 +14,19 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RushHourApp extends Application{
 
 
     public static final int TILE_SIZE = 100;
+    public static final int BUFFER = 80;
     public static final int WIDTH = 6;
     public static final int HEIGHT = 6;
     private boolean stopControls = false;
@@ -38,7 +42,7 @@ public class RushHourApp extends Application{
         Pane root = new Pane();
 
         // set size of it
-        root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
+        root.setPrefSize(WIDTH* TILE_SIZE + 2*BUFFER, HEIGHT * TILE_SIZE + 2 * BUFFER);
         root.getChildren().add(c);
         ImageView imv = new ImageView();
         //Image titlepic = new Image(Options.class.getResourceAsStream("road.png"));
@@ -49,21 +53,22 @@ public class RushHourApp extends Application{
         root.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         StateSearch state = new StateSearch();
-        StateNode endState = state.generateEndState(11);
-        StateNode startState;
-        //state.generateStateSpace(endState);
-        //startState = state.generateStartState(endState);
+        Random generator = new Random();
+        int numberOfCars = generator.nextInt(6)+6;
+        StateNode startState = state.generateStartState(numberOfCars);
 
-        while(endState == null){
-            //System.out.println("null");
-            endState = state.generateEndState(11);
-         //   state.generateStateSpace(endState);
-         //   startState = state.generateStartState(endState);
+        while(!state.solve(startState)){
+            startState = state.generateStartState(numberOfCars);
         }
+        state.solve(startState);
+        state.printMoves(state.getMovementList());
 
-        //state.printState(startState);
+        System.out.println("Start State: ");
+        state.printState(startState);
+        System.out.println("End State: ");
+        state.printState(state.getEndState());
 
-        for(Vehicle item: endState.getVehicles()){
+        for(Vehicle item: startState.getVehicles()){
             MainPiece car;
             if(item.getDirection() == Direction.west){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
@@ -81,7 +86,21 @@ public class RushHourApp extends Application{
                     new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            ptr = car;
+                        	
+                            // removes previous effect when new car is choosen 
+                    		ptr.setEffect(null);
+
+		                    DropShadow borderGlow = new DropShadow();
+        		            borderGlow.setColor(Color.YELLOW);
+                		    borderGlow.setOffsetX(0f);
+		                    borderGlow.setOffsetY(0f);
+        		            borderGlow.setHeight(20);
+                		    borderGlow.setWidth(20);
+
+                		    // change new pointer
+    		                ptr = car;
+    		                // make selected car glow 
+            		        car.setEffect(borderGlow);
                         }
                     });
             pieces.add(car);
@@ -91,7 +110,7 @@ public class RushHourApp extends Application{
         ptr = pieces.get(0);
 
         return root;
-    }
+                                   }
 
     @Override
     public void start(Stage primaryStage) throws Exception
