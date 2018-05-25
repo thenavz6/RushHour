@@ -18,8 +18,10 @@ import static javafx.stage.Screen.getPrimary;
 
 public class Pause extends Application {
         // Try border panes
+        private static long pauseTime;
         @Override
         public void start(Stage primaryStage) {
+            long imPaused = System.nanoTime();
             RushHourApp test = new RushHourApp();
 
             primaryStage.setTitle("Rush Hour");
@@ -54,7 +56,7 @@ public class Pause extends Application {
             grid.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
             exit.setOnAction(e -> {
                 Stage gameStage = test.getTestStage();
-                //test.setStopControls(false);
+                test.setStopControls(false);
                 gameStage.close();
                 primaryStage.hide();
                 Menu mainMenu = new Menu();
@@ -86,7 +88,8 @@ public class Pause extends Application {
                 @Override
                 public void handle(ActionEvent event) {
                     try {
-                        //test.setStopControls(false);
+                        test.setStopControls(false);
+                        pauseTime = pauseTime + (System.nanoTime() - imPaused);
                         primaryStage.hide();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -123,7 +126,8 @@ public class Pause extends Application {
 
             Scene scenes = new Scene(grid,250,300);
             primaryStage.setOnCloseRequest(e -> {
-                //test.setStopControls(false);
+                test.setStopControls(false);
+                setPauseTime(0); // do the same for restart
                 primaryStage.hide();
             });
             Rectangle2D screenBounds = getPrimary().getVisualBounds();
@@ -135,7 +139,14 @@ public class Pause extends Application {
             primaryStage.show();
         }
 
-
+    public long getPauseTime() {
+        return pauseTime;
     }
+
+    public void setPauseTime(long time) {
+            pauseTime = time;
+    }
+
+}
 
 

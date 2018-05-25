@@ -12,6 +12,7 @@ public class MainPiece extends Rectangle {
     private int midyPos;
     private String direction;
     private VehicleType type;
+    private final static int BUFFER = 80;
 
     public MainPiece(int x, int y, String orientation, VehicleType type) {
         this.direction = orientation;
@@ -64,18 +65,20 @@ public class MainPiece extends Rectangle {
 
         // places it in the determined position
         // if not it will default to the top
-        relocate(frontxPos, frontyPos);
+        relocate(frontxPos + BUFFER, frontyPos + BUFFER);
     }
     public void moveRight(){
         if(type == VehicleType.car) {
-            if (this.frontxPos == 400) {
+            if (this.frontxPos == 400 & this.frontyPos == 200) {
                 System.out.println("CONGRATS");
-                //RushHourApp stopControls = new RushHourApp();
-                //stopControls.setStopControls(true);
+                RushHourApp stopControls = new RushHourApp();
+                stopControls.setStopControls(true);
                 Victory victor = new Victory();
                 Stage secondaryStage = new Stage();
                 secondaryStage.setTitle("Victory!");
                 victor.start(secondaryStage);
+                return;
+            } else if (this.frontxPos == 400) {
                 return;
             }
         }else if(this.frontxPos == 300) {
@@ -121,7 +124,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(newX, this.frontyPos);
+        relocate(newX + BUFFER, this.frontyPos + BUFFER);
 
     }
     public void moveLeft(){
@@ -149,7 +152,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(newX, this.frontyPos);
+        relocate(newX + BUFFER, this.frontyPos + BUFFER);
     }
 
     public void moveUp(){
@@ -177,7 +180,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(this.frontxPos, newY);
+        relocate(this.frontxPos + BUFFER, newY + BUFFER);
     }
 
     public void moveDown(){
@@ -226,7 +229,7 @@ public class MainPiece extends Rectangle {
         updateCoords();
         //System.out.println(newX);
 
-        relocate(this.frontxPos, newY);
+        relocate(this.frontxPos + BUFFER, newY + BUFFER);
     }
 
     public void updateCoords(){

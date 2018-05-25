@@ -24,6 +24,7 @@ public class Victory extends Application {
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(15,20,10,10));
         RushHourApp statGetter = new RushHourApp();
+        Pause timeGet = new Pause();
         VBox botLeftBox = new VBox();
 
         ImageView imv = new ImageView();
@@ -45,7 +46,8 @@ public class Victory extends Application {
         back.setMinWidth(100);
         back.setOnAction(e -> {
             Stage gameStage = statGetter.getTestStage();
-            //statGetter.setStopControls(false);
+            timeGet.setPauseTime(0); // same for restart and new level
+            statGetter.setStopControls(false);
             gameStage.close();
             stage.hide();
             Menu mainMenu = new Menu();
@@ -65,8 +67,8 @@ public class Victory extends Application {
 
         Text timeNumber = new Text();
         long endTime = System.nanoTime();
-        long minuteTime = TimeUnit.NANOSECONDS.toMinutes((endTime - statGetter.getStartTime()));
-        long secondTime = TimeUnit.NANOSECONDS.toSeconds((endTime - statGetter.getStartTime()));
+        long minuteTime = TimeUnit.NANOSECONDS.toMinutes((endTime - statGetter.getStartTime() - timeGet.getPauseTime()));
+        long secondTime = TimeUnit.NANOSECONDS.toSeconds((endTime - statGetter.getStartTime() - timeGet.getPauseTime()));
         timeNumber.setText(minuteTime + " M " + secondTime + " S");
         timeNumber.setFont(new Font(25));
         botLeftBox.getChildren().add(moveNumber);
@@ -82,7 +84,7 @@ public class Victory extends Application {
         Label minuteLabel = new Label(Integer.toString(movesTaken));
         minuteLabel.setFont(new Font(25));
         minuteLabel.setTranslateY(85);
-        minuteLabel.setTranslateX(-410);
+        minuteLabel.setTranslateX(-400);
         minuteLabel.setTextFill(Color.web("#000000"));
         Label secondLabel = new Label(minuteTime + " M " + secondTime + " S");
         secondLabel.setTextFill(Color.web("#000000"));
@@ -102,7 +104,7 @@ public class Victory extends Application {
         Rectangle2D screenBounds = getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - (600)) / 2);
         stage.setY((screenBounds.getHeight() - (300)) / 2);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UTILITY);
         stage.setTitle("Victory");
         stage.setScene(scene);
         stage.show();

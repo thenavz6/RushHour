@@ -26,9 +26,10 @@ public class RushHourApp extends Application{
     public static final int TILE_SIZE = 100;
     public static final int WIDTH = 6;
     public static final int HEIGHT = 6;
+    private static final int BUFFER = 80;
     private static long startTime;
-    private static int movesTaken = 0;
-
+    private static int movesTaken;
+    private static boolean stopControls;
     private static Stage testStage;
     private MainPiece ptr; // keeps track of the main object;
     public static ArrayList<MainPiece> pieces = new ArrayList<>();
@@ -39,11 +40,13 @@ public class RushHourApp extends Application{
     private Parent createContent()
     {
         Pane root = new Pane();
+        pieces.clear();
+        movesTaken = 0;
         // set size of it
-        root.setPrefSize(WIDTH* TILE_SIZE   , HEIGHT * TILE_SIZE);
+        root.setPrefSize(WIDTH* TILE_SIZE + 2*BUFFER, HEIGHT * TILE_SIZE + 2*BUFFER);
         root.getChildren().add(c);
         ImageView imv = new ImageView();
-        Image gridPicture = new Image("images/grid2.png");
+        Image gridPicture = new Image("images/grid3.png");
         imv.setImage(gridPicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         root.setBackground(new Background( new BackgroundImage(gridPicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
@@ -108,7 +111,7 @@ public class RushHourApp extends Application{
     public void start(Stage primaryStage) throws Exception
     {
         Scene scene = new Scene(createContent());
-        //boolean stopControls = false;
+        stopControls = false;
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event){
@@ -117,9 +120,9 @@ public class RushHourApp extends Application{
                     Stage secondaryStage = new Stage();
                     secondaryStage.setTitle("Pause");
                     paused.start(secondaryStage);
-                    //stopControls = true;
+                    stopControls = true;
 
-                } else if (ptr.getDirection().equals("v")) { //& stopControls == false) {
+                } else if (ptr.getDirection().equals("v") & stopControls == false) {
                     if (event.getCode() == KeyCode.UP) {
                         ptr.moveUp();
                         System.out.println("x = " + ptr.getxPos());
@@ -130,7 +133,7 @@ public class RushHourApp extends Application{
                         System.out.println("y = " + ptr.getyPos());
                     }
                     movesTaken++;
-                } else if (ptr.getDirection().equals("h")) { // & stopControls == false) {
+                } else if (ptr.getDirection().equals("h") & stopControls == false) {
                     if (event.getCode() == KeyCode.RIGHT) {
                         ptr.moveRight();
                         System.out.println("x = " + ptr.getxPos());
@@ -148,8 +151,8 @@ public class RushHourApp extends Application{
         testStage = primaryStage;
         startTime = System.nanoTime();
         Rectangle2D screenBounds = getPrimary().getVisualBounds();
-        primaryStage.setX((screenBounds.getWidth() - (WIDTH * TILE_SIZE)) / 2);
-        primaryStage.setY((screenBounds.getHeight() - (HEIGHT * TILE_SIZE)) / 2);
+        primaryStage.setX((screenBounds.getWidth() - (WIDTH * TILE_SIZE + 2*BUFFER)) / 2);
+        primaryStage.setY((screenBounds.getHeight() - (HEIGHT * TILE_SIZE + 2*BUFFER)) / 2);
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setTitle("Rush Hour"); // sets the title name
         primaryStage.setScene(scene); // places scene into primary Stage
@@ -161,9 +164,9 @@ public class RushHourApp extends Application{
         return pieces;
     }
 
-    //public void setStopControls(boolean stopControls) {
-    //    this.stopControls = stopControls;
-    //}
+    public void setStopControls(boolean stopControls) {
+        this.stopControls = stopControls;
+    }
 
 
 
