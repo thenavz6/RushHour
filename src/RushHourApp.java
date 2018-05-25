@@ -19,11 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.effect.DropShadow;
 import javafx.stage.StageStyle;
 import java.lang.reflect.Array;
-import java.util.Queue;
-import java.util.PriorityQueue;
-import java.util.Random;
-
-import java.util.ArrayList;
+import java.util.*;
 
 import static javafx.stage.Screen.*;
 
@@ -40,6 +36,8 @@ public class RushHourApp extends Application{
     private static Stage testStage;
     private MainPiece ptr; // keeps track of the main object;
     public static ArrayList<MainPiece> pieces = new ArrayList<>();
+    public static StateNode currentState;
+    public static Stack<StateNode> moveStack;
 
     private Group c = new Group();
 
@@ -70,10 +68,14 @@ public class RushHourApp extends Application{
         }
         StateNode startState = state.generateStartState(numberOfCars,Menu.difficulty);
 
+
         while(!state.solve(startState)){
             startState = state.generateStartState(numberOfCars,Menu.difficulty);
         }
+
+        currentState = startState;
         state.solve(startState);
+        moveStack = state.getMovementList();
         state.printMoves(state.getMovementList());
 
         System.out.println(Menu.difficulty);
