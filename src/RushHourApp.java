@@ -17,6 +17,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.effect.DropShadow;
 import javafx.stage.StageStyle;
+import java.lang.reflect.Array;
+import java.util.Queue;
+import java.util.PriorityQueue;
 
 import java.util.ArrayList;
 
@@ -66,7 +69,13 @@ public class RushHourApp extends Application{
         }
 
         //state.printState(startState);
-
+        // generation section
+        // create an queue to store the easy
+        //PriorityQueue<StateNode> easy = new PriorityQueue<StateNode>();
+        //Levels t1 = new Levels(easy);
+        //t1.start();
+        //StateNode a = easy.poll();
+        //for(Vehicle item: a.getVehicles()){
         for(Vehicle item: startState.getVehicles()){
             MainPiece car;
             if(item.getDirection() == Direction.west){
