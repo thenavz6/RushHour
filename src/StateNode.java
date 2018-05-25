@@ -88,7 +88,18 @@ public class StateNode implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StateNode stateNode = (StateNode) o;
-        return Objects.equals(state, stateNode.state);
+        boolean eq = true;
+        for(int i = 0; i < stateNode.getState().size();i++){
+            for(int j = 0; j < stateNode.getState().get(i).size();j++){
+                if(stateNode.getState().get(i).get(j).getName().equals(this.getState().get(i).get(j).getName())){
+                    eq = true;
+                }else {
+                    eq = false;
+                    return eq;
+                }
+            }
+        }
+        return eq;
     }
 
     @Override

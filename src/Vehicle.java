@@ -4,8 +4,10 @@ import java.io.*;
 public class Vehicle implements Serializable{
 
     private String name;
+    private int id;
     private VehicleType type;
     private Colour colour;
+    private Coordinates coordinates;
     private int frontRow;
     private int frontColumn;
     private int midRow;
@@ -14,18 +16,33 @@ public class Vehicle implements Serializable{
     private int backColumn;
     private Direction direction;
 
-    public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction) {
-        this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0);
+    public Vehicle(VehicleType type, Colour colour, int row, int column, Direction direction, int id) {
+        this.name = colour.toString().charAt(0) + ""+type.toString().charAt(0)+""+direction.toString().charAt(0);
         this.type = type;
         this.colour = colour;
         this.frontRow = row;
         this.frontColumn = column;
         this.direction = direction;
+        this.coordinates = new Coordinates(row,column);
+        this.id = id;
         updateCoordinates();
     }
 
     public VehicleType getVehicleType() {
         return type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int i){
+        this.id = i;
+
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
     public void setType(VehicleType type) {
@@ -107,6 +124,7 @@ public class Vehicle implements Serializable{
                         this.midRow--;
                         this.backRow--;
                     }
+                   // System.out.println("Moved " + this.name + " up 1");
                     updateCoordinates();
                     return true;
                 }
@@ -127,6 +145,7 @@ public class Vehicle implements Serializable{
                         this.midRow++;
                         this.backRow++;
                     }
+                    //System.out.println("Moved " + this.name + "down 1");
                     updateCoordinates();
                     return true;
                 }
@@ -147,10 +166,13 @@ public class Vehicle implements Serializable{
                         this.midColumn--;
                         this.backColumn--;
                     }
+                    //System.out.println("Moved " + this.name + "left 1");
                     updateCoordinates();
                     return true;
                 }
+                return false;
             }
+            return false;
         }
         return false;
     }
@@ -167,6 +189,7 @@ public class Vehicle implements Serializable{
                         this.midColumn++;
                         this.backColumn++;
                     }
+                    //System.out.println("Moved " + this.name + "right 1");
                     updateCoordinates();
                     return true;
                 }
@@ -242,12 +265,31 @@ public class Vehicle implements Serializable{
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        boolean eq;
+        if(this.getId()== vehicle.getId() && this.getId() == vehicle.getId() ){
+            eq = true;
+        }else {
+            eq = false;
+            return eq;
+        }
+        return eq;
+    }
+
     public String getOrientation(){
         if(this.direction == Direction.north || this.direction == Direction.south){
             return "v";
         }else{
             return "h";
         }
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     @Override

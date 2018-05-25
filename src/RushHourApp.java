@@ -49,20 +49,21 @@ public class RushHourApp extends Application{
         root.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         StateSearch state = new StateSearch();
-        StateNode endState = state.generateEndState(6);
+        StateNode endState = state.generateEndState(11);
         StateNode startState;
-        state.generateStateSpace(endState);
-        startState = state.generateStartState(endState);
+        //state.generateStateSpace(endState);
+        //startState = state.generateStartState(endState);
 
-        while(startState == null){
-            endState = state.generateEndState(6);
-            state.generateStateSpace(endState);
-            startState = state.generateStartState(endState);
+        while(endState == null){
+            //System.out.println("null");
+            endState = state.generateEndState(11);
+         //   state.generateStateSpace(endState);
+         //   startState = state.generateStartState(endState);
         }
 
-        state.printState(startState);
+        //state.printState(startState);
 
-        for(Vehicle item: startState.getVehicles()){
+        for(Vehicle item: endState.getVehicles()){
             MainPiece car;
             if(item.getDirection() == Direction.west){
                 car = new MainPiece(item.getFrontColumn(),item.getFrontRow(),item.getOrientation(),item.getVehicleType());
