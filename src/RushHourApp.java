@@ -110,45 +110,42 @@ public class RushHourApp extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage)
     {
         Scene scene = new Scene(createContent());
         stopControls = false;
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
-            @Override
-            public void handle(KeyEvent event){
-                if (event.getCode() == KeyCode.ESCAPE) {
-                    Pause paused = new Pause();
-                    Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Pause");
-                    paused.start(secondaryStage);
-                    stopControls = true;
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Pause paused = new Pause();
+                Stage secondaryStage = new Stage();
+                secondaryStage.setTitle("Pause");
+                paused.start(secondaryStage);
+                stopControls = true;
 
-                } else if (ptr.getDirection().equals("v") & stopControls == false) {
-                    if (event.getCode() == KeyCode.UP) {
-                        ptr.moveUp();
-                        System.out.println("x = " + ptr.getxPos());
-                        System.out.println("y = " + ptr.getyPos());
-                    } else if (event.getCode() == KeyCode.DOWN) {
-                        ptr.moveDown();
-                        System.out.println("x = " + ptr.getxPos());
-                        System.out.println("y = " + ptr.getyPos());
-                    }
-                    movesTaken++;
-                } else if (ptr.getDirection().equals("h") & stopControls == false) {
-                    if (event.getCode() == KeyCode.RIGHT) {
-                        ptr.moveRight();
-                        System.out.println("x = " + ptr.getxPos());
-                        System.out.println("y = " + ptr.getyPos());
-                    } else if (event.getCode() == KeyCode.LEFT) {
-                        ptr.moveLeft();
-                        System.out.println("x = " + ptr.getxPos());
-                        System.out.println("y = " + ptr.getyPos());
-                    }
-                    movesTaken++;
+            } else if (ptr.getDirection().equals("v") & stopControls == false) {
+                if (event.getCode() == KeyCode.UP) {
+                    ptr.moveUp();
+                    System.out.println("x = " + ptr.getxPos());
+                    System.out.println("y = " + ptr.getyPos());
+                } else if (event.getCode() == KeyCode.DOWN) {
+                    ptr.moveDown();
+                    System.out.println("x = " + ptr.getxPos());
+                    System.out.println("y = " + ptr.getyPos());
                 }
-
+                movesTaken++;
+            } else if (ptr.getDirection().equals("h") & stopControls == false) {
+                if (event.getCode() == KeyCode.RIGHT) {
+                    ptr.moveRight();
+                    System.out.println("x = " + ptr.getxPos());
+                    System.out.println("y = " + ptr.getyPos());
+                } else if (event.getCode() == KeyCode.LEFT) {
+                    ptr.moveLeft();
+                    System.out.println("x = " + ptr.getxPos());
+                    System.out.println("y = " + ptr.getyPos());
+                }
+                movesTaken++;
             }
+
         });
         testStage = primaryStage;
         startTime = System.nanoTime();

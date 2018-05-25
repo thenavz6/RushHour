@@ -1,6 +1,10 @@
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
+import java.nio.file.Paths;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class MainPiece extends Rectangle {
 
@@ -70,6 +74,17 @@ public class MainPiece extends Rectangle {
     public void moveRight(){
         if(type == VehicleType.car) {
             if (this.frontxPos == 400 & this.frontyPos == 200) {
+                // animation to make main piece drive off screen
+                TranslateTransition translateTransition = new TranslateTransition();
+                translateTransition.setDuration(Duration.millis(1000));
+                translateTransition.setNode(this);
+                translateTransition.setByX(300);
+                translateTransition.play();
+                // add drive away sounds
+                Media media =  new Media(Paths.get("src/images/drive_away.wav").toUri().toString());
+                MediaPlayer player = new MediaPlayer(media);
+                player.setAutoPlay(true);
+
                 System.out.println("CONGRATS");
                 RushHourApp stopControls = new RushHourApp();
                 stopControls.setStopControls(true);

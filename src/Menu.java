@@ -2,7 +2,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
@@ -13,8 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import java.io.File;
 import static javafx.stage.Screen.getPrimary;
 
 /**
@@ -58,7 +57,7 @@ public class Menu extends Application {
         exit.setFont(new Font(25));
         exit.setText("Exit");
 
-        ComboBox diffBox = new ComboBox();
+        ComboBox<String> diffBox = new ComboBox<>();
         diffBox.getItems().add("Easy");
         diffBox.getItems().add("Medium");
         diffBox.getItems().add("Hard");
@@ -92,29 +91,22 @@ public class Menu extends Application {
             }
         });
 
-        play.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    primaryStage.hide();
-                    Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Rush Hour");
-                    gameBoard.start(secondaryStage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+        play.setOnAction(event -> {
+            try {
+                primaryStage.hide();
+                Stage secondaryStage = new Stage();
+                secondaryStage.setTitle("Rush Hour");
+                gameBoard.start(secondaryStage);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
 
-        instruct.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Instructions instruct = new Instructions();
-                Stage secondaryStage = new Stage();
-                secondaryStage.setTitle("Instructions");
-                instruct.start(secondaryStage);
-            }
+        instruct.setOnAction(event -> {
+            Instructions instruct1 = new Instructions();
+            Stage secondaryStage = new Stage();
+            secondaryStage.setTitle("Instructions");
+            instruct1.start(secondaryStage);
         });
 
         exit.setOnAction(e -> Platform.exit());
@@ -125,7 +117,7 @@ public class Menu extends Application {
         grid.add(exit, 0, 3);
 
         ImageView imv = new ImageView();
-        Image menuPicture = new Image("images/menu2.png");
+        Image menuPicture = new Image("/images/menu2.png");
         imv.setImage(menuPicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,false,true);
         grid.setBackground(new Background( new BackgroundImage(menuPicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));

@@ -78,38 +78,28 @@ public class Pause extends Application {
                 mainMenu.start(secondaryStage);
             });
 
-            instruct.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Instructions instruct = new Instructions();
-
-                    Stage secondaryStage = new Stage();
-                    secondaryStage.setTitle("Instructions");
-                    instruct.start(secondaryStage);
-                }
+            instruct.setOnAction(event -> {
+                Instructions instruct1 = new Instructions();
+                Stage secondaryStage = new Stage();
+                secondaryStage.setTitle("Instructions");
+                instruct1.start(secondaryStage);
             });
 
-            hints.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Hints");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Hacks");
-                    alert.showAndWait();
-                }
+            hints.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Hints");
+                alert.setHeaderText(null);
+                alert.setContentText("Hacks");
+                alert.showAndWait();
             });
 
-            play.setOnAction( new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    try {
-                        test.setStopControls(false);
-                        pauseTime = pauseTime + (System.nanoTime() - imPaused);
-                        primaryStage.hide();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            play.setOnAction(event -> {
+                try {
+                    test.setStopControls(false);
+                    pauseTime = pauseTime + (System.nanoTime() - imPaused);
+                    primaryStage.hide();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
 
