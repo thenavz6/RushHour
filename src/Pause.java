@@ -103,12 +103,10 @@ public class Pause extends Application {
                 }
             });
 
-            Text logo = new Text("Paused");
-            logo.setFont(new Font(30));
-            VBox textPos = new VBox();
-            textPos.getChildren().addAll(logo);
-            textPos.setAlignment(Pos.CENTER);
-            grid.add(logo,0,0);
+            Image image = new Image("images/paused.png");
+            ImageView pausedImage = new ImageView();
+            pausedImage.setImage(image);
+            grid.add(pausedImage,0,0);
             grid.add(play, 0, 1);
             grid.add(hints, 0, 2);
             grid.add(restart,0,3);
