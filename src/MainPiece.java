@@ -1,5 +1,7 @@
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 
 public class MainPiece extends Rectangle {
@@ -70,6 +72,14 @@ public class MainPiece extends Rectangle {
     public void moveRight(){
         if(type == VehicleType.car) {
             if (this.frontxPos == 400 & this.frontyPos == 200) {
+
+                // animation to make main piece drive off screen
+                TranslateTransition translateTransition = new TranslateTransition();
+                translateTransition.setDuration(Duration.millis(1000));
+                translateTransition.setNode(this);
+                translateTransition.setByX(300);
+                translateTransition.play();
+
                 System.out.println("CONGRATS");
                 RushHourApp stopControls = new RushHourApp();
                 stopControls.setStopControls(true);

@@ -42,7 +42,7 @@ public class Victory extends Application {
         VBox botLeftBox = new VBox();
 
         ImageView imv = new ImageView();
-        Image pausePicture = new Image("images/victory.png");
+        Image pausePicture = new Image("images/victory.gif");
         imv.setImage(pausePicture);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO,BackgroundSize.AUTO,false,false,true,true);
         borderPane.setBackground(new Background( new BackgroundImage(pausePicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
