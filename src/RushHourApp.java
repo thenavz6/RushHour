@@ -1,6 +1,5 @@
+import com.sun.tools.javac.Main;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,8 +19,11 @@ import javafx.stage.StageStyle;
 import java.lang.reflect.Array;
 import java.util.Queue;
 import java.util.PriorityQueue;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static javafx.stage.Screen.*;
 
@@ -29,6 +31,7 @@ public class RushHourApp extends Application{
 
 
     public static final int TILE_SIZE = 100;
+    public static final int BUFFER = 80;
     public static final int WIDTH = 6;
     public static final int HEIGHT = 6;
     private static final int BUFFER = 80;
@@ -48,7 +51,7 @@ public class RushHourApp extends Application{
         pieces.clear();
         movesTaken = 0;
         // set size of it
-        root.setPrefSize(WIDTH* TILE_SIZE + 2*BUFFER, HEIGHT * TILE_SIZE + 2*BUFFER);
+        root.setPrefSize(WIDTH* TILE_SIZE   + 2*BUFFER, HEIGHT * TILE_SIZE+ 2*BUFFER);
         root.getChildren().add(c);
         ImageView imv = new ImageView();
         Image gridPicture = new Image("images/grid3.png");
@@ -57,16 +60,20 @@ public class RushHourApp extends Application{
         root.setBackground(new Background( new BackgroundImage(gridPicture, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,bSize)));
 
         StateSearch state = new StateSearch();
-        StateNode endState = state.generateEndState(6);
-        StateNode startState;
-        state.generateStateSpace(endState);
-        startState = state.generateStartState(endState);
+        Random generator = new Random();
+        int numberOfCars = generator.nextInt(6)+6;
+        StateNode startState = state.generateStartState(numberOfCars);
 
-        while(startState == null){
-            endState = state.generateEndState(6);
-            state.generateStateSpace(endState);
-            startState = state.generateStartState(endState);
+        while(!state.solve(startState)){
+            startState = state.generateStartState(numberOfCars);
         }
+        state.solve(startState);
+        state.printMoves(state.getMovementList());
+
+        System.out.println("Start State: ");
+        state.printState(startState);
+        System.out.println("End State: ");
+        state.printState(state.getEndState());
 
         //state.printState(startState);
         // generation section
@@ -94,7 +101,7 @@ public class RushHourApp extends Application{
                     new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            // removes previous effect when new car is choosen
+                        // removes previous effect when new car is choosen
                             ptr.setEffect(null);
 
                             DropShadow borderGlow = new DropShadow();
@@ -103,9 +110,7 @@ public class RushHourApp extends Application{
                             borderGlow.setOffsetY(0f);
                             borderGlow.setHeight(20);
                             borderGlow.setWidth(20);
-                            // change new pointer
-                            ptr = car;
-                            // make selected car glow
+                            // change new pointer    ptr = car;// make selected car glow
                             car.setEffect(borderGlow);
                         }
                     });
@@ -116,7 +121,7 @@ public class RushHourApp extends Application{
         ptr = pieces.get(0);
 
         return root;
-    }
+                                   }
 
     @Override
     public void start(Stage primaryStage)

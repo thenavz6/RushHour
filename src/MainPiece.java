@@ -18,6 +18,13 @@ public class MainPiece extends Rectangle {
     private VehicleType type;
     private final static int BUFFER = 80;
 
+    /**
+     * Constructor for MainPiece
+     * @param x x coordinate of piece
+     * @param y y coordinate of piece
+     * @param orientation which direction the piece is facing
+     * @param type whether it is a car (2 blocks long) or truck (3 blocks long)
+     */
     public MainPiece(int x, int y, String orientation, VehicleType type) {
         this.direction = orientation;
         this.type = type;
@@ -71,6 +78,10 @@ public class MainPiece extends Rectangle {
         // if not it will default to the top
         relocate(frontxPos + BUFFER, frontyPos + BUFFER);
     }
+
+    /**
+     * Moves the main piece one square to the right (if facing east or west)
+     */
     public void moveRight(){
         if(type == VehicleType.car) {
             if (this.frontxPos == 400 & this.frontyPos == 200) {
@@ -143,6 +154,10 @@ public class MainPiece extends Rectangle {
         relocate(newX + BUFFER, this.frontyPos + BUFFER);
 
     }
+
+    /**
+     * Moves car one space left (if facing east or west)
+     */
     public void moveLeft(){
         if (this.frontxPos == 0) {
             return;
@@ -171,6 +186,9 @@ public class MainPiece extends Rectangle {
         relocate(newX + BUFFER, this.frontyPos + BUFFER);
     }
 
+    /**
+     * Moves car one space up (if facing north or south)
+     */
     public void moveUp(){
         if (this.frontyPos == 0) {
             return;
@@ -199,6 +217,9 @@ public class MainPiece extends Rectangle {
         relocate(this.frontxPos + BUFFER, newY + BUFFER);
     }
 
+    /**
+     * Moves piece one space down (if facing north or south)
+     */
     public void moveDown(){
         if(type == VehicleType.car) {
             if (this.frontyPos == 400) {
@@ -248,6 +269,9 @@ public class MainPiece extends Rectangle {
         relocate(this.frontxPos + BUFFER, newY + BUFFER);
     }
 
+    /**
+     * TODO: ?????
+     */
     public void updateCoords(){
         if(this.direction.equals("v")){
             this.backxPos = this.frontxPos;
@@ -270,14 +294,26 @@ public class MainPiece extends Rectangle {
         }
     }
 
+    /**
+     * getter for direction field
+     * @return direction
+     */
     public String getDirection() {
         return direction;
     }
 
+    /**
+     * getter for x coordinate
+     * @return x coordinate
+     */
     public int getxPos() {
         return backxPos;
     }
 
+    /**
+     * getter for y coordinate
+     * @return y coordinate
+     */
     public int getyPos() {
         return backyPos;
     }

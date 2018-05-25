@@ -3,5 +3,5 @@
  * Used for which direction the vehicle is facing
  */
 public enum Direction {
-    north, south, east, west, empty
+    north, south, east, west, nan
 }
