@@ -33,6 +33,9 @@ public class Victory extends Application {
      * Has buttons to go to a new puzzle, restart the current puzzle and go back to main menu.
      * @param stage Main stage that the class is displayed on
      */
+
+
+
     @Override
     public void start(Stage stage) {
         BorderPane borderPane = new BorderPane();
@@ -99,10 +102,11 @@ public class Victory extends Application {
                 Stage secondaryStage = new Stage();
                 secondaryStage.setTitle("Rush Hour");
                 newGame.start(secondaryStage);
-                } catch (Exception f) {
-                    f.printStackTrace();
-                }
+            } catch (Exception f) {
+                f.printStackTrace();
+            }
         });
+
         Label minuteLabel = new Label(Integer.toString(movesTaken));
         minuteLabel.setFont(new Font(25));
         minuteLabel.setTranslateY(85);
