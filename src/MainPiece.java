@@ -80,6 +80,7 @@ public class MainPiece extends Rectangle {
                 translateTransition.setNode(this);
                 translateTransition.setByX(300);
                 translateTransition.play();
+
                 // add drive away sounds
                 Media media =  new Media(Paths.get("src/images/drive_away.wav").toUri().toString());
                 MediaPlayer player = new MediaPlayer(media);

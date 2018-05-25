@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c01ef03-54c3-4415-b2d9-4561c60f966e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Menu$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/Pause$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RushHour/RushHourApp$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pause.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pause.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RushHourApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RushHourApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Victory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Victory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,8 +59,8 @@
       <file leaf-file-name="MainPiece.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainPiece.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="78" column="39" lean-forward="true" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+            <state relative-caret-position="1305">
+              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -340,12 +330,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" weight="0.3296146" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49791667" visible="true" weight="0.16720779" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" visible="true" weight="0.16720779" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32954547" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -712,8 +702,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPiece.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="78" column="39" lean-forward="true" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+        <state relative-caret-position="1305">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
